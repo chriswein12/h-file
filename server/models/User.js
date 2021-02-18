@@ -21,7 +21,10 @@ const userSchema = new Schema(
             required: true,
         },
 
-        savedHomes: [homeSchema],
+        savedHomes: [{
+            type: Schema.Types.ObjectId,
+            ref: "Home"
+        }],
 
         
             toJSON: {

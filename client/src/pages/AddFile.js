@@ -1,14 +1,11 @@
-//dependencies
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-//components
 import AboutHouse from '../components/AboutHouse';
 import Products from '../components/Products';
 import Remodels from '../components/Remodels';
 import Services from '../components/Services';
 
-//css
 import './css/AddFile.css';
 
 function AddFile() {

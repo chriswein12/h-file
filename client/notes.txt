@@ -1,2 +1,20 @@
+added react-bootstrap
+    npm i react-boostrap bootstrap
+    src/index.js: import 'bootstrap/dist/css/bootstrap.min.css';
+
+css idea
+name each after their respective page/component
+    page: keep in css folder inside pages folder
+    component: keep in each component folder
+
 AddFile.js
-where will AboutHouse fit in?
+? where will AboutHouse fit in?
+buttons don't have to be buttons
+
+House.js
+? add Nav/Content components to imitate react-portfolio?
+button doesn't have to be a button
+
+AboutHouse.js
+? need login mutation and auth?
+? rename value to homeValue?

@@ -109,72 +109,75 @@ function AboutHouse() {
                         </Form.Group>
                     </div>
                     <div className="new-house-additional">
-                        {this.state.isActive ? (
-                            <Button
-                                id="new-house-additional-btn"
-                                type="button"
-                                onClick={toggleShow}
-                            >
-                                Add More Details?
-                            </Button>
-                        ) : (
-                            <div>
-                                <h3>Additional Details</h3>
-                                <Form.Group>
-                                    <Form.Label htmlFor="yearBought">Year Bought</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="yearBought"
-                                        onChange={handleInputChange}
-                                        value={newHouseFormData.yearBought}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label htmlFor="yearBuilt">Year Built</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="yearBuilt"
-                                        onChange={handleInputChange}
-                                        value={newHouseFormData.yearBuilt}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label htmlFor="squareFootage">Square Footage</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="squareFootage"
-                                        onChange={handleInputChange}
-                                        value={newHouseFormData.squareFootage}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label htmlFor="value">Value</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="value"
-                                        onChange={handleInputChange}
-                                        value={newHouseFormData.value}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label htmlFor="lotSize">Lot Size</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="lotSize"
-                                        onChange={handleInputChange}
-                                        value={newHouseFormData.lotSize}
-                                    />
-                                </Form.Group>
-                                {/* picture input will go here when added */}
-                            </div>
-                        )}
+                        {this.state.isActive ?
+                            (
+                                <Button
+                                    id="new-house-additional-btn"
+                                    type="button"
+                                    onClick={toggleShow}
+                                >
+                                    Add More Details?
+                                </Button>
+                            ) :
+                            (
+                                <div>
+                                    <h3>Additional Details</h3>
+                                    <Form.Group>
+                                        <Form.Label htmlFor="yearBought">Year Bought</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="yearBought"
+                                            onChange={handleInputChange}
+                                            value={newHouseFormData.yearBought}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label htmlFor="yearBuilt">Year Built</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="yearBuilt"
+                                            onChange={handleInputChange}
+                                            value={newHouseFormData.yearBuilt}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label htmlFor="squareFootage">Square Footage</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="squareFootage"
+                                            onChange={handleInputChange}
+                                            value={newHouseFormData.squareFootage}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label htmlFor="value">Value</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="value"
+                                            onChange={handleInputChange}
+                                            value={newHouseFormData.value}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label htmlFor="lotSize">Lot Size</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="lotSize"
+                                            onChange={handleInputChange}
+                                            value={newHouseFormData.lotSize}
+                                        />
+                                    </Form.Group>
+                                    {/* picture input will go here when added */}
+                                </div>
+                            )
+                        }
                     </div>
                     <Button
                         id="new-house-submit-btn"
                         type="submit"
                         onClick={handleFormSubmit}
                     >
-                        Submit
+                        Finish and Submit
                     </Button>
                 </Form>
             </div>

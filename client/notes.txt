@@ -15,14 +15,26 @@ House.js
 ? add Nav/Content components to imitate react-portfolio?
 button doesn't have to be a button
 
+All Forms
+? possible for array and loop?
+double check naming conventions
+
 AboutHouse.js
 ? need login mutation and auth?
 ? rename value to homeValue?
+? split up address?
 I think the ternary operator did the trick, may need to tweak true/false
 
-yearBought: '',
-yearBuilt: '',
-squareFootage: '',
-value: '',
-lotSize: '',
-picture: ''
+Products.js
+? form group for "room"
+    have array for options?
+    allow adding rooms to other?
+
+Remodels.js
+?   //room as type=select
+    room: '',
+    //company
+    split out as sub inputs for companies worked with?
+    make these hide/show?
+    //products
+    how to layout input array?

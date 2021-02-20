@@ -18,3 +18,11 @@ button doesn't have to be a button
 AboutHouse.js
 ? need login mutation and auth?
 ? rename value to homeValue?
+I think the ternary operator did the trick, may need to tweak true/false
+
+yearBought: '',
+yearBuilt: '',
+squareFootage: '',
+value: '',
+lotSize: '',
+picture: ''

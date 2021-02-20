@@ -3,6 +3,8 @@ import { Form, Button, Alert } from 'react-bootstrap';
 
 //need login mutation and Auth?
 
+import './AboutHouse.css'
+
 function AboutHouse() {
     const [newHouseFormData, setNewHouseFormData] = useState({
         homeName: '',
@@ -66,9 +68,16 @@ function AboutHouse() {
         });
     }
 
-    const unhideAdditional = () => {
-        const additional = document.querySelector('.new-house-additional');
-        additional.removeAttribute('className');
+    //default add details button renders, onclick hides button
+    //and renders the additional details section
+    state = {
+        isActive: true
+    }
+
+    const toggleShow = () => {
+        this.setState({
+            isActive: false
+        });
     }
 
     return (
@@ -78,12 +87,85 @@ function AboutHouse() {
                 <div className="new-house-details">
                     <div className="new-house-required">
                         <Form.Group>
-                            <Form.Label htmlFor=""></Form.Label>
-
+                            <Form.Label htmlFor="homeName">Home Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="homeName"
+                                onChange={handleInputChange}
+                                value={newHouseFormData.homeName}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor="address">Address</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="address"
+                                onChange={handleInputChange}
+                                value={newHouseFormData.address}
+                                required
+                            />
                         </Form.Group>
                     </div>
                     <div className="new-house-additional">
-
+                        {this.state.isActive ? (
+                            <Button
+                                id="new-house-additional-btn"
+                                type="button"
+                                onClick={toggleShow}
+                            >
+                                Add More Details?
+                            </Button>
+                        ) : (
+                            <div>
+                                <Form.Group>
+                                    <Form.Label htmlFor="yearBought">Year Bought</Form.Label>
+                                    <Form.Control 
+                                        type="text"
+                                        name="yearBought"
+                                        onChange={handleInputChange}
+                                        value={newHouseFormData.yearBought}
+                                    />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label htmlFor="yearBuilt">Year Built</Form.Label>
+                                    <Form.Control 
+                                        type="text"
+                                        name="yearBuilt"
+                                        onChange={handleInputChange}
+                                        value={newHouseFormData.yearBuilt}
+                                    />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label htmlFor="squareFootage">Square Footage</Form.Label>
+                                    <Form.Control 
+                                        type="text"
+                                        name="squareFootage"
+                                        onChange={handleInputChange}
+                                        value={newHouseFormData.squareFootage}
+                                    />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label htmlFor="value">Value</Form.Label>
+                                    <Form.Control 
+                                        type="text"
+                                        name="value"
+                                        onChange={handleInputChange}
+                                        value={newHouseFormData.value}
+                                    />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label htmlFor="lotSize">Lot Size</Form.Label>
+                                    <Form.Control 
+                                        type="text"
+                                        name="lotSize"
+                                        onChange={handleInputChange}
+                                        value={newHouseFormData.lotSize}
+                                    />
+                                </Form.Group>
+                                {/* picture input will go here when added */}
+                            </div>
+                        )}
                     </div>
                 </div>
             </Form>

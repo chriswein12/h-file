@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
+//import mutation(s)
+
 //need login mutation and Auth?
 
 import './AboutHouse.css'
@@ -13,8 +15,7 @@ function AboutHouse() {
         yearBuilt: '',
         squareFootage: '',
         value: '',
-        lotSize: '',
-        picture: ''
+        lotSize: ''
     });
 
     //add front end validation?
@@ -26,7 +27,7 @@ function AboutHouse() {
     //create const for anticipated mutation (will need to update)
     const [addNewHouse, { error }] = useMutation(ADD_HOUSE);
 
-    //reference Form.Control
+    //reference Form.Control (bootstrap)
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setNewHouseFormData({
@@ -63,8 +64,7 @@ function AboutHouse() {
             yearBuilt: '',
             squareFootage: '',
             value: '',
-            lotSize: '',
-            picture: ''
+            lotSize: ''
         });
     }
 
@@ -83,9 +83,10 @@ function AboutHouse() {
     return (
         <div>
             <h2>New House</h2>
-            <Form>
-                <div className="new-house-details">
+            <div className="new-house-details">
+                <Form>
                     <div className="new-house-required">
+                        <h3>Required Details</h3>
                         <Form.Group>
                             <Form.Label htmlFor="homeName">Home Name</Form.Label>
                             <Form.Control
@@ -118,9 +119,10 @@ function AboutHouse() {
                             </Button>
                         ) : (
                             <div>
+                                <h3>Additional Details</h3>
                                 <Form.Group>
                                     <Form.Label htmlFor="yearBought">Year Bought</Form.Label>
-                                    <Form.Control 
+                                    <Form.Control
                                         type="text"
                                         name="yearBought"
                                         onChange={handleInputChange}
@@ -129,7 +131,7 @@ function AboutHouse() {
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label htmlFor="yearBuilt">Year Built</Form.Label>
-                                    <Form.Control 
+                                    <Form.Control
                                         type="text"
                                         name="yearBuilt"
                                         onChange={handleInputChange}
@@ -138,7 +140,7 @@ function AboutHouse() {
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label htmlFor="squareFootage">Square Footage</Form.Label>
-                                    <Form.Control 
+                                    <Form.Control
                                         type="text"
                                         name="squareFootage"
                                         onChange={handleInputChange}
@@ -147,7 +149,7 @@ function AboutHouse() {
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label htmlFor="value">Value</Form.Label>
-                                    <Form.Control 
+                                    <Form.Control
                                         type="text"
                                         name="value"
                                         onChange={handleInputChange}
@@ -156,7 +158,7 @@ function AboutHouse() {
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label htmlFor="lotSize">Lot Size</Form.Label>
-                                    <Form.Control 
+                                    <Form.Control
                                         type="text"
                                         name="lotSize"
                                         onChange={handleInputChange}
@@ -167,8 +169,15 @@ function AboutHouse() {
                             </div>
                         )}
                     </div>
-                </div>
-            </Form>
+                    <Button
+                        id="new-house-submit-btn"
+                        type="submit"
+                        onClick={handleFormSubmit}
+                    >
+                        Submit
+                    </Button>
+                </Form>
+            </div>
         </div>
     );
 }

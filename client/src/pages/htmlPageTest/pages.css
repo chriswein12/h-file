@@ -64,6 +64,7 @@ a.profileIcon {
     padding: 0;
     display:none;
 }
+
 /* .carousel {
   z-index: -100;
 }
@@ -136,6 +137,10 @@ a.profileIcon {
 }
 
 .login {
+  margin-top: 60px;
+  padding-left: 500px;
+}
+.join {
   margin-top: 60px;
   padding-left: 500px;
 }

@@ -5,7 +5,7 @@ const homeSchema = new Schema(
         homeName: {
             type: String,
             required: true,
-            unique: true,
+            
         },
 
         address: {
@@ -17,7 +17,7 @@ const homeSchema = new Schema(
         yearBought: {
             type: String,
             required: true,
-            unique: true,
+            
         },
 
         yearBuilt: {
@@ -41,9 +41,28 @@ const homeSchema = new Schema(
             type: String,
             required: true,
         },
+        // pulling in the objects from other models that will be in Homes
+        homeProduct: [{
+            type: Schema.Types.ObjectId,
+            ref: "Products"
+        }],
 
-        // picture : {
-            // type: ?,
+        homeServices: [{
+            type: Schema.Types.ObjectId,
+            ref: "Services"
+        }],
+
+        homeMaintenance: [{
+            type: Schema.Types.ObjectId,
+            ref: "Maintenance"
+        }],
+
+        homeRemodels: [{
+            type: Schema.Types.ObjectId,
+            ref: "Remodel"
+        }],
+
+        
         
     }
 );

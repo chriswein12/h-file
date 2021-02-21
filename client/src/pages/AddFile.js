@@ -12,13 +12,16 @@ function AddFile() {
     return (
         <div className="add-file-container">
             <button className="add-file-button" id="add-product-btn">
-                <Link to={Products}>Product</Link>
+                <Link to={Products}>Add Product</Link>
             </button>
             <button className="add-file-button" id="add-service-btn">
-                <Link to={Services}>Service</Link>
+                <Link to={Services}>Add Service</Link>
             </button>
             <button className="add-file-button" id="add-remodel-btn">
-                <Link to={Remodels}>Remodel</Link>
+                <Link to={Remodels}>Add Remodel</Link>
+            </button>
+            <button className="add-file-button" id="add-house-btn">
+                <Link to={AboutHouse}>Add New Home</Link>
             </button>
         </div>
     );

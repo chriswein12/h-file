@@ -11,14 +11,11 @@ AddFile.js
 ? where will AboutHouse fit in?
 buttons don't have to be buttons
 
-House.js
-? add Nav/Content components to imitate react-portfolio?
-button doesn't have to be a button
-
 All Forms
 ? possible for array and loop?
 double check naming conventions
 ? date input type?
+import mutations from @apollo-react/hooks
 
 AboutHouse.js
 ? need login mutation and auth?
@@ -39,3 +36,7 @@ Remodels.js
     make these hide/show?
     //products
     how to layout input array?
+
+House.js
+? add Nav/Content components to imitate react-portfolio?
+button doesn't have to be a button

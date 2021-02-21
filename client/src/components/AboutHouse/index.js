@@ -10,6 +10,7 @@ import './AboutHouse.css'
 function AboutHouse() {
     const [newHouseFormData, setNewHouseFormData] = useState({
         homeName: '',
+        //expand out address info?
         address: '',
         yearBought: '',
         yearBuilt: '',

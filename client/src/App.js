@@ -32,7 +32,6 @@ function App() {
             <Router>
                 <div>
                     <Splash></Splash>
-                    <Footer />
                 </div>
             </Router>
         </ApolloProvider>

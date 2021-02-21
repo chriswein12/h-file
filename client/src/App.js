@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 
 //import css
 import './App.css';
+import Header from './components/Header/index'
+import Splash from './pages/Splash'
 
 const client = new ApolloClient({
     request: (operation) => {
@@ -24,11 +26,12 @@ const client = new ApolloClient({
 })
 
 function App() {
+
     return (
         <ApolloProvider client={client}>
             <Router>
                 <div>
-                    butts
+                    <Splash></Splash>
                     <Footer />
                 </div>
             </Router>

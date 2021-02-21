@@ -18,6 +18,7 @@ button doesn't have to be a button
 All Forms
 ? possible for array and loop?
 double check naming conventions
+? date input type?
 
 AboutHouse.js
 ? need login mutation and auth?

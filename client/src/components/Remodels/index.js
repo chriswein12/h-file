@@ -16,6 +16,7 @@ function Remodels() {
         endDate: '',
         //custom FormCheck rendering for company & their info
         company: '',
+        //include contact person?
         companyPhone: '',
         companyEmail: '',
         companyWebsite: '',
@@ -61,7 +62,7 @@ function Remodels() {
             //setShowAlert(true);
         }
 
-        setNewHouseFormData({
+        setNewRemodelFormData({
             username: '',
             title: '',
             room: '',

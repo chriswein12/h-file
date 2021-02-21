@@ -8,8 +8,8 @@ name each after their respective page/component
     component: keep in each component folder
 
 AddFile.js
-? where will AboutHouse fit in?
 buttons don't have to be buttons
+may have to revisit switch vs links
 
 All Forms
 ? possible for array and loop?
@@ -40,3 +40,14 @@ Remodels.js
 House.js
 ? add Nav/Content components to imitate react-portfolio?
 button doesn't have to be a button
+
+ViewAboutHouse.js
+
+ViewProducts.js
+add array of objects to display all products
+
+ViewRemodels.js
+add array of objects to display all remodels
+
+ViewServices.js
+add array of objects to display all services

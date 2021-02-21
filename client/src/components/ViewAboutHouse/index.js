@@ -14,7 +14,7 @@ function ViewAboutHouse() {
     //add option to delete house?
     //useMutation REMOVE_HOUSE
 
-    //ViewAboutHouse name def in queries?
+    //viewAboutHouse name def in queries?
     const houseData = data.viewAboutHouse
     console.log(houseData);
 
@@ -25,7 +25,12 @@ function ViewAboutHouse() {
 
     return (
         <div>
-            <div></div>
+            <div>Address: {houseData.address}</div>
+            <div>Year Bought: {houseData.yearBought}</div>
+            <div>Year Built: {houseData.yearBuilt}</div>
+            <div>Square Footage: {houseData.squareFootage} sq ft</div>
+            <div>Value: {houseData.value}</div>
+            <div>Lot Size: {houseData.lotSize} acres</div>
         </div>
     )
 }

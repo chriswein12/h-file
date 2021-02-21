@@ -124,12 +124,22 @@ function Remodels() {
                             </Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="title">Remodel Title</Form.Label>
+                            <Form.Label htmlFor="startDate">Start Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="address"
+                                name="startDate"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.title}
+                                value={newRemodelFormData.startDate}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor="endDate">End Date</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="endDate"
+                                onChange={handleInputChange}
+                                value={newRemodelFormData.endDate}
                                 required
                             />
                         </Form.Group>

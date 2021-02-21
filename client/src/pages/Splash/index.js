@@ -1,0 +1,32 @@
+import React from 'react';
+import Header from '../../components/Header';
+import '../Splash/splashStyle.css';
+
+const SplashPage = () => {
+    return (
+        <body>
+            <Header></Header>
+            <form id="splashPage-form">
+        <div>
+            <h1>House-it going?</h1>
+            <p>At House-it we realize how stressful staying organized as a homeowner can be. 
+                Files and documents for your home get thrown in that cluttered box in the basement, 
+                never to be seen again...
+            </p>
+            <br/>
+            <p>
+                With House-it you can access all of your homeowner filed and information with the click of a button!
+            </p>
+        </div>
+        <div className="row splashButtons">
+            <div className="col-6">
+                <button type="button" className="btn btn-danger">Sign Up Now</button>
+            </div>
+        </div>
+    </form>
+        </body>
+        
+    )
+}
+
+export default SplashPage;

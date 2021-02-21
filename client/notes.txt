@@ -1,0 +1,42 @@
+added react-bootstrap
+    npm i react-boostrap bootstrap
+    src/index.js: import 'bootstrap/dist/css/bootstrap.min.css';
+
+css idea
+name each after their respective page/component
+    page: keep in css folder inside pages folder
+    component: keep in each component folder
+
+AddFile.js
+? where will AboutHouse fit in?
+buttons don't have to be buttons
+
+All Forms
+? possible for array and loop?
+double check naming conventions
+? date input type?
+import mutations from @apollo-react/hooks
+
+AboutHouse.js
+? need login mutation and auth?
+? rename value to homeValue?
+? split up address?
+I think the ternary operator did the trick, may need to tweak true/false
+
+Products.js
+? form group for "room"
+    have array for options?
+    allow adding rooms to other?
+
+Remodels.js
+?   //room as type=select
+    room: '',
+    //company
+    split out as sub inputs for companies worked with?
+    make these hide/show?
+    //products
+    how to layout input array?
+
+House.js
+? add Nav/Content components to imitate react-portfolio?
+button doesn't have to be a button

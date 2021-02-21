@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const BusinessCardSchema = new Schema(
     {
@@ -6,7 +6,7 @@ const BusinessCardSchema = new Schema(
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId()
         },
-
+        
         contactName: {
             type: String,
             required: true,
@@ -30,7 +30,7 @@ const BusinessCardSchema = new Schema(
     }
 )
 
-const servicesSchema = new Schema(
+const remodelSchema = new Schema(
     {
         title: {
             type: String,
@@ -38,14 +38,9 @@ const servicesSchema = new Schema(
             trim: true
         },
 
-        cost: {
-            type: Number,
+        room: {
+            type: String, 
             required: true,
-            min: 0
-        },
-
-        frequency: {
-            type: String
         },
 
         date: {
@@ -53,17 +48,24 @@ const servicesSchema = new Schema(
             required: true
         },
 
-        description: {
+        cost: {
+            type: Number,
+            min: 0
+        },
+        
+        details: {
             type: String,
-            required: true,
-            maxLength: 500
+            maxLength: 500,
+            trim: true
         },
 
-        contact: [BusinessCardSchema]
+        // note the plural is used for this property "contacts" vs "contact" used in Services model, since a remodal may work with multiple companies
+        contacts: [BusinessCardSchema],
 
+                
     }
 );
 
-const Services = model('Services', servicesSchema);
+const Remodel = model('Remodel', remodelSchema);
 
-module.exports = Services;
+module.exports = Remodel;

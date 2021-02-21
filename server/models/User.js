@@ -9,16 +9,18 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
+            trim: true
         },
         email: {
             type: String,
             required: true,
             unique: true,
-            match: [/.+@.+\..+/, 'Please Enter Valid Email Address'],
+            match: [/.{1,}@(.{1,}[^@])\.\w{2,3}/g, 'Please Enter Valid Email Address'],
         },
         password: {
             type:String,
             required: true,
+            minlength: 4
         },
 
         savedHomes: [{

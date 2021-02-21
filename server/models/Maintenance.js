@@ -2,35 +2,39 @@ const { Schema, model } = require('mongoose');
 
 const maintenanceSchema = new Schema(
     {
-      name: {
-          type: String,
-          required: true,
-      },
-      
-      costs: {
-          type: String,
-          required: true,
-      },
+        name: {
+            type: String,
+            required: true,
+            trim: true
+        },
 
-      pastDates: {
-          type: String,
-          required: true,
-      },
+        cost: {
+            type: String,
+            required: true,
+            min: 0
+        },
 
-      nextDate: {
-          type: String,
-          required: false,
-      },
+        nextDate: {
+            type: Date,
+            required: false,
+        },
 
-      frequency: {
-          type: String,
-          required: true,
-      },
+        frequency: {
+            type: String,
+            required: true,
+        },
 
-      notes: {
-          type: String,
-          required: false,
-      },
+        pastDates: [
+            {
+                type: Date,
+            }
+        ],
+
+        notes: {
+            type: String,
+            maxLength: 500,
+            trim: true
+        },
     }
 );
 

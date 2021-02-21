@@ -2,13 +2,13 @@ const { Schema, model } = require('mongoose');
 
 const productsSchema = new Schema(
     {
-        name: {
+        produceName: {
             type: String,
             required: true,
             trim: true
         },
 
-        price: {
+        productPrice: {
             type: Number,
             required: true,
         },
@@ -18,7 +18,7 @@ const productsSchema = new Schema(
             required: true,
         },
 
-        room: {
+        productRoom: {
             type: String,
             trim: true
         },
@@ -38,12 +38,12 @@ const productsSchema = new Schema(
             trim: true
         },
 
-        link: {
+        productLink: {
             type: String,
             trim: true
         },
 
-        details: {
+        productDetails: {
             type: String,
             maxLength: 500,
             trim: true

@@ -41,25 +41,25 @@ const homeSchema = new Schema(
         },
 
         // pulling in the objects from other models that will be in Homes
-        homeProduct: [{
-            type: Schema.Types.ObjectId,
-            ref: "Product"
-        }],
-
         homeServices: [{
             type: Schema.Types.ObjectId,
             ref: "Services"
         }],
 
-        homeMaintenance: [{
-            type: Schema.Types.ObjectId,
-            ref: "Maintenance"
-        }],
-
         homeRemodels: [{
             type: Schema.Types.ObjectId,
             ref: "Remodel"
-        }] 
+        }], 
+
+        homeProducts: [{
+            type: Schema.Types.ObjectId,
+            ref: "Product"
+        }],
+
+        homeMaintenances: [{
+            type: Schema.Types.ObjectId,
+            ref: "Maintenance"
+        }]
     }
 );
 

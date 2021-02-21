@@ -1,0 +1,1 @@
+may need multiple delete button components (one for house, one for file, etc)

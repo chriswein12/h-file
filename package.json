@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/chriswein12/h-file/issues"
   },
-  "homepage": "https://github.com/chriswein12/h-file#readme"
+  "homepage": "https://github.com/chriswein12/h-file#readme",
+  "dependencies": {
+    "graphql": "^15.5.0"
+  }
 }

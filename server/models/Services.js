@@ -1,26 +1,38 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
+
+const BusinessCardSchema = require('./BusinessCard');
 
 const servicesSchema = new Schema(
     {
-        title: {
+        serviceTitle: {
             type: String,
             required: true,
+            trim: true
         },
 
-        cost: {
-            type: String,
+        serviceCost: {
+            type: Number,
             required: true,
+            min: 0
         },
 
-        description: {
-            type: String,
-            required: true,
+        serviceFrequency: {
+            type: String
         },
 
-        provider: {
+        serviceDate: {
+            type: Date,
+            required: true
+        },
+
+        serviceDescription: {
             type: String,
             required: true,
+            maxLength: 500
         },
+
+        contact: [BusinessCardSchema]
+
     }
 );
 

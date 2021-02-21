@@ -2,53 +2,55 @@ const { Schema, model } = require('mongoose');
 
 const productsSchema = new Schema(
     {
-        productName: {
+        produceName: {
             type: String,
             required: true,
+            trim: true
         },
 
         productPrice: {
-            type: String,
+            type: Number,
             required: true,
         },
 
         datePurchased: {
-            type: String,
+            type: Date,
             required: true,
         },
 
-        room: {
+        productRoom: {
             type: String,
-            required: true,
+            trim: true
         },
 
         serialNumber: {
-            type: Number,
-            required: true,
+            type: String,
+            trim: true
         },
 
         modelNumber: {
-            type: Number,
-            required: true,
+            type: String,
+            trim: true
         },
 
-        warrentyLength: {
+        warrantyLength: {
             type: String,
-            required: true,
+            trim: true
         },
 
-        link: {
+        productLink: {
             type: String,
-            required: true,
+            trim: true
         },
 
-        details: {
+        productDetails: {
             type: String,
-            required: false,
+            maxLength: 500,
+            trim: true
         }
     }
 );
 
-const Products = model('Products', productsSchema);
+const Product = model('Product', productsSchema);
 
-module.exports = Products;
+module.exports = Product;

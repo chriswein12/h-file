@@ -5,65 +5,61 @@ const homeSchema = new Schema(
         homeName: {
             type: String,
             required: true,
-            
+            trim: true
         },
 
         address: {
             type: String,
             required: true,
             unique: true,
+            trim: true
         },
 
         yearBought: {
-            type: String,
-            required: true,
-            
+            type: Number,
+            min: 1000
         },
 
         yearBuilt: {
-            type: String,
-            required: true,
-            
-        
+            type: Number,
+            min: 1000
         },
 
         squareFootage: {
-            type: String,
-            required: true,
+            type: Number,
+            min: 0
         },
 
         value: {
-            type: String,
-            required: true,
+            type: Number,
+            min: 0
         },
 
         lotSize: {
-            type: String,
-            required: true,
+            type: Number,
+            min: 0
         },
-        // pulling in the objects from other models that will be in Homes
-        homeProduct: [{
-            type: Schema.Types.ObjectId,
-            ref: "Products"
-        }],
 
+        // pulling in the objects from other models that will be in Homes
         homeServices: [{
             type: Schema.Types.ObjectId,
             ref: "Services"
         }],
 
-        homeMaintenance: [{
-            type: Schema.Types.ObjectId,
-            ref: "Maintenance"
-        }],
-
         homeRemodels: [{
             type: Schema.Types.ObjectId,
             ref: "Remodel"
+        }], 
+
+        homeProducts: [{
+            type: Schema.Types.ObjectId,
+            ref: "Product"
         }],
 
-        
-        
+        homeMaintenances: [{
+            type: Schema.Types.ObjectId,
+            ref: "Maintenance"
+        }]
     }
 );
 

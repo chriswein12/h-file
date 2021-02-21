@@ -1,7 +1,21 @@
-const db = require('../models');
+const { User, Home, Product, Services, Remodel, Maintenance  } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        me: async (parent, args, context) => {
+            if (context.user) {
+                const userData = await User.findOne({ _id: context.user._id })
+                .select('-__v -password')
+                .populate('savedHomes');
+                
+                return userData;
+            }
+
+            throw new AuthenticationError('Not logged in');
+        },
+
         //find all users
         allUsers : async () => {
         //    populates user with their homes

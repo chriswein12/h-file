@@ -15,15 +15,12 @@ const SplashPage = () => {
             </p>
             <br/>
             <p>
-                With House-it you can access all of your homeowner filed and information witht the click of a button!
+                With House-it you can access all of your homeowner filed and information with the click of a button!
             </p>
         </div>
         <div className="row splashButtons">
             <div className="col-6">
-                <button type="button" className="btn btn-danger">Sign Up</button>
-            </div>
-            <div className="col-6">
-                <button type="button" className="btn btn-primary">Login</button>
+                <button type="button" className="btn btn-danger">Sign Up Now</button>
             </div>
         </div>
     </form>

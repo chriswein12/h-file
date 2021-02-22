@@ -16,7 +16,7 @@ const userSchema = new Schema(
             match: [/.{1,}@(.{1,}[^@])\.\w{2,3}/g, 'Please Enter Valid Email Address'],
         },
         password: {
-            type:String,
+            type: String,
             required: true,
             minlength: 4
         },
@@ -24,20 +24,13 @@ const userSchema = new Schema(
         savedHomes: [{
             type: Schema.Types.ObjectId,
             ref: "Home"
-        }],
-
-        
-            toJSON: {
-                virtuals: true,
-            },
-        
-
+        }]
     }
 );
 
 //hash password for user
 userSchema.pre('save', async function (next) {
-    if(this.isNew || this.isModified('password')) {
+    if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }

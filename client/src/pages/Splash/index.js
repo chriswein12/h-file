@@ -1,30 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
+import Description from '../../components/Description';
+import Login from '../../components/Login';
+import Signup from '../../components/SignUp';
 import '../Splash/splashStyle.css';
 
 const SplashPage = () => {
+
+    const [currentForm, setCurrentForm] = useState();
+
+    const renderForm = () => {
+        switch (currentForm) {
+            case 'Header':
+                return <Header signup={signupView}  login={loginView} />
+            case 'Description':
+                return <Description signup={signupView} />;
+            case 'Login':
+                return <Login signup={signupView}  login={loginView}/>;
+            case 'Signup':
+                return <Signup signup={signupView}  login={loginView}/>;
+            default:
+                return <Description signup={signupView}  login={loginView}/>;
+        }
+    };
+
+    const signupView = () => {
+        setCurrentForm('Signup')
+    };
+
+    const loginView = () => {
+        setCurrentForm('Login')
+    };
+
     return (
-        <body>
-            <Header></Header>
-            <form id="splashPage-form">
         <div>
-            <h1>House-it going?</h1>
-            <p>At House-it we realize how stressful staying organized as a homeowner can be. 
-                Files and documents for your home get thrown in that cluttered box in the basement, 
-                never to be seen again...
-            </p>
-            <br/>
-            <p>
-                With House-it you can access all of your homeowner filed and information with the click of a button!
-            </p>
+            <Header></Header>
+            {renderForm(currentForm)}
         </div>
-        <div className="row splashButtons">
-            <div className="col-6">
-                <button type="button" className="btn btn-danger">Sign Up Now</button>
-            </div>
-        </div>
-    </form>
-        </body>
         
     )
 }

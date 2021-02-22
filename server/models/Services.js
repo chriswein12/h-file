@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 
-const BusinessCardSchema = require('./BusinessCard');
+const businessCardSchema = require('./BusinessCard');
 
 const servicesSchema = new Schema(
     {
@@ -31,7 +31,7 @@ const servicesSchema = new Schema(
             maxLength: 500
         },
 
-        contact: [BusinessCardSchema]
+        contact: [businessCardSchema]
 
     }
 );

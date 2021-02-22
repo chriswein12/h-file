@@ -12,16 +12,24 @@ const typeDefs = gql`
     type Home {
         _id: ID!
         homeName: String!
-        address: String!
+        address: Address!
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
-        value: Int
+        homeValue: Int
         lotSize: Int
         homeServices: [Services]
         homeRemodels: [Remodel]
         homeProducts: [Product]
         homeMaintenances: [Maintenance]
+    }
+
+
+    type Address {
+        street: String
+        city: String
+        state: String
+        zip: Int
     }
 
     type Services {
@@ -38,7 +46,8 @@ const typeDefs = gql`
         _id: ID!
         remodelTitle: String!
         remodelRoom: String!
-        remodelDate: String!
+        remodelStartDate: String!
+        remodelEndDate: String!
         remodelCost: Int
         remodelDetails: String
         remodelContacts: [BusinessCard]
@@ -67,14 +76,29 @@ const typeDefs = gql`
         maintDetails: String
     }
 
+    type BusinessCard {
+        BusinessCardId: ID
+        contactName: String
+        phone: String        
+        email: String        
+        website: String
+    }
+
     input HomeInput {
         homeName: String
-        address: String
+        address: AddressInput
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
         value: Int
         lotSize: Int
+    }
+
+    input AddressInput {
+        street: String
+        city: String
+        state: String
+        zip: Int
     }
 
     input ServiceInput {
@@ -83,7 +107,7 @@ const typeDefs = gql`
         serviceFrequency: String
         serviceDate: String
         serviceDescription: String
-        serviceContact: [BusinessCard]
+        serviceContact: [BusinessCardInput]
     }
 
     input RemodelInput {
@@ -92,7 +116,14 @@ const typeDefs = gql`
         remodelDate: String
         remodelCost: Int
         remodelDetails: String
-        remodelContacts: [BusinessCard]
+        remodelContacts: [BusinessCardInput]
+    }
+
+    input BusinessCardInput {
+        contactName: String
+        phone: String        
+        email: String        
+        website: String
     }
 
     input ProductInput {
@@ -129,7 +160,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addHome(homeData: HomeInput!): Home
-        addService(serviceData: ServiceInput!): Service
+        addService(serviceData: ServiceInput!): Services
         addRemodel(remodelData: RemodelInput!): Remodel
         addProduct(productData: ProductInput!): Product
         addMaintenance(maintenanceData: MaintenanceInput!): Maintenance

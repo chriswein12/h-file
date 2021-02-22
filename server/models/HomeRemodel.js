@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const BusinessCardSchema = require('./BusinessCard');
+const businessCardSchema = require('./BusinessCard');
 
 const remodelSchema = new Schema(
     {
@@ -15,9 +15,13 @@ const remodelSchema = new Schema(
             required: true,
         },
 
-        remodelDate: {
+        remodelStartDate: {
             type: Date,
             required: true
+        },
+
+        remodelEndtDate: {
+            type: Date
         },
 
         remodelCost: {
@@ -31,7 +35,7 @@ const remodelSchema = new Schema(
             trim: true
         },
 
-        remodelContacts: [BusinessCardSchema],
+        remodelContacts: [businessCardSchema]
 
                 
     }

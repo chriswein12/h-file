@@ -9,20 +9,14 @@ const typeDefs = gql`
         savedHomes: [Home]
     }
 
-    type Home: {
-<<<<<<< HEAD
+    type Home {
         _id: ID!
         homeName: String!
-        address: String!
-=======
-        _id: ID
-        homeName: String
-        address: Address
->>>>>>> e6a24cae3b85b90c4cd63c6100453450c5a056a9
+        address: Address!
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
-        value: Int
+        homeValue: Int
         lotSize: Int
         homeServices: [Services]
         homeRemodels: [Remodel]
@@ -30,7 +24,15 @@ const typeDefs = gql`
         homeMaintenances: [Maintenance]
     }
 
-    type Services: {
+
+    type Address {
+        street: String
+        city: String
+        state: String
+        zip: Int
+    }
+
+    type Services {
         _id: ID!
         serviceTitle: String!
         serviceCost: Int!
@@ -40,17 +42,18 @@ const typeDefs = gql`
         serviceContact: [BusinessCard]
     }
 
-    type Remodel: {
+    type Remodel {
         _id: ID!
         remodelTitle: String!
         remodelRoom: String!
-        remodelDate: String!
+        remodelStartDate: String!
+        remodelEndDate: String!
         remodelCost: Int
         remodelDetails: String
         remodelContacts: [BusinessCard]
     }
 
-    type Product: {
+    type Product {
         _id: ID!
         productName: String!
         productPrice: Int!
@@ -63,7 +66,7 @@ const typeDefs = gql`
         productDetails: String
     }
 
-    type Maintenance: {
+    type Maintenance {
         _id: ID!
         maintName: String!
         maintCost: Int!
@@ -73,9 +76,17 @@ const typeDefs = gql`
         maintDetails: String
     }
 
-    input HomeInput: {
+    type BusinessCard {
+        BusinessCardId: ID
+        contactName: String
+        phone: String        
+        email: String        
+        website: String
+    }
+
+    input HomeInput {
         homeName: String
-        address: String
+        address: AddressInput
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
@@ -83,25 +94,39 @@ const typeDefs = gql`
         lotSize: Int
     }
 
-    input ServiceInput: {
+    input AddressInput {
+        street: String
+        city: String
+        state: String
+        zip: Int
+    }
+
+    input ServiceInput {
         serviceTitle: String
         serviceCost: Int
         serviceFrequency: String
         serviceDate: String
         serviceDescription: String
-        serviceContact: [BusinessCard]
+        serviceContact: [BusinessCardInput]
     }
 
-    input RemodelInput: {
+    input RemodelInput {
         remodelTitle: String
         remodelRoom: String
         remodelDate: String
         remodelCost: Int
         remodelDetails: String
-        remodelContacts: [BusinessCard]
+        remodelContacts: [BusinessCardInput]
     }
 
-    input ProductInput: {
+    input BusinessCardInput {
+        contactName: String
+        phone: String        
+        email: String        
+        website: String
+    }
+
+    input ProductInput {
         productName: String
         productPrice: Int
         datePurchased: String
@@ -113,7 +138,7 @@ const typeDefs = gql`
         productDetails: String
     }
 
-    input MaintenanceInput: {
+    input MaintenanceInput {
         maintName: String
         maintCost: Int
         nextMaintDate: String
@@ -135,7 +160,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addHome(homeData: HomeInput!): Home
-        addService(serviceData: ServiceInput!): Service
+        addService(serviceData: ServiceInput!): Services
         addRemodel(remodelData: RemodelInput!): Remodel
         addProduct(productData: ProductInput!): Product
         addMaintenance(maintenanceData: MaintenanceInput!): Maintenance

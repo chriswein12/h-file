@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const BusinessCardSchema = new Schema(
+const businessCardSchema = new Schema(
     {
         BusinessCardId: {
             type: Schema.Types.ObjectId,
@@ -30,6 +30,4 @@ const BusinessCardSchema = new Schema(
     }
 )
 
-const BusinessCard = model('BusinessCard', BusinessCardSchema);
-
-module.exports = BusinessCard;
+module.exports = businessCardSchema;

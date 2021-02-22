@@ -41,6 +41,9 @@ House.js
 ? add Nav/Content components to imitate react-portfolio?
 button doesn't have to be a button
 
+All View components
+reference queries file (useQuery())
+
 ViewAboutHouse.js
 
 ViewProducts.js
@@ -51,3 +54,18 @@ add array of objects to display all remodels
 
 ViewServices.js
 add array of objects to display all services
+
+mutations.js
+Auth.js is being built out, may have to revisit
+? _id vs homeId? figure out connections
+? also, _id vs all other instances of _id? may have to differentiate
+? type Home {
+    homeServices: [Services]
+    homeRemodels: [Remodel]
+    homeProducts: [Product]
+    homeMaintenances: [Maintenance]
+} should I build out a breakdown for each bit of info gathered,
+    or will that be gathered in the other forms?
+
+build out BusinessCard component
+need BusinessCard input

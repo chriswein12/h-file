@@ -75,3 +75,13 @@ Auth.js is being built out, may have to revisit
 
 build out BusinessCard component
 need BusinessCard input
+
+typeDefs ?
+type Query {
+        me: User
+        home(_id: ID!): Home
+        services(_id: ID!): Home
+        remodels(_id: ID!): Home
+        products(_id: ID!): Home
+        maintenance(_id: ID!): Home
+    }

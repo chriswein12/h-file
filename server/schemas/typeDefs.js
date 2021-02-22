@@ -149,10 +149,10 @@ const typeDefs = gql`
     type Query {
         me: User
         home(_id: ID!): Home
-        services(_id: ID!): Home
-        remodels(_id: ID!): Home
-        products(_id: ID!): Home
-        maintenance(_id: ID!): Home
+        services(homeId: ID!): [Services]
+        remodels(homeId: ID!): [Remodel]
+        products(homeId: ID!): [Product]
+        maintenance(homeId: ID!): [Maintenance]
     }
 
     type Mutation {

@@ -9,20 +9,13 @@ import './Remodels.css'
 
 function Remodels() {
     const [newRemodelFormData, setNewRemodelFormData] = useState({
-        title: '',
-        //room as type=select
-        room: '',
-        startDate: '',
-        endDate: '',
-        //custom FormCheck rendering for company & their info
-        company: '',
-        //include contact person?
-        companyPhone: '',
-        companyEmail: '',
-        companyWebsite: '',
-        //build out as array
-        products: '',
-        totalCost: ''
+        remodelTitle: '',
+        remodelRoom: '',
+        remodelStartDate: '',
+        remodelEndDate: '',
+        remodelCost: '',
+        remodelDetails: '',
+        remodelContacts: ''
     });
 
     //add front end validation?
@@ -64,16 +57,13 @@ function Remodels() {
 
         setNewRemodelFormData({
             //username: '',
-            title: '',
-            room: '',
-            startDate: '',
-            endDate: '',
-            company: '',
-            companyPhone: '',
-            companyEmail: '',
-            companyWebsite: '',
-            products: '',
-            totalCost: ''
+            remodelTitle: '',
+            remodelRoom: '',
+            remodelStartDate: '',
+            remodelEndDate: '',
+            remodelCost: '',
+            remodelDetails: '',
+            remodelContacts: ''
         });
     }
 
@@ -97,22 +87,22 @@ function Remodels() {
                     <div className="new-remodel-required">
                         <h3>Required Details</h3>
                         <Form.Group>
-                            <Form.Label htmlFor="title">Remodel Title</Form.Label>
+                            <Form.Label htmlFor="remodelTitle">Remodel Title</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="address"
+                                name="remodelTitle"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.title}
+                                value={newRemodelFormData.remodelTitle}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="room">Room</Form.Label>
+                            <Form.Label htmlFor="remodelRoom">Remodel Room</Form.Label>
                             <Form.Control
                                 type="select"
-                                name="room"
+                                name="remodelRoom"
                                 onChange={handleInputChange}
-                                value={newProductFormData.room}
+                                value={newProductFormData.remodelRoom}
                             >
                                 <option>Living Room</option>
                                 <option>Kitchen</option>
@@ -124,22 +114,22 @@ function Remodels() {
                             </Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="startDate">Start Date</Form.Label>
+                            <Form.Label htmlFor="remodelStartDate">Remodel Start Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="startDate"
+                                name="remodelStartDate"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.startDate}
+                                value={newRemodelFormData.remodelStartDate}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="endDate">End Date</Form.Label>
+                            <Form.Label htmlFor="remodelEndDate">Remodel End Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="endDate"
+                                name="remodelEndDate"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.endDate}
+                                value={newRemodelFormData.remodelEndDate}
                                 required
                             />
                         </Form.Group>
@@ -159,57 +149,30 @@ function Remodels() {
                                 <div>
                                     <h3>Additional Details</h3>
                                     <Form.Group>
-                                        <Form.Label htmlFor="company">Company</Form.Label>
-                                        <Form.Control 
+                                        <Form.Label htmlFor="remodelCost">Remodel Cost</Form.Label>
+                                        <Form.Control
                                             type="text"
-                                            name="company"
+                                            name="remodelCost"
                                             onChange={handleInputChange}
-                                            value={newRemodelFormData.company}
+                                            value={newRemodelFormData.remodelCost}
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="companyPhone">Company Phone</Form.Label>
-                                        <Form.Control 
+                                        <Form.Label htmlFor="remodelDetails">Remodel Details</Form.Label>
+                                        <Form.Control
                                             type="text"
-                                            name="companyPhone"
+                                            name="remodelDetails"
                                             onChange={handleInputChange}
-                                            value={newRemodelFormData.companyPhone}
+                                            value={newRemodelFormData.remodelDetails}
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="companyEmail">Company Email</Form.Label>
-                                        <Form.Control 
+                                        <Form.Label htmlFor="remodelContacts">Remodel Contacts</Form.Label>
+                                        <Form.Control
                                             type="email"
-                                            name="companyEmail"
+                                            name="remodelContacts"
                                             onChange={handleInputChange}
-                                            value={newRemodelFormData.companyEmail}
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="companyWebsite">Company Website</Form.Label>
-                                        <Form.Control 
-                                            type="url"
-                                            name="companyWebsite"
-                                            onChange={handleInputChange}
-                                            value={newRemodelFormData.companyWebsite}
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="products">Products Used</Form.Label>
-                                        <Form.Control 
-                                            type="text"
-                                            name="products"
-                                            onChange={handleInputChange}
-                                            value={newRemodelFormData.products}
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="totalCost">Total Cost</Form.Label>
-                                        <Form.Control 
-                                            type="text"
-                                            name="totalCost"
-                                            onChange={handleInputChange}
-                                            value={newRemodelFormData.totalCost}
+                                            value={newRemodelFormData.remodelContacts}
                                         />
                                     </Form.Group>
                                 </div>

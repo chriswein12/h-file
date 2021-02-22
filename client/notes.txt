@@ -36,6 +36,12 @@ Remodels.js
     make these hide/show?
     //products
     how to layout input array?
+add BusinessCard component
+? add products array?
+
+Services.js
+add BusinessCard component
+? add products array?
 
 House.js
 ? add Nav/Content components to imitate react-portfolio?

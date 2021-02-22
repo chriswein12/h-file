@@ -39,7 +39,7 @@ export const GET_HOME = gql`
 
 export const GET_PRODUCTS = gql`
     {
-        home {
+        products {
             _id
             homeProducts {
                 _id
@@ -59,7 +59,7 @@ export const GET_PRODUCTS = gql`
 
 export const GET_REMODELS = gql`
     {
-        home {
+        remodels {
             _id
             homeRemodels {
                 _id
@@ -75,7 +75,7 @@ export const GET_REMODELS = gql`
 
 export const GET_SERVICES = gql`
     {
-        home {
+        services {
             _id
             homeServices {
                 _id
@@ -84,6 +84,23 @@ export const GET_SERVICES = gql`
                 serviceFrequency
                 serviceDate
                 serviceDescription
+            }
+        }
+    }
+`;
+
+export const GET_MAINTENANCE = gql`
+    {
+        maintenance {
+            _id
+            homeMaintenance {
+                _id
+                maintName
+                maintCost
+                nextMaintDate
+                maintFrequency
+                pastMaintDates
+                maintDetails
             }
         }
     }

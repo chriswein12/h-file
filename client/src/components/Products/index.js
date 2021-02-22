@@ -183,12 +183,12 @@ function Products() {
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="webLink">Web Link</Form.Label>
+                                        <Form.Label htmlFor="productLink">Product Link</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            name="webLink"
+                                            name="productLink"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.webLink}
+                                            value={newProductFormData.productLink}
                                         />
                                     </Form.Group>
                                     <Form.Group>

@@ -9,20 +9,12 @@ import './Services.css'
 
 function Services() {
     const [newServiceFormData, setNewServiceFormData] = useState({
-        title: '',
-        cost: '',
-        //type = select
-        frequency: '',
-        date: '',
-        //textarea, rows
-        description: '',
-        serviceProvider: '',
-        companyContact: '',
-        companyPhone: '',
-        //type = email
-        companyEmail: '',
-        companyWebsite: '',
-        products: ''
+        serviceTitle: '',
+        serviceCost: '',
+        serviceFrequency: '',
+        serviceDate: '',
+        serviceDescription: '',
+        serviceContact: ''
     })
 
     //add front end validation?
@@ -72,17 +64,12 @@ function Services() {
 
         setNewServiceFormData({
             //username: '',
-            title: '',
-            cost: '',
-            frequency: '',
-            date: '',
-            description: '',
-            serviceProvider: '',
-            companyContact: '',
-            companyPhone: '',
-            companyEmail: '',
-            companyWebsite: '',
-            products: ''
+            serviceTitle: '',
+            serviceCost: '',
+            serviceFrequency: '',
+            serviceDate: '',
+            serviceDescription: '',
+            serviceContact: ''
         });
     }
 
@@ -106,32 +93,32 @@ function Services() {
                     <div className="new-service-required">
                         <h3>Required Details</h3>
                         <Form.Group>
-                            <Form.Label htmlFor="title">Title</Form.Label>
+                            <Form.Label htmlFor="serviceTitle">Service Title</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="title"
+                                name="serviceTitle"
                                 onChange={handleInputChange}
-                                value={newServiceFormData.title}
+                                value={newServiceFormData.serviceTitle}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="cost">Cost</Form.Label>
+                            <Form.Label htmlFor="serviceCost">Service Cost</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="cost"
+                                name="serviceCost"
                                 onChange={handleInputChange}
-                                value={newServiceFormData.cost}
+                                value={newServiceFormData.serviceCost}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="frequency">Frequency</Form.Label>
+                            <Form.Label htmlFor="serviceFrequency">Service Frequency</Form.Label>
                             <Form.Control
                                 type="select"
-                                name="frequency"
+                                name="serviceFrequency"
                                 onChange={handleInputChange}
-                                value={newProductFormData.frequency}
+                                value={newProductFormData.serviceFrequency}
                                 required
                             >
                                 <option>One-time</option>
@@ -143,12 +130,12 @@ function Services() {
                             </Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="date">Date of Service</Form.Label>
+                            <Form.Label htmlFor="serviceDate">Date of Service</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="date"
+                                name="serviceDate"
                                 onChange={handleInputChange}
-                                value={newServiceFormData.date}
+                                value={newServiceFormData.serviceDate}
                                 required
                             />
                         </Form.Group>
@@ -167,73 +154,23 @@ function Services() {
                             (
                                 <div>
                                     <Form.Group>
-                                        <Form.Label htmlFor="description">Description</Form.Label>
+                                        <Form.Label htmlFor="serviceDescription">Service Description</Form.Label>
                                         <Form.Control
                                             type="textarea"
                                             rows={5}
-                                            name="description"
+                                            name="serviceDescription"
                                             onChange={handleInputChange}
-                                            value={newServiceFormData.description}
+                                            value={newServiceFormData.serviceDescription}
                                             required
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="serviceProvider">Service Provider</Form.Label>
+                                        <Form.Label htmlFor="serviceContact">Service Contact</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            name="serviceProvider"
+                                            name="serviceContact"
                                             onChange={handleInputChange}
-                                            value={newServiceFormData.serviceProvider}
-                                            required
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="companyContact">Contact Name</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="companyContact"
-                                            onChange={handleInputChange}
-                                            value={newServiceFormData.companyContact}
-                                            required
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="companyPhone">Phone</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="companyPhone"
-                                            onChange={handleInputChange}
-                                            value={newServiceFormData.companyPhone}
-                                            required
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="companyEmail">Email</Form.Label>
-                                        <Form.Control
-                                            type="email"
-                                            name="companyEmail"
-                                            onChange={handleInputChange}
-                                            value={newServiceFormData.companyEmail}
-                                            required
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="companyWebsite">Website</Form.Label>
-                                        <Form.Control
-                                            type="url"
-                                            name="companyWebsite"
-                                            onChange={handleInputChange}
-                                            value={newServiceFormData.companyWebsite}
-                                            required
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="products">Product(s)</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="products"
-                                            onChange={handleInputChange}
-                                            value={newServiceFormData.products}
+                                            value={newServiceFormData.serviceContact}
                                             required
                                         />
                                     </Form.Group>

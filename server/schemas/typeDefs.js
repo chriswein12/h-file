@@ -1,6 +1,5 @@
 const { gql } = require('apollo-server-express');
 
-//type Home: reference _id as homeId?
 const typeDefs = gql`
     type User {
         _id: ID!
@@ -21,7 +20,7 @@ const typeDefs = gql`
         homeServices: [Services]
         homeRemodels: [Remodel]
         homeProducts: [Product]
-        homeMaintenances: [Maintenance]
+        homeMaintenance: [Maintenance]
     }
 
 
@@ -150,10 +149,10 @@ const typeDefs = gql`
     type Query {
         me: User
         home(_id: ID!): Home
-        services(homeId: ID!): [Services]
-        remodels(homeId: ID!): [Remodel]
-        products(homeId: ID!): [Product]
-        maintenance(homeId: ID!): [Maintenance]
+        services(_id: ID!): Home
+        remodels(_id: ID!): Home
+        products(_id: ID!): Home
+        maintenance(_id: ID!): Home
     }
 
     type Mutation {

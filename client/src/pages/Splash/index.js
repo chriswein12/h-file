@@ -11,6 +11,8 @@ const SplashPage = () => {
 
     const renderForm = () => {
         switch (currentForm) {
+            case 'Header':
+                return <Header signup={signupView}  login={loginView} />
             case 'Description':
                 return <Description signup={signupView} />;
             case 'Login':

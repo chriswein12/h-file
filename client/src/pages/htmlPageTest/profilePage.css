@@ -3,7 +3,7 @@
   }
   
   body,
-  html{ 
+  html{
     height: 100%;
     margin: none;
     padding: none;
@@ -39,6 +39,7 @@
   .header a.logo {
     font-size: 25px;
     font-weight: bold;
+    color: white;
   }
   
   .header a:hover {

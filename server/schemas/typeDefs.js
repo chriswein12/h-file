@@ -118,8 +118,8 @@ const typeDefs = gql`
 
     type Query {
         me: User
-        homes: [Home]
         home(_id: ID!): Home
+        
     }
 
     type Mutation {

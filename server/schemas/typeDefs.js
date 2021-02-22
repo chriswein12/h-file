@@ -1,17 +1,24 @@
 const { gql } = require('apollo-server-express');
 
+//type Home: reference _id as homeId?
 const typeDefs = gql`
     type User {
-        _id: ID
-        username: String
-        email: String
+        _id: ID!
+        username: String!
+        email: String!
         savedHomes: [Home]
     }
 
     type Home: {
+<<<<<<< HEAD
+        _id: ID!
+        homeName: String!
+        address: String!
+=======
         _id: ID
         homeName: String
-        address: String
+        address: Address
+>>>>>>> e6a24cae3b85b90c4cd63c6100453450c5a056a9
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
@@ -24,30 +31,30 @@ const typeDefs = gql`
     }
 
     type Services: {
-        _id: ID
-        serviceTitle: String
-        serviceCost: Int
+        _id: ID!
+        serviceTitle: String!
+        serviceCost: Int!
         serviceFrequency: String
-        serviceDate: String
+        serviceDate: String!
         serviceDescription: String
         serviceContact: [BusinessCard]
     }
 
     type Remodel: {
-        _id: ID
-        remodelTitle: String
-        remodelRoom: String
-        remodelDate: String
+        _id: ID!
+        remodelTitle: String!
+        remodelRoom: String!
+        remodelDate: String!
         remodelCost: Int
         remodelDetails: String
         remodelContacts: [BusinessCard]
     }
 
     type Product: {
-        _id: ID
-        productName: String
-        productPrice: Int
-        datePurchased: String
+        _id: ID!
+        productName: String!
+        productPrice: Int!
+        datePurchased: String!
         productRoom: String
         serialNumber: String
         modelNumber: String
@@ -57,11 +64,11 @@ const typeDefs = gql`
     }
 
     type Maintenance: {
-        _id: ID
-        maintName: String
-        maintCost: Int
-        nextMaintDate: String
-        maintFrequency: String
+        _id: ID!
+        maintName: String!
+        maintCost: Int!
+        nextMaintDate: String!
+        maintFrequency: String!
         pastMaintDates: [String]
         maintDetails: String
     }
@@ -117,8 +124,11 @@ const typeDefs = gql`
 
     type Query {
         me: User
-        homes: [Home]
         home(_id: ID!): Home
+        services(homeId: ID!): [Services]
+        remodels(homeId: ID!): [Remodel]
+        products(homeId: ID!): [Product]
+        maintenance(homeId: ID!): [Maintenance]
     }
 
     type Mutation {

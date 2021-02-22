@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-//import mutation(s)
+import { ADD_HOME } from '../../utils/mutations';
 
 //need login mutation and Auth?
 
@@ -26,7 +26,7 @@ function AboutHouse() {
     //const [showAlert, setShowAlert] = useState(false);
 
     //create const for anticipated mutation (will need to update)
-    const [addNewHouse, { error }] = useMutation(ADD_HOUSE);
+    const [addNewHouse, { error }] = useMutation(ADD_HOME);
 
     //reference Form.Control (bootstrap)
     const handleInputChange = (event) => {

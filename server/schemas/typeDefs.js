@@ -1,27 +1,29 @@
 const { gql } = require('apollo-server-express');
 
+//type Home: reference _id as homeId?
 const typeDefs = gql`
     type User {
-        _id: ID
-        username: String
-        email: String
+        _id: ID!
+        username: String!
+        email: String!
         savedHomes: [Home]
     }
 
     type Home {
-        _id: ID
-        homeName: String
-        address: Address
+        _id: ID!
+        homeName: String!
+        address: Address!
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
-        value: Int
+        homeValue: Int
         lotSize: Int
         homeServices: [Services]
         homeRemodels: [Remodel]
         homeProducts: [Product]
         homeMaintenances: [Maintenance]
     }
+
 
     type Address {
         street: String
@@ -31,30 +33,31 @@ const typeDefs = gql`
     }
 
     type Services {
-        _id: ID
-        serviceTitle: String
-        serviceCost: Int
+        _id: ID!
+        serviceTitle: String!
+        serviceCost: Int!
         serviceFrequency: String
-        serviceDate: String
+        serviceDate: String!
         serviceDescription: String
         serviceContact: [BusinessCard]
     }
 
     type Remodel {
-        _id: ID
-        remodelTitle: String
-        remodelRoom: String
-        remodelDate: String
+        _id: ID!
+        remodelTitle: String!
+        remodelRoom: String!
+        remodelStartDate: String!
+        remodelEndDate: String!
         remodelCost: Int
         remodelDetails: String
         remodelContacts: [BusinessCard]
     }
 
     type Product {
-        _id: ID
-        productName: String
-        productPrice: Int
-        datePurchased: String
+        _id: ID!
+        productName: String!
+        productPrice: Int!
+        datePurchased: String!
         productRoom: String
         serialNumber: String
         modelNumber: String
@@ -64,11 +67,11 @@ const typeDefs = gql`
     }
 
     type Maintenance {
-        _id: ID
-        maintName: String
-        maintCost: Int
-        nextMaintDate: String
-        maintFrequency: String
+        _id: ID!
+        maintName: String!
+        maintCost: Int!
+        nextMaintDate: String!
+        maintFrequency: String!
         pastMaintDates: [String]
         maintDetails: String
     }

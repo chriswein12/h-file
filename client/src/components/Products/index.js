@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-//import mutation(s)
+import { ADD_PRODUCT } from '../../utils/mutations';
 
 //need login mutation and Auth?
 

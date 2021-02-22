@@ -1,5 +1,36 @@
 const { Schema, model } = require('mongoose');
 
+const homeAddressSchema = new Schema(
+    {
+        street: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        city: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        state: {
+            type: String,
+            required: true,
+            trim: true,
+            maxLength: 2
+        },
+
+        zip: {
+            type: Number,
+            required: true,
+            trim: true,
+            min: 5,
+            max:5
+        },
+    }
+)
+
 const homeSchema = new Schema(
     {
         homeName: {
@@ -8,12 +39,7 @@ const homeSchema = new Schema(
             trim: true
         },
 
-        address: {
-            type: String,
-            required: true,
-            unique: true,
-            trim: true
-        },
+        address: {homeAddressSchema},
 
         yearBought: {
             type: Number,

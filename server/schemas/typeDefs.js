@@ -10,9 +10,15 @@ const typeDefs = gql`
     }
 
     type Home: {
+<<<<<<< HEAD
         _id: ID!
         homeName: String!
         address: String!
+=======
+        _id: ID
+        homeName: String
+        address: Address
+>>>>>>> e6a24cae3b85b90c4cd63c6100453450c5a056a9
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
@@ -119,7 +125,10 @@ const typeDefs = gql`
     type Query {
         me: User
         home(_id: ID!): Home
-        
+        services(homeId: ID!): [Services]
+        remodels(homeId: ID!): [Remodel]
+        products(homeId: ID!): [Product]
+        maintenance(homeId: ID!): [Maintenance]
     }
 
     type Mutation {

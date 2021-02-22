@@ -9,16 +9,10 @@ const typeDefs = gql`
         savedHomes: [Home]
     }
 
-    type Home: {
-<<<<<<< HEAD
+    type Home {
         _id: ID!
         homeName: String!
         address: String!
-=======
-        _id: ID
-        homeName: String
-        address: Address
->>>>>>> e6a24cae3b85b90c4cd63c6100453450c5a056a9
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
@@ -30,7 +24,7 @@ const typeDefs = gql`
         homeMaintenances: [Maintenance]
     }
 
-    type Services: {
+    type Services {
         _id: ID!
         serviceTitle: String!
         serviceCost: Int!
@@ -40,7 +34,7 @@ const typeDefs = gql`
         serviceContact: [BusinessCard]
     }
 
-    type Remodel: {
+    type Remodel {
         _id: ID!
         remodelTitle: String!
         remodelRoom: String!
@@ -50,7 +44,7 @@ const typeDefs = gql`
         remodelContacts: [BusinessCard]
     }
 
-    type Product: {
+    type Product {
         _id: ID!
         productName: String!
         productPrice: Int!
@@ -63,7 +57,7 @@ const typeDefs = gql`
         productDetails: String
     }
 
-    type Maintenance: {
+    type Maintenance {
         _id: ID!
         maintName: String!
         maintCost: Int!
@@ -73,7 +67,7 @@ const typeDefs = gql`
         maintDetails: String
     }
 
-    input HomeInput: {
+    input HomeInput {
         homeName: String
         address: String
         yearBought: Int
@@ -83,7 +77,7 @@ const typeDefs = gql`
         lotSize: Int
     }
 
-    input ServiceInput: {
+    input ServiceInput {
         serviceTitle: String
         serviceCost: Int
         serviceFrequency: String
@@ -92,7 +86,7 @@ const typeDefs = gql`
         serviceContact: [BusinessCard]
     }
 
-    input RemodelInput: {
+    input RemodelInput {
         remodelTitle: String
         remodelRoom: String
         remodelDate: String
@@ -101,7 +95,7 @@ const typeDefs = gql`
         remodelContacts: [BusinessCard]
     }
 
-    input ProductInput: {
+    input ProductInput {
         productName: String
         productPrice: Int
         datePurchased: String
@@ -113,7 +107,7 @@ const typeDefs = gql`
         productDetails: String
     }
 
-    input MaintenanceInput: {
+    input MaintenanceInput {
         maintName: String
         maintCost: Int
         nextMaintDate: String

@@ -63,7 +63,7 @@ function Remodels() {
         }
 
         setNewRemodelFormData({
-            username: '',
+            //username: '',
             title: '',
             room: '',
             startDate: '',

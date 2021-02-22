@@ -1,8 +1,9 @@
 //import dependencies
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import HouseItContainer from './components/HouseItContainer';
 
 //import components
 import Footer from './components/Footer';
@@ -16,28 +17,30 @@ import Splash from './pages/Splash';
 //import css
 import './App.css';
 
-const client = new ApolloClient({
-    request: (operation) => {
-        const token = localStorage.getItem('id_token')
-        operation.setContext({
-            headers: {
-                authorization: token ? `Bearer ${token}` : ''
-            }
-        })
-    }
-})
+const App = () => <HouseItContainer />
 
-function App() {
+// const client = new ApolloClient({
+//     request: (operation) => {
+//         const token = localStorage.getItem('id_token')
+//         operation.setContext({
+//             headers: {
+//                 authorization: token ? `Bearer ${token}` : ''
+//             }
+//         })
+//     }
+// })
 
-    return (
-        <ApolloProvider client={client}>
-            <Router>
-                <div>
-                    <Splash></Splash>
-                </div>
-            </Router>
-        </ApolloProvider>
-    );
-}
+// function App() {
+
+//     return (
+//         <ApolloProvider client={client}>
+//             <Router>
+//                 <div>
+//                     <Splash></Splash>
+//                 </div>
+//             </Router>
+//         </ApolloProvider>
+//     );
+// }
 
 export default App;

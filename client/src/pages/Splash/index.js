@@ -12,14 +12,14 @@ const SplashPage = () => {
 
     const renderForm = () => {
         switch (currentForm) {
-            case 'Header':
-                return <Header signup={signupView}  login={loginView} />
             case 'Description':
                 return <Description signup={signupView} />;
             case 'Login':
                 return <Login signup={signupView}  login={loginView}/>;
             case 'Signup':
                 return <Signup signup={signupView}  login={loginView}/>;
+            case 'Proflie':
+                return <Profile profile={profileView}/>;
             default:
                 return <Description signup={signupView}  login={loginView}/>;
         }
@@ -33,10 +33,15 @@ const SplashPage = () => {
         setCurrentForm('Login')
     };
 
+    const profileView = () => {
+        setCurrentForm('Profile')
+    };
+
     return (
         <div>
             <Header/>
             {renderForm(currentForm)}
+
         </div>
         
     )

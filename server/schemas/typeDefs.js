@@ -12,11 +12,12 @@ const typeDefs = gql`
     type Home {
         _id: ID!
         homeName: String!
+        username: String!
         address: Address!
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
-        homeValue: Int
+        value: Int
         lotSize: Int
         homeServices: [Services]
         homeRemodels: [Remodel]
@@ -26,6 +27,7 @@ const typeDefs = gql`
 
 
     type Address {
+        addressId: ID
         street: String
         city: String
         state: String

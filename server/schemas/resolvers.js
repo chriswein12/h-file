@@ -16,6 +16,10 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
+        home: async (parent, { _id }) => {
+            return Home.findOne({ _id });
+        }
+
         // //find all users
         // allUsers : async () => {
         // //    populates user with their homes
@@ -66,7 +70,41 @@ const resolvers = {
 
             const token = signToken(user);
             return { token, user };
-        }
+        },
+
+        addHome: async (parent, {homeData}, context) => {
+            if (context.user) {
+                const home = await Home.create({ ...homeData, username: context.user.username });
+
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedHomes: home._id } },
+                    { new: true, runValidators: true }
+                );
+
+                return home;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        addService: async (parent, {serviceData}, context) => {
+            if (context.user) {
+                const home = await Services.create({ ...serviceData,  });
+
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedHomes: home._id } },
+                    { new: true, runValidators: true }
+                );
+
+                return home;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
     }
     
 }

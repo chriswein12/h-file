@@ -1,7 +1,12 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const homeAddressSchema = new Schema(
     {
+        addressId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()
+        },
+
         street: {
             type: String,
             required: true,
@@ -37,6 +42,11 @@ const homeSchema = new Schema(
             type: String,
             required: true,
             trim: true
+        },
+
+        username: {
+            type: String,
+            required: true
         },
 
         address: {homeAddressSchema},

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 //setting secret and expiration time
-const secret = 'superdupersecret';
+const secret = 'homerepo';
 const expiration = '12h';
 
 module.exports = {

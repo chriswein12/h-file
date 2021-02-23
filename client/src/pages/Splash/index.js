@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Description from '../../components/Description';
+import Profile from '../Profile';
 import Login from '../../components/Login';
 import Signup from '../../components/SignUp';
 import '../Splash/splashStyle.css';
@@ -11,8 +12,6 @@ const SplashPage = () => {
 
     const renderForm = () => {
         switch (currentForm) {
-            case 'Header':
-                return <Header signup={signupView}  login={loginView} />
             case 'Description':
                 return <Description signup={signupView} />;
             case 'Login':
@@ -30,11 +29,14 @@ const SplashPage = () => {
 
     const loginView = () => {
         setCurrentForm('Login')
+        console.log('login');
+
     };
 
     return (
         <div>
-            <Header></Header>
+            
+            <Header />
             {renderForm(currentForm)}
         </div>
         

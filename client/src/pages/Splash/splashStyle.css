@@ -69,8 +69,8 @@
   #splashPage-form {
     display: flex;
     flex-direction: column;
-    /* margin: 6% auto; */
-    margin-top: 6%;
+    margin: 6% auto;
+    /* margin-top: 6%; */
     margin-left: 69%;
     max-width: 30%;
     width: 80vw;
@@ -106,7 +106,7 @@
     display: flex;
     flex-direction: column;
     /* margin: 6% auto; */
-    margin-top: 6%;
+    margin-top: 3%;
     margin-left: 69%;
     max-width: 30%;
     width: 80vw;

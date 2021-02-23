@@ -11,11 +11,12 @@ const typeDefs = gql`
     type Home {
         _id: ID!
         homeName: String!
+        username: String!
         address: Address!
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
-        homeValue: Int
+        value: Int
         lotSize: Int
         homeServices: [Services]
         homeRemodels: [Remodel]
@@ -25,6 +26,7 @@ const typeDefs = gql`
 
 
     type Address {
+        addressId: ID
         street: String
         city: String
         state: String
@@ -150,10 +152,10 @@ const typeDefs = gql`
     type Query {
         me: User
         home(_id: ID!): Home
-        services(homeId: ID!): [Services]
-        remodels(homeId: ID!): [Remodel]
-        products(homeId: ID!): [Product]
-        maintenance(homeId: ID!): [Maintenance]
+        services(homeId: ID!): Home
+        remodels(homeId: ID!): Home
+        products(homeId: ID!): Home
+        maintenance(homeId: ID!): Home
     }
 
     type Mutation {

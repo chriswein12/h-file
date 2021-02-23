@@ -36,6 +36,12 @@ Remodels.js
     make these hide/show?
     //products
     how to layout input array?
+add BusinessCard component
+? add products array?
+
+Services.js
+add BusinessCard component
+? add products array?
 
 House.js
 ? add Nav/Content components to imitate react-portfolio?
@@ -69,3 +75,17 @@ Auth.js is being built out, may have to revisit
 
 build out BusinessCard component
 need BusinessCard input
+
+typeDefs ?
+type Query {
+        me: User
+        home(_id: ID!): Home
+        services(_id: ID!): Home
+        remodels(_id: ID!): Home
+        products(_id: ID!): Home
+        maintenance(_id: ID!): Home
+    }
+
+Equivalencies (use React Router?)
+Portfolio H-file
+App House

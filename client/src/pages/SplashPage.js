@@ -1,3 +1,4 @@
+{/*
 // import React from 'react';
 // import '../htmlPageTest/pages.css';
 // import Header from '../components/Header';
@@ -32,4 +33,4 @@
 //     )
 // }
 
-// export default SplashPage;
+// export default SplashPage; */}

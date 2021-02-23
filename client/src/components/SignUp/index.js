@@ -6,7 +6,11 @@ const Signup = (props) => {
         <form id="signup-form">
         <h1 className="signupHeader">Sign Up</h1>
         <div className="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
+            <input type="username" className="form-control" id="floatingUsername" placeholder="username"/>
+            <label for="floatingUsername">Username</label>
+        </div>
+        <div className="form-floating mb-3">
+            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
             <label for="floatingInput">Email Address</label>
         </div>
         <div className="form-floating">

@@ -1,0 +1,114 @@
+==========================================================================
+
+Mutations:  
+
+--------------------------------------------------------------------------
+mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+
+******
+
+{
+  "username": "testguy",
+  "password": "test",
+  "email": "test@test.com"
+}
+
+
+--------------------------------------------------------------------------
+//Address being added incorrectly???
+
+  mutation addHome($homeData: HomeInput!) {
+    addHome(homeData: $homeData) {
+        _id
+        homeName
+        username
+        address {
+        	street
+        	city
+        	state
+        	zip
+        }
+        yearBought
+        yearBuilt
+        squareFootage
+        value
+        lotSize
+    }
+  }
+
+******
+
+{
+  "homeData": { 
+    "homeName": "Cottage6",
+          "yearBought": 2021,
+          "yearBuilt": 2007,
+          "squareFootage": 2500,
+          "value": 250000,
+          "lotSize": 2,
+          "address": {
+            "street": "2515 N Oakland Ave Apt 304",
+            "city": "Milwaukee",
+            "state": "WI",
+            "zip": 53211
+          }
+  	}  
+}
+
+
+==========================================================================
+
+QUERIES:
+
+--------------------------------------------------------------------------
+{
+  me {
+    _id
+    username
+    email
+    savedHomes {
+      _id
+        homeName
+        username
+        address {
+        	street
+        	city
+        	state
+        	zip
+        }
+        yearBought
+        yearBuilt
+        squareFootage
+        value
+        lotSize
+    }
+    }
+  }
+
+--------------------------------------------------------------------------
+
+query { 
+  home(_id: "603361d4c30f0c6390083bf9") {
+        homeName
+        username
+        address {
+        	street
+        	city
+        	state
+        	zip
+        }
+        yearBought
+        yearBuilt
+        squareFootage
+        value
+        lotSize
+    }
+  }

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 //setting secret and expiration time
-const secret = 'grouphome28';
+const secret = 'grouphome28npm';
 const expiration = '12h';
 
 module.exports = {

@@ -9,14 +9,14 @@ import './Products.css'
 
 function Products() {
     const [newProductFormData, setNewProductFormData] = useState({
-        name: '',
-        price: '',
+        productName: '',
+        productPrice: '',
         datePurchased: '',
-        room: '',
+        productRoom: '',
         serialNumber: '',
         modelNumber: '',
         warrantyLength: '',
-        webLink: '',
+        productLink: '',
         purchaseLocation: '',
         additionalDetails: ''
     });
@@ -60,15 +60,15 @@ function Products() {
         }
 
         setNewProductFormData({
-            username: '',
-            name: '',
-            price: '',
+            //username: '',
+            productName: '',
+            productPrice: '',
             datePurchased: '',
-            room: '',
+            productRoom: '',
             serialNumber: '',
             modelNumber: '',
             warrantyLength: '',
-            webLink: '',
+            productLink: '',
             purchaseLocation: '',
             additionalDetails: ''
         });
@@ -94,22 +94,22 @@ function Products() {
                     <div className="new-product-required">
                         <h3>Required Details</h3>
                         <Form.Group>
-                            <Form.Label htmlFor="name">Product Name</Form.Label>
+                            <Form.Label htmlFor="productName">Product Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="name"
+                                name="productName"
                                 onChange={handleInputChange}
-                                value={newProductFormData.name}
+                                value={newProductFormData.productName}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="price">Price</Form.Label>
+                            <Form.Label htmlFor="productPrice">Product Price</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="price"
+                                name="productPrice"
                                 onChange={handleInputChange}
-                                value={newProductFormData.price}
+                                value={newProductFormData.productPrice}
                                 required
                             />
                         </Form.Group>
@@ -139,12 +139,12 @@ function Products() {
                                 <div>
                                     <h3>Additional Details</h3>
                                     <Form.Group>
-                                        <Form.Label htmlFor="room">Room</Form.Label>
+                                        <Form.Label htmlFor="productRoom">Room</Form.Label>
                                         <Form.Control
                                             type="select"
-                                            name="room"
+                                            name="productRoom"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.room}
+                                            value={newProductFormData.productRoom}
                                         >
                                             <option>Living Room</option>
                                             <option>Kitchen</option>
@@ -183,12 +183,12 @@ function Products() {
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="webLink">Web Link</Form.Label>
+                                        <Form.Label htmlFor="productLink">Product Link</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            name="webLink"
+                                            name="productLink"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.webLink}
+                                            value={newProductFormData.productLink}
                                         />
                                     </Form.Group>
                                     <Form.Group>

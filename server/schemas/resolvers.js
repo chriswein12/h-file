@@ -2,6 +2,8 @@ const { User, Home, Product, Services, Remodel, Maintenance  } = require('../mod
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
+//see module 21.1.5
+
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {

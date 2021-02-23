@@ -1,6 +1,5 @@
 const { gql } = require('apollo-server-express');
 
-//type Home: reference _id as homeId?
 const typeDefs = gql`
     type User {
         _id: ID!
@@ -21,7 +20,7 @@ const typeDefs = gql`
         homeServices: [Services]
         homeRemodels: [Remodel]
         homeProducts: [Product]
-        homeMaintenances: [Maintenance]
+        homeMaintenance: [Maintenance]
     }
 
 
@@ -120,6 +119,7 @@ const typeDefs = gql`
     }
 
     input BusinessCardInput {
+        businessName: String
         contactName: String
         phone: String        
         email: String        

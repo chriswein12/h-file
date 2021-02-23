@@ -58,7 +58,7 @@ function AboutHouse() {
         }
 
         setNewHouseFormData({
-            username: '',
+            //username: '',
             homeName: '',
             address: '',
             yearBought: '',

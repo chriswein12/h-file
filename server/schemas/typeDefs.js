@@ -119,6 +119,7 @@ const typeDefs = gql`
     }
 
     input BusinessCardInput {
+        businessName: String
         contactName: String
         phone: String        
         email: String        

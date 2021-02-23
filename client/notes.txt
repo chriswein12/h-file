@@ -85,3 +85,7 @@ type Query {
         products(_id: ID!): Home
         maintenance(_id: ID!): Home
     }
+
+Equivalencies (use React Router?)
+Portfolio H-file
+App House

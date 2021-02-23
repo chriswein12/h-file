@@ -18,8 +18,6 @@ const SplashPage = () => {
                 return <Login signup={signupView}  login={loginView}/>;
             case 'Signup':
                 return <Signup signup={signupView}  login={loginView}/>;
-            case 'Proflie':
-                return <Profile profile={profileView}/>;
             default:
                 return <Description signup={signupView}  login={loginView}/>;
         }
@@ -31,17 +29,15 @@ const SplashPage = () => {
 
     const loginView = () => {
         setCurrentForm('Login')
-    };
+        console.log('login');
 
-    const profileView = () => {
-        setCurrentForm('Profile')
     };
 
     return (
         <div>
-            <Header/>
+            
+            <Header />
             {renderForm(currentForm)}
-
         </div>
         
     )

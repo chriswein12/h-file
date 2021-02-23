@@ -5,11 +5,11 @@ import Header from '../components/Header';
 
 const ProfilePage = () => {
 
-    const [currentPage, setCurrentPage] = useState('Splash');
+    const [currentPage, setCurrentPage] = useState();
 
     const renderPage = () => {
         switch (currentPage) {            
-            case 'Proflie':
+            case 'Profile':
                 return <Profile profile={profileView}/>;
             default:
                 return <Splash signup={signupView}  login={loginView} profile={profileView}/>;
@@ -22,10 +22,12 @@ const ProfilePage = () => {
 
     const loginView = () => {
         setCurrentPage('Login')
+
     };
 
     const profileView = () => {
-        setCurrentPage('Profile')
+        // setCurrentPage('Profile')
+        console.log('hello');
     };
 
     return (

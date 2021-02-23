@@ -1,22 +1,20 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-
-//anticipating query, will have to update
-//import { GET_USER_HOUSE } from '../utils/mutations';
+import { GET_HOME } from '../../utils/queries';
 
 //require authorization?
-//import Auth from '../utils/auth';
+//import Auth from '../../utils/auth';
 
-function ViewAboutHouse() {
+function ViewAboutHome() {
     //use useQuery hook to make query request
-    const {loading, data} = useQuery(GET_USER_HOUSE);
+    const {loading, data} = useQuery(GET_HOME);
     
-    //add option to delete house?
-    //useMutation REMOVE_HOUSE
+    //add option to delete home?
+    //useMutation REMOVE_HOME
 
-    //viewAboutHouse name def in queries?
-    const houseData = data.viewAboutHouse
-    console.log(houseData);
+    //ViewAboutHome name def in queries/resolvers?
+    const homeData = data.viewAboutHome
+    console.log(homeData);
 
     //message if data hasn't yet arrived
     if (loading) {
@@ -25,14 +23,14 @@ function ViewAboutHouse() {
 
     return (
         <div>
-            <div>Address: {houseData.address}</div>
-            <div>Year Bought: {houseData.yearBought}</div>
-            <div>Year Built: {houseData.yearBuilt}</div>
-            <div>Square Footage: {houseData.squareFootage} sq ft</div>
-            <div>Value: {houseData.value}</div>
-            <div>Lot Size: {houseData.lotSize} acres</div>
+            <div>Address: {homeData.address}</div>
+            <div>Year Bought: {homeData.yearBought}</div>
+            <div>Year Built: {homeData.yearBuilt}</div>
+            <div>Square Footage: {homeData.squareFootage} sq ft</div>
+            <div>Value: {homeData.value}</div>
+            <div>Lot Size: {homeData.lotSize} acres</div>
         </div>
-    )
+    );
 }
 
-export default ViewAboutHouse;
+export default ViewAboutHome;

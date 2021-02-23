@@ -78,7 +78,8 @@ const typeDefs = gql`
     }
 
     type BusinessCard {
-        BusinessCardId: ID
+        businessCardId: ID
+        businessName: String
         contactName: String
         phone: String        
         email: String        
@@ -114,7 +115,8 @@ const typeDefs = gql`
     input RemodelInput {
         remodelTitle: String
         remodelRoom: String
-        remodelDate: String
+        remodelStartDate: String
+        remodelEndDate: String
         remodelCost: Int
         remodelDetails: String
         remodelContacts: [BusinessCardInput]

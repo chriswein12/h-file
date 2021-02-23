@@ -65,9 +65,17 @@ export const GET_REMODELS = gql`
                 _id
                 remodelTitle
                 remodelRoom
-                remodelDate
+                remodelStartDate
+                remodelEndDate
                 remodelCost
                 remodelDetails
+                remodelContacts {
+                    businessName 
+                    contactName 
+                    phone         
+                    email     
+                    website
+                }
             }
         }
     }

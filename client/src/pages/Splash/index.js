@@ -12,7 +12,7 @@ const SplashPage = () => {
     const renderForm = () => {
         switch (currentForm) {
             case 'Description':
-                return <Description signup={signupView} />;
+                return <Description signup={signupView} login={loginView} />;
             case 'Login':
                 return <Login signup={signupView}  login={loginView}/>;
             case 'Signup':

@@ -11,7 +11,8 @@ export const LOGIN_USER = gql`
             user {
                 _id
                 username
-            }
+                email
+               }
         }
     }
 `;
@@ -80,9 +81,7 @@ export const ADD_REMODEL = gql`
                 remodelDate
                 remodelCost
                 remodelDetails
-                remodelContacts {
-
-                }
+               
             }
         }
     }
@@ -99,9 +98,7 @@ export const ADD_SERVICE = gql`
                 serviceFrequency
                 serviceDate
                 serviceDescription
-                serviceContact {
 
-                }
             }
         }
     }

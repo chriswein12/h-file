@@ -1,8 +1,25 @@
+//reference deep-thoughts Profile.js
 import React from 'react';
 import HeaderLI from '../../components/HeaderLoggedIn'
+import Header from '../../components/Header';
+import HomeList from '../../components/HomeList';
+import { GET_ME } from '../../utils/queries';
+import { useQuery } from '@apollo/react-hooks';
+
+//import Auth from '../../utils/auth';
+
 import './profileStyle.css';
 
 const Profile = () => {
+    const {loading, data} = useQuery(GET_ME);
+    console.log(data);
+    const user = data?.me || {};
+    console.log(user);
+
+    //message if data hasn't yet arrived
+    if (loading) {
+        return <h4>Loading...</h4>
+    }
 
     return (
         <div>
@@ -11,7 +28,7 @@ const Profile = () => {
                 <div className='col-4'>
                     <button className="btn btn-primary" id="addNew">
                         Add a New File
-            </button>
+                    </button>
                 </div>
             </div>
 
@@ -29,19 +46,11 @@ const Profile = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                        <div className="card shadow-sm border-0 rounded">
-                            <div className="card-body p-0"><img src="../../../Assets/splashPage02.jpg" alt="" className="w-100 card-img-top" />
-                                <div className="p-4">
-                                    <h5 className="mb-2">Cabin</h5>
-                                    <p className="small text-muted mt-1 address">address</p>
-                                    <p className="small text-muted mt-1 cityState">madison wi</p>
-                                    <p className="small text-muted mt-1 zip">77777</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                <HomeList 
+                    username={user.username}
+                    savedHomes={user.savedHomes}
+                />
             </div>
         </div>
     )

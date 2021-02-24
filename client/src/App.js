@@ -10,23 +10,15 @@ import ApolloClient from 'apollo-boost';
 //import pages
 import SplashPage from './pages/Splash/index.js';
 import Profile from './pages/Profile/index.js';
-
+import Home from './pages/Home';
 
 //import css
 import './App.css';
 
 
 const client = new ApolloClient({
-    request: (operation) => {
-        const token = localStorage.getItem('id_token')
-        operation.setContext({
-            headers: {
-                authorization: token ? `Bearer ${token}` : ''
-            }
-        })
-    },
-    uri: '/graphql'
-})
+  uri: 'http://localhost:3001/graphql'
+});
 
 
 function App() {
@@ -44,6 +36,7 @@ function App() {
                     <Route exact path="/">
                         <SplashPage />
                     </Route>
+                    <Route exact path="/profile/:id" component={Home} />
                 </Switch>
             </Router>
         </ApolloProvider>

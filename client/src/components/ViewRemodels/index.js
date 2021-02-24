@@ -1,21 +1,19 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-
-//anticipating query, will have to update
-//import { GET_REMODELS } from '../utils/mutations';
+import { GET_HOME } from '../../utils/queries';
 
 //require authorization?
 //import Auth from '../utils/auth';
 
 function ViewRemodels() {
     //use useQuery hook to make query request
-    const { loading, data } = useQuery(GET_REMODELS);
+    const { loading, data } = useQuery(GET_HOME);
 
     //add option to delete remodel(s)?
     //useMutation REMOVE_REMODEL
 
-    //ViewRemodels name def in queries?
-    const remodelData = data.viewRemodels
+    //ViewRemodels name def in queries/resolvers?
+    const remodelData = data.home
     console.log(remodelData);
 
     //message if data hasn't yet arrived
@@ -25,16 +23,19 @@ function ViewRemodels() {
 
     return (
         <div>
-            <div>Remodel Title: {remodelData.title}</div>
-            <div>Room: {remodelData.room}</div>
-            <div>Start Date: {remodelData.startDate}</div>
-            <div>End Date: {remodelData.endDate}</div>
-            <div>Company: {remodelData.company}</div>
-            <div>Company Phone: {remodelData.companyPhone}</div>
-            <div>Company Email: {remodelData.companyEmail}</div>
-            <div>Company Website: {remodelData.companyWebsite}</div>
-            <div>Products Used: {remodelData.products}</div>
-            <div>Total Cost: {remodelData.totalCost}</div>
+            <div>Remodel Title: {remodelData.remodelTitle}</div>
+            <div>Room: {remodelData.remodelRoom}</div>
+            <div>Start Date: {remodelData.remodelStartDate}</div>
+            <div>End Date: {remodelData.remodelEndDate}</div>
+            <div>Total Cost: {remodelData.remodelCost}</div>
+            <div>Remodel Details: {remodelData.remodelDetails}</div>
+            <div>Company: {remodelData.businessName}</div>
+            <div>Contact Name: {remodelData.contactName}</div>
+            <div>Phone: {remodelData.phone}</div>
+            <div>Email: {remodelData.email}</div>
+            <div>Website: {remodelData.website}</div>
         </div>
-    )
+    );
 }
+
+export default ViewRemodels;

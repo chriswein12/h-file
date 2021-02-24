@@ -21,32 +21,6 @@ const resolvers = {
         home: async (parent, { _id }) => {
             return Home.findOne({ _id });
         }
-
-        // //find all users
-        // allUsers : async () => {
-        // //    populates user with their homes
-        //     return db.User.find().populate({
-        //         path:'savedHomes',
-        //         populate: [{
-        //             path: 'homeProduct',
-        //             model: 'Products',
-        //         },
-        //         {
-        //             path: 'homeServices',
-        //             model: 'Services',
-        //         },
-        //         {
-        //             path: 'homeMaintenance',
-        //             model: 'Maintenance',
-        //         },
-        //         {
-        //             path: 'homeRemodels',
-        //             model: 'Remodel',
-        //         }
-        //     ]
-        //     })
-        // },
-        //find one user
     },
 
     Mutation: {
@@ -71,6 +45,7 @@ const resolvers = {
             }
 
             const token = signToken(user);
+            console.log("You've successfully logged in!")
             return { token, user };
         },
 
@@ -91,18 +66,18 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        addService: async (parent, {serviceData}, context) => {
+        addService: async (parent, {homeId, serviceData}, context) => {
+            console.log(homeId);
+            console.log(serviceData);
             if (context.user) {
-                const home = await Services.create({ ...serviceData,  });
-
-
-                await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $push: { savedHomes: home._id } },
+                
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId },
+                    { $push: { homeServices: serviceData } },
                     { new: true, runValidators: true }
                 );
-
-                return home;
+                    console.log("It works!")
+                return updatedHome;
             }
 
             throw new AuthenticationError('You need to be logged in!');

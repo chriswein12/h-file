@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-
+import { useMutation } from '@apollo/react-hooks';
 import { ADD_REMODEL } from '../../utils/mutations';
 
 //need login mutation and Auth?
@@ -69,7 +69,7 @@ function Remodels() {
 
     //default add details button renders, onclick hides button
     //and renders the additional details section
-    state = {
+    const state = {
         isActive: true
     }
 
@@ -102,7 +102,7 @@ function Remodels() {
                                 type="select"
                                 name="remodelRoom"
                                 onChange={handleInputChange}
-                                value={newProductFormData.remodelRoom}
+                                value={newRemodelFormData.remodelRoom}
                             >
                                 <option>Living Room</option>
                                 <option>Kitchen</option>

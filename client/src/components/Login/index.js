@@ -2,6 +2,7 @@ import React from 'react';
 import '../../pages/Splash/splashStyle.css';
 
 const Login = (props) => {
+    
     return (
         <form id="login-form">
         <h1 className="loginHeader">Login</h1>

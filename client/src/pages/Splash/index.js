@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header';
+import Header from '../../components/HeaderSplash';
 import Description from '../../components/Description';
 import Login from '../../components/Login';
 import Signup from '../../components/SignUp';
@@ -12,7 +12,7 @@ const SplashPage = () => {
     const renderForm = () => {
         switch (currentForm) {
             case 'Description':
-                return <Description signup={signupView} />;
+                return <Description signup={signupView} login={loginView} />;
             case 'Login':
                 return <Login signup={signupView}  login={loginView}/>;
             case 'Signup':

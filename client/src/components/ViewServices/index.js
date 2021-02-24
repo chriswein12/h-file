@@ -1,19 +1,19 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_SERVICES } from '../../utils/queries';
+import { GET_HOME } from '../../utils/queries';
 
 //require authorization?
 //import Auth from '../utils/auth';
 
 function ViewServices() {
     //use useQuery hook to make query request
-    const { loading, data } = useQuery(GET_SERVICES);
+    const { loading, data } = useQuery(GET_HOME);
 
     //add option to delete service(s)?
     //useMutation REMOVE_SERVICE
 
     //ViewServices name def in queries/resolvers?
-    const serviceData = data.viewServices
+    const serviceData = data.home
     console.log(serviceData);
 
     //message if data hasn't yet arrived

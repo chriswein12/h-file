@@ -1,19 +1,19 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_REMODELS } from '../../utils/queries';
+import { GET_HOME } from '../../utils/queries';
 
 //require authorization?
 //import Auth from '../utils/auth';
 
 function ViewRemodels() {
     //use useQuery hook to make query request
-    const { loading, data } = useQuery(GET_REMODELS);
+    const { loading, data } = useQuery(GET_HOME);
 
     //add option to delete remodel(s)?
     //useMutation REMOVE_REMODEL
 
     //ViewRemodels name def in queries/resolvers?
-    const remodelData = data.viewRemodels
+    const remodelData = data.home
     console.log(remodelData);
 
     //message if data hasn't yet arrived

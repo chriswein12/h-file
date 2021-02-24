@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { useMutation } from 'apollo/react-hooks';
 
 import { ADD_HOME } from '../../utils/mutations';
 
@@ -7,17 +8,94 @@ import { ADD_HOME } from '../../utils/mutations';
 
 import './AboutHouse.css'
 
-function AboutHouse() {
-    const [newHouseFormData, setNewHouseFormData] = useState({
+// function AboutHouse() {
+//     const [newHouseFormData, setNewHouseFormData] = useState({
+//         homeName: '',
+//         //expand out address info?
+//         address: '',
+//         yearBought: '',
+//         yearBuilt: '',
+//         squareFootage: '',
+//         value: '',
+//         lotSize: ''
+//     });
+
+    function AboutHouse()  {
+        //set intial from state
+        const[NewHouseFormData, setNewHouseFormData] = useState({  
         homeName: '',
-        //expand out address info?
         address: '',
         yearBought: '',
         yearBuilt: '',
         squareFootage: '',
         value: '',
-        lotSize: ''
-    });
+        lotSize: ''});
+        //set for validation
+        const [validated]= useState(false);
+        //state for alerts
+        const [showAlert, setShowAlert] = useState(false);
+        const [addNewHouse, { error }] = useMutation(ADD_HOME);
+
+        //setting up alert effect
+        useEffect(() => {
+            if (error) {
+                setShowAlert(true);
+            } else {
+                setShowAlert(false);
+            }
+        }, [error]);
+
+        const handleInputChange = (event) => {
+            const { name, value } = event.target;
+            setNewHouseFormData({
+                ...newHouseFormData,
+                [name]: value
+            });
+        }
+    
+        const handleFormSubmit = async (event) => {
+            event.preventDefault();
+    
+          
+    
+            try {
+                const { data } = await addNewHouse({
+                    variables: { ...newHouseFormData }
+                });
+    
+                console.log(data);
+                //Auth.login(data.login.token);
+            }
+            catch (err) {
+                console.error(err);
+                //setShowAlert(true);
+            }
+    
+            setNewHouseFormData({
+                //username: '',
+                homeName: '',
+                address: '',
+                yearBought: '',
+                yearBuilt: '',
+                squareFootage: '',
+                value: '',
+                lotSize: ''
+            });
+        }
+    
+        //default add details button renders, onclick hides button
+        //and renders the additional details section
+        state = {
+            isActive: true
+        }
+    
+        const toggleShow = () => {
+            this.setState({
+                isActive: false
+            });
+        };
+
+    };
 
     //add front end validation?
     //const [validated] = useState(false);
@@ -26,66 +104,72 @@ function AboutHouse() {
     //const [showAlert, setShowAlert] = useState(false);
 
     //create const for anticipated mutation (will need to update)
-    const [addNewHouse, { error }] = useMutation(ADD_HOME);
+   //const [addNewHouse, { error }] = useMutation(ADD_HOME);
 
     //reference Form.Control (bootstrap)
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setNewHouseFormData({
-            ...newHouseFormData,
-            [name]: value
-        });
-    }
+    // const handleInputChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setNewHouseFormData({
+    //         ...newHouseFormData,
+    //         [name]: value
+    //     });
+    // }
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+    // const handleFormSubmit = async (event) => {
+    //     event.preventDefault();
 
-        //won't require entire form to be complete,
-        //so full validity check not needed,
-        //maybe partial validity
+      
 
-        try {
-            const { data } = await addNewHouse({
-                variables: { ...newHouseFormData }
-            });
+    //     try {
+    //         const { data } = await addNewHouse({
+    //             variables: { ...newHouseFormData }
+    //         });
 
-            console.log(data);
-            //Auth.login(data.login.token);
-        }
-        catch (err) {
-            console.error(err);
-            //setShowAlert(true);
-        }
+    //         console.log(data);
+    //         //Auth.login(data.login.token);
+    //     }
+    //     catch (err) {
+    //         console.error(err);
+    //         //setShowAlert(true);
+    //     }
 
-        setNewHouseFormData({
-            //username: '',
-            homeName: '',
-            address: '',
-            yearBought: '',
-            yearBuilt: '',
-            squareFootage: '',
-            value: '',
-            lotSize: ''
-        });
-    }
+    //     setNewHouseFormData({
+    //         //username: '',
+    //         homeName: '',
+    //         address: '',
+    //         yearBought: '',
+    //         yearBuilt: '',
+    //         squareFootage: '',
+    //         value: '',
+    //         lotSize: ''
+    //     });
+    // }
 
-    //default add details button renders, onclick hides button
-    //and renders the additional details section
-    state = {
-        isActive: true
-    }
+    // //default add details button renders, onclick hides button
+    // //and renders the additional details section
+    // state = {
+    //     isActive: true
+    // }
 
-    const toggleShow = () => {
-        this.setState({
-            isActive: false
-        });
-    }
+    // const toggleShow = () => {
+    //     this.setState({
+    //         isActive: false
+    //     });
+    // }
 
     return (
+
+        
+        
+
         <div>
             <h2>New House</h2>
             <div className="new-house-details">
-                <Form>
+                {/* for validation functionality stated above */}
+                <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+                    <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+                        Something went wrong with your House Info!
+                    </Alert>
                     <div className="new-house-required">
                         <h3>Required Details</h3>
                         <Form.Group>

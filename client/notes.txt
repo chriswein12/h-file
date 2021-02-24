@@ -92,3 +92,9 @@ App House
 Nav (create)HomeNav
 Page (create)ViewIndex
 PageContent (may not need, see drill down from Page to PC)
+
+Profile.js
+sending props from here
+
+HomeList.js
+have Darryl add fancy cards/design here

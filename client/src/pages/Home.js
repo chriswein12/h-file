@@ -1,6 +1,6 @@
+//may need to bring useQuery on GET_ME for username
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import Header from '../components/Header';
@@ -11,18 +11,14 @@ import AddFile from './AddFile';
 
 import './css/Home.css'
 
-function Home() {
-    //use useQuery hook to make query request
-    const {loading, data} = useQuery(GET_ME);
+function Home({ username }) {
+    const { id: homeId } = useParams();
 
-    //me name def in queries
-    const userData = data.me
-    console.log(userData);
+    const { loading, data } = useQuery(GET_HOME, {
+        variables: { id: homeId }
+    });
 
-    //message if data hasn't yet arrived
-    if (loading) {
-        return <h4>Loading...</h4>
-    }
+    const home = data.home;
 
     //const to set names for views inside div to be rendered
     const [views] = useState([
@@ -30,10 +26,14 @@ function Home() {
         { name: 'Products' },
         { name: 'Remodels' },
         { name: 'Services' }
-    ])
+    ]);
 
     //const to set view about home as default rendered page
     const [currentView, setCurrentView] = useState(views[0]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="home-container">
@@ -51,7 +51,7 @@ function Home() {
                 <Row>
                     <Col>
                         <div>
-                            <h1>{userData.username}'s Home</h1>
+                            <h1>{username}'s Home</h1>
                         </div>
                         <div>
                             {/* image? will need another query */}

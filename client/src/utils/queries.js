@@ -23,8 +23,8 @@ export const GET_ME = gql`
 `;
 
 export const GET_HOME = gql`
-    {
-        home {
+    query home($id: ID!) {
+        home(_id: $id) {
             _id
             homeName
             address
@@ -33,14 +33,6 @@ export const GET_HOME = gql`
             squareFootage
             value
             lotSize
-        }
-    }
-`;
-
-export const GET_PRODUCTS = gql`
-    {
-        products {
-            _id
             homeProducts {
                 _id
                 productName
@@ -53,14 +45,6 @@ export const GET_PRODUCTS = gql`
                 productLink
                 productDetails
             }
-        }
-    }
-`;
-
-export const GET_REMODELS = gql`
-    {
-        remodels {
-            _id
             homeRemodels {
                 _id
                 remodelTitle
@@ -69,22 +53,7 @@ export const GET_REMODELS = gql`
                 remodelEndDate
                 remodelCost
                 remodelDetails
-                remodelContacts {
-                    businessName 
-                    contactName 
-                    phone         
-                    email     
-                    website
-                }
             }
-        }
-    }
-`;
-
-export const GET_SERVICES = gql`
-    {
-        services {
-            _id
             homeServices {
                 _id
                 serviceTitle
@@ -93,14 +62,6 @@ export const GET_SERVICES = gql`
                 serviceDate
                 serviceDescription
             }
-        }
-    }
-`;
-
-export const GET_MAINTENANCE = gql`
-    {
-        maintenance {
-            _id
             homeMaintenance {
                 _id
                 maintName

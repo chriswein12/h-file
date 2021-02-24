@@ -13,7 +13,7 @@ import SignUp from './components/SignUp';
 //import pages
 import SplashPage from './pages/Splash';
 import Profile from './pages/Profile/index.js';
-
+import Home from './pages/Home';
 
 //import css
 import './App.css';
@@ -47,6 +47,7 @@ function App() {
                     <Route exact path="/">
                         <SplashPage />
                     </Route>
+                    <Route exact path="/profile/:id" component={Home} />
                 </Switch>
             </Router>
         </ApolloProvider>

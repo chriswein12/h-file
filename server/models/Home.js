@@ -1,4 +1,5 @@
 const { Schema, model, Types } = require('mongoose');
+const Services = require('./Services');
 
 const homeAddressSchema = new Schema(
     {
@@ -77,10 +78,7 @@ const homeSchema = new Schema(
         },
 
         // pulling in the objects from other models that will be in Homes
-        homeServices: [{
-            type: Schema.Types.ObjectId,
-            ref: "Services"
-        }],
+        homeServices: [Services],
 
         homeRemodels: [{
             type: Schema.Types.ObjectId,

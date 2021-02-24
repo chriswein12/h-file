@@ -19,12 +19,12 @@
 //                 With House-it you can access all of your homeowner filed and information witht the click of a button!
 //             </p>
 //         </div>
-//         <div class="row splashButtons">
-//             <div class="col-6">
-//                 <button type="button" class="btn btn-danger">Sign Up</button>
+//         <div className="row splashButtons">
+//             <div className="col-6">
+//                 <button type="button" className="btn btn-danger">Sign Up</button>
 //             </div>
-//             <div class="col-6">
-//                 <button type="button" class="btn btn-primary">Login</button>
+//             <div className="col-6">
+//                 <button type="button" className="btn btn-primary">Login</button>
 //             </div>
 //         </div>
 //     </form>

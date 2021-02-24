@@ -25,7 +25,7 @@ const Profile = () => {
             <Header />
             <div className="row">
                 <div className='col-4'>
-                    <button className="btn btn-primary" id="addNew">
+                    <button type="button" className="btn btn-primary" id="addNew">
                         Add a New File
                     </button>
                 </div>

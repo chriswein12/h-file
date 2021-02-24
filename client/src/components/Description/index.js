@@ -17,10 +17,10 @@ const Description = (props) => {
             </div>
             <div className="row">
                 <div className="col-5 splashButtons">
-                    <button onClick={props.signup} className="btn btn-danger">Sign Up Now</button>
+                    <button type="button" onClick={props.signup} className="btn btn-danger">Sign Up Now</button>
                 </div>
                 <div className="col-5 splashButtons">
-                    <button onClick={props.login} className="btn btn-primary">login</button>
+                    <button type="button" onClick={props.login} className="btn btn-primary">login</button>
                 </div>
             </div>
         </form>

@@ -7,7 +7,7 @@ import ApolloClient from 'apollo-boost';
 //import components
 
 
-//import pages
+//import pages good habit to have matching names
 import SplashPage from './pages/Splash/index.js';
 import Profile from './pages/Profile/index.js';
 import Home from './pages/Home';

@@ -69,6 +69,7 @@ const resolvers = {
 
         addHome: async (parent, {homeData}, context) => {
             if (context.user) {
+                console.log(homeData)
                 const home = await Home.create({ ...homeData, username: context.user.username });
 
 

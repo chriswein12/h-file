@@ -268,6 +268,6 @@ import './AboutHouse.css'
             </div>
         </div>
     );
-}
+
 
 export default AboutHouse;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Description from '../../components/Description';
-import Profile from '../Profile';
 import Login from '../../components/Login';
 import Signup from '../../components/SignUp';
 // import '../Splash/splashStyle.css';

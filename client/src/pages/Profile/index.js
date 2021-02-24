@@ -19,7 +19,7 @@ const Profile = () => {
                 <div className="row pb-5 mb-4">
                     <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
                         <div className="card shadow-sm border-0 rounded">
-                            <div className="card-body p-0"><img src="../../../Assets/splashPage02.jpg" alt="" class="w-100 card-img-top" />
+                            <div className="card-body p-0"><img src="../../Assets/splashPage02.jpg" alt="" className="w-100 card-img-top" />
                                 <div className="p-4">
                                     <h5 className="mb-2">Home</h5>
                                     <p className="small text-muted mt-1 address">address</p>
@@ -31,7 +31,7 @@ const Profile = () => {
                     </div>
                     <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
                         <div className="card shadow-sm border-0 rounded">
-                            <div className="card-body p-0"><img src="../../../Assets/splashPage02.jpg" alt="" class="w-100 card-img-top" />
+                            <div className="card-body p-0"><img src="../../../Assets/splashPage02.jpg" alt="" className="w-100 card-img-top" />
                                 <div className="p-4">
                                     <h5 className="mb-2">Home</h5>
                                     <p className="small text-muted mt-1 address">address</p>

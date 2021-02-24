@@ -14,13 +14,13 @@ const Signup = (props) => {
             <label for="floatingInput">Email Address</label>
         </div>
         <div className="form-floating">
-            <input type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
+            <input type="password" className="form-control"  placeholder="Password"/>
             <label for="floatingPassword">Password</label>
         </div>
         <br/>
         <div className="form-floating">
-            <input type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
-            <label for="floatingPassword">Confirm Password</label>
+            <input type="password" className="form-control"  placeholder="Password"/>
+            <label for="floatingPassword2">Confirm Password</label>
         </div>
         <div className="row">
             <div className=" col-4 submitSignupBtn">

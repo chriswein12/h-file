@@ -1,8 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-
-//anticipating query, will have to update
-//import { GET_SERVICES } from '../utils/mutations';
+import { GET_SERVICES } from '../../utils/queries';
 
 //require authorization?
 //import Auth from '../utils/auth';
@@ -14,7 +12,7 @@ function ViewServices() {
     //add option to delete service(s)?
     //useMutation REMOVE_SERVICE
 
-    //ViewServices name def in queries?
+    //ViewServices name def in queries/resolvers?
     const serviceData = data.viewServices
     console.log(serviceData);
 
@@ -25,17 +23,18 @@ function ViewServices() {
 
     return (
         <div>
-            <div>Title: {serviceData.title}</div>
-            <div>Cost: {serviceData.cost}</div>
-            <div>Frequency: {serviceData.frequency}</div>
-            <div>Date of Service: {serviceData.date}</div>
-            <div>Description: {serviceData.description}</div>
-            <div>Service Provider: {serviceData.serviceProvider}</div>
-            <div>Contact Name: {serviceData.companyContact}</div>
-            <div>Phone: {serviceData.companyPhone}</div>
-            <div>Email: {serviceData.companyEmail}</div>
-            <div>Website: {serviceData.companyWebsite}</div>
-            <div>Product(s): {serviceData.products}</div>
+            <div>Title: {serviceData.serviceTitle}</div>
+            <div>Cost: {serviceData.serviceCost}</div>
+            <div>Frequency: {serviceData.serviceFrequency}</div>
+            <div>Date of Service: {serviceData.serviceDate}</div>
+            <div>Description: {serviceData.serviceDescription}</div>
+            <div>Service Provider: {serviceData.businessName}</div>
+            <div>Contact Name: {serviceData.contactName}</div>
+            <div>Phone: {serviceData.phone}</div>
+            <div>Email: {serviceData.email}</div>
+            <div>Website: {serviceData.website}</div>
         </div>
-    )
+    );
 }
+
+export default ViewServices;

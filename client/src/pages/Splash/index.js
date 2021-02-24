@@ -4,11 +4,11 @@ import Description from '../../components/Description';
 import Profile from '../Profile';
 import Login from '../../components/Login';
 import Signup from '../../components/SignUp';
-import '../Splash/splashStyle.css';
+// import '../Splash/splashStyle.css';
 
 const SplashPage = () => {
 
-    const [currentForm, setCurrentForm] = useState();
+    const [currentForm, setCurrentForm] = useState('Description');
 
     const renderForm = () => {
         switch (currentForm) {
@@ -29,13 +29,10 @@ const SplashPage = () => {
 
     const loginView = () => {
         setCurrentForm('Login')
-        console.log('login');
-
     };
 
     return (
         <div>
-            
             <Header />
             {renderForm(currentForm)}
         </div>

@@ -3,12 +3,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import HouseItContainer from './components/HouseItContainer';
 
 //import components
-import Footer from './components/Footer';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
+
 
 //import pages
 import SplashPage from './pages/Splash/index.js';

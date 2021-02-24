@@ -21,8 +21,7 @@ const servicesSchema = new Schema(
         },
 
         serviceDate: {
-            type: Date,
-            required: true
+            type: Date
         },
 
         serviceDescription: {
@@ -36,6 +35,6 @@ const servicesSchema = new Schema(
     }
 );
 
-const Services = model('Services', servicesSchema);
 
-module.exports = Services;
+
+module.exports = servicesSchema;

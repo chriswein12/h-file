@@ -11,7 +11,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 
 //import pages
-import SplashPage from './pages/Splash';
+import SplashPage from './pages/Splash/index.js';
 import Profile from './pages/Profile/index.js';
 import Home from './pages/Home';
 

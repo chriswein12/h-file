@@ -41,6 +41,4 @@ const remodelSchema = new Schema(
     }
 );
 
-const Remodel = model('Remodel', remodelSchema);
-
-module.exports = Remodel;
+module.exports = remodelSchema;

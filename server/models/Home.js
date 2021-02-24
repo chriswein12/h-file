@@ -1,4 +1,7 @@
 const { Schema, model, Types } = require('mongoose');
+const Maintenances = require('./Maintenance');
+const Products = require('./Product')
+const Remodels = require('./HomeRemodel');
 const Services = require('./Services');
 
 const homeAddressSchema = new Schema(
@@ -80,20 +83,11 @@ const homeSchema = new Schema(
         // pulling in the objects from other models that will be in Homes
         homeServices: [Services],
 
-        homeRemodels: [{
-            type: Schema.Types.ObjectId,
-            ref: "Remodel"
-        }], 
+        homeRemodels: [Remodels], 
 
-        homeProducts: [{
-            type: Schema.Types.ObjectId,
-            ref: "Product"
-        }],
+        homeProducts: [Products],
 
-        homeMaintenances: [{
-            type: Schema.Types.ObjectId,
-            ref: "Maintenance"
-        }]
+        homeMaintenances: [Maintenances]
     }
 );
 

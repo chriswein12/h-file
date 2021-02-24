@@ -59,12 +59,12 @@ const Login = (props) => {
             </div>
             <div className="row">
                 <div className="col-4 loginSubmitButton">
-                    <button type='submit' className="btn btn-primary">login</button>
+                    <button type="button" type='submit' className="btn btn-primary">login</button>
                 </div>
             </div>
             <div className="row">
                 <div className="col-4 loginCreateButton">
-                    <button onClick={props.signup} className="btn btn-danger">Create an account</button>
+                    <button type="button" onClick={props.signup} className="btn btn-danger">Create an account</button>
                 </div>
             </div>
 

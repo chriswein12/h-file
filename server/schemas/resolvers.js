@@ -45,6 +45,7 @@ const resolvers = {
             }
 
             const token = signToken(user);
+            console.log("You've successfully logged in!")
             return { token, user };
         },
 

@@ -11,7 +11,9 @@ import './profileStyle.css';
 
 const Profile = () => {
     const {loading, data} = useQuery(GET_ME);
-    const user = data.me;
+    console.log(data);
+    const user = data?.me || {};
+    console.log(user);
 
     //message if data hasn't yet arrived
     if (loading) {

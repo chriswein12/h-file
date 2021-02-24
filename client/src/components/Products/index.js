@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-
+import { useMutation } from '@apollo/react-hooks';
 import { ADD_PRODUCT } from '../../utils/mutations';
 
 //need login mutation and Auth?
@@ -76,7 +76,7 @@ function Products() {
 
     //default add details button renders, onclick hides button
     //and renders the additional details section
-    state = {
+    const state = {
         isActive: true
     }
 

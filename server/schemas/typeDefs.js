@@ -38,7 +38,7 @@ const typeDefs = gql`
         serviceTitle: String!
         serviceCost: Int!
         serviceFrequency: String
-        serviceDate: String!
+        serviceDate: String
         serviceDescription: String
         serviceContact: [BusinessCard]
     }
@@ -78,7 +78,8 @@ const typeDefs = gql`
     }
 
     type BusinessCard {
-        BusinessCardId: ID
+        businessCardId: ID
+        businessName: String
         contactName: String
         phone: String        
         email: String        
@@ -114,7 +115,8 @@ const typeDefs = gql`
     input RemodelInput {
         remodelTitle: String
         remodelRoom: String
-        remodelDate: String
+        remodelStartDate: String
+        remodelEndDate: String
         remodelCost: Int
         remodelDetails: String
         remodelContacts: [BusinessCardInput]
@@ -162,7 +164,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addHome(homeData: HomeInput!): Home
-        addService(serviceData: ServiceInput!): Services
+        addService(homeId: ID!, serviceData: ServiceInput!): Home
         addRemodel(remodelData: RemodelInput!): Remodel
         addProduct(productData: ProductInput!): Product
         addMaintenance(maintenanceData: MaintenanceInput!): Maintenance

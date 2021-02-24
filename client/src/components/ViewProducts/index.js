@@ -1,19 +1,19 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_PRODUCTS } from '../../utils/queries';
+import { GET_HOME } from '../../utils/queries';
 
 //require authorization?
 //import Auth from '../utils/auth';
 
 function ViewProducts() {
     //use useQuery hook to make query request
-    const { loading, data } = useQuery(GET_PRODUCTS);
+    const { loading, data } = useQuery(GET_HOME);
 
     //add option to delete product(s)?
     //useMutation REMOVE_PRODUCT
 
     //ViewProducts name def in queries?
-    const productData = data.viewProducts
+    const productData = data.home
     console.log(productData);
 
     //message if data hasn't yet arrived

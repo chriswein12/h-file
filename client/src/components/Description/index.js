@@ -5,7 +5,7 @@ const Description = (props) => {
     return (
         <form id="splashPage-form">
             <div>
-                <h1>House-it going?<p>font change</p></h1>
+                <h1>House-it going!</h1>
                 <p>At House-it we realize how stressful staying organized as a homeowner can be.
                 Files and documents for your home get thrown in that cluttered box in the basement,
                 never to be seen again...

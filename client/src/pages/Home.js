@@ -38,7 +38,7 @@ function Home({ username }) {
 
     return (
         <div className="home-container">
-            <Header />
+            <HeaderLI />
             <Container>
                 <Row>
                     <Col>

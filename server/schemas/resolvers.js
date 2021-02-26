@@ -20,7 +20,25 @@ const resolvers = {
 
         home: async (parent, { _id }) => {
             return Home.findOne({ _id });
-        }
+        },
+
+        services: async (parent, { _id }) => {
+            return Home.findOne({ _id });
+        },
+
+        remodels: async (parent, { _id }) => {
+            return Home.findOne({ _id });
+        },
+
+        products: async (parent, { _id }) => {
+            return Home.findOne({ _id });
+        },
+
+        maintenance: async (parent, { _id }) => {
+            return Home.findOne({ _id });
+        },
+
+
     },
 
     Mutation: {
@@ -45,11 +63,13 @@ const resolvers = {
             }
 
             const token = signToken(user);
+            console.log("You've successfully logged in!")
             return { token, user };
         },
 
         addHome: async (parent, {homeData}, context) => {
             if (context.user) {
+                console.log(homeData)
                 const home = await Home.create({ ...homeData, username: context.user.username });
 
 
@@ -81,7 +101,59 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
+
+        addRemodel: async (parent, {homeId, remodelData}, context) => {
+            console.log(homeId);
+            console.log(remodelData);
+            if (context.user) {
+                
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId },
+                    { $push: { homeRemodels: remodelData } },
+                    { new: true, runValidators: true }
+                );
+                    console.log("It works!")
+                return updatedHome;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        addProduct: async (parent, {homeId, productData}, context) => {
+            console.log(homeId);
+            console.log(productData);
+            if (context.user) {
+                
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId },
+                    { $push: { homeProducts: productData } },
+                    { new: true, runValidators: true }
+                );
+                    console.log("It works!")
+                return updatedHome;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        addMaintenance: async (parent, {homeId, maintenanceData}, context) => {
+            console.log(homeId);
+            console.log(maintenanceData);
+            if (context.user) {
+                
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId },
+                    { $push: { homeMaintenance: maintenanceData } },
+                    { new: true, runValidators: true }
+                );
+                    console.log("It works!")
+                return updatedHome;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
     }
+
     
 }
 

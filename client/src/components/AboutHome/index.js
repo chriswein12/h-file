@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from 'apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 
 import { ADD_HOME } from '../../utils/mutations';
 
 //need login mutation and Auth?
 
-import './AboutHouse.css'
+import './AboutHome.css'
 
 // function AboutHouse() {
 //     const [newHouseFormData, setNewHouseFormData] = useState({
@@ -20,142 +20,81 @@ import './AboutHouse.css'
 //         lotSize: ''
 //     });
 
-    function AboutHouse()  {
-        //set intial from state
-        const[NewHouseFormData, setNewHouseFormData] = useState({  
+function AboutHouse() {
+    //set intial from state
+    const [newHouseFormData, setNewHouseFormData] = useState({
         homeName: '',
         address: '',
         yearBought: '',
         yearBuilt: '',
         squareFootage: '',
         value: '',
-        lotSize: ''});
-        //set for validation
-        const [validated]= useState(false);
-        //state for alerts
-        const [showAlert, setShowAlert] = useState(false);
-        const [addNewHouse, { error }] = useMutation(ADD_HOME);
+        lotSize: ''
+    });
+    //set for validation
+    const [validated] = useState(false);
+    //state for alerts
+    const [showAlert, setShowAlert] = useState(false);
+    const [addNewHouse, { error }] = useMutation(ADD_HOME);
 
-        //setting up alert effect
-        useEffect(() => {
-            if (error) {
-                setShowAlert(true);
-            } else {
-                setShowAlert(false);
-            }
-        }, [error]);
+    //setting up alert effect
+    useEffect(() => {
+        if (error) {
+            setShowAlert(true);
+        } else {
+            setShowAlert(false);
+        }
+    }, [error]);
 
-        const handleInputChange = (event) => {
-            const { name, value } = event.target;
-            setNewHouseFormData({
-                ...newHouseFormData,
-                [name]: value
-            });
-        }
-    
-        const handleFormSubmit = async (event) => {
-            event.preventDefault();
-    
-          
-    
-            try {
-                const { data } = await addNewHouse({
-                    variables: { ...newHouseFormData }
-                });
-    
-                console.log(data);
-                //Auth.login(data.login.token);
-            }
-            catch (err) {
-                console.error(err);
-                //setShowAlert(true);
-            }
-    
-            setNewHouseFormData({
-                //username: '',
-                homeName: '',
-                address: '',
-                yearBought: '',
-                yearBuilt: '',
-                squareFootage: '',
-                value: '',
-                lotSize: ''
-            });
-        }
-    
-        //default add details button renders, onclick hides button
-        //and renders the additional details section
-        state = {
-            isActive: true
-        }
-    
-        const toggleShow = () => {
-            this.setState({
-                isActive: false
-            });
-        };
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setNewHouseFormData({
+            ...newHouseFormData,
+            [name]: value
+        });
+    }
 
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+
+
+        try {
+            const { data } = await addNewHouse({
+                variables: { ...newHouseFormData }
+            });
+
+            console.log(data);
+            //Auth.login(data.login.token);
+        }
+        catch (err) {
+            console.error(err);
+            //setShowAlert(true);
+        }
+
+        setNewHouseFormData({
+            //username: '',
+            homeName: '',
+            address: '',
+            yearBought: '',
+            yearBuilt: '',
+            squareFootage: '',
+            value: '',
+            lotSize: ''
+        });
+    }
+
+    //default add details button renders, onclick hides button
+    //and renders the additional details section
+    const state = {
+        isActive: true
+    }
+
+    const toggleShow = () => {
+        this.setState({
+            isActive: false
+        });
     };
-
-    //add front end validation?
-    //const [validated] = useState(false);
-
-    //add alert for auth issues?
-    //const [showAlert, setShowAlert] = useState(false);
-
-    //create const for anticipated mutation (will need to update)
-   //const [addNewHouse, { error }] = useMutation(ADD_HOME);
-
-    //reference Form.Control (bootstrap)
-    // const handleInputChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setNewHouseFormData({
-    //         ...newHouseFormData,
-    //         [name]: value
-    //     });
-    // }
-
-    // const handleFormSubmit = async (event) => {
-    //     event.preventDefault();
-
-      
-
-    //     try {
-    //         const { data } = await addNewHouse({
-    //             variables: { ...newHouseFormData }
-    //         });
-
-    //         console.log(data);
-    //         //Auth.login(data.login.token);
-    //     }
-    //     catch (err) {
-    //         console.error(err);
-    //         //setShowAlert(true);
-    //     }
-
-    //     setNewHouseFormData({
-    //         //username: '',
-    //         homeName: '',
-    //         address: '',
-    //         yearBought: '',
-    //         yearBuilt: '',
-    //         squareFootage: '',
-    //         value: '',
-    //         lotSize: ''
-    //     });
-    // }
-
-    // //default add details button renders, onclick hides button
-    // //and renders the additional details section
-    // state = {
-    //     isActive: true
-    // }
-
-    // const toggleShow = () => {
-    //     this.setState({
-    //         isActive: false
-    //     });
-    // }
 
     return (
 
@@ -268,6 +207,69 @@ import './AboutHouse.css'
             </div>
         </div>
     );
+};
+
+//add front end validation?
+//const [validated] = useState(false);
+
+//add alert for auth issues?
+//const [showAlert, setShowAlert] = useState(false);
+
+//create const for anticipated mutation (will need to update)
+//const [addNewHouse, { error }] = useMutation(ADD_HOME);
+
+//reference Form.Control (bootstrap)
+// const handleInputChange = (event) => {
+//     const { name, value } = event.target;
+//     setNewHouseFormData({
+//         ...newHouseFormData,
+//         [name]: value
+//     });
+// }
+
+// const handleFormSubmit = async (event) => {
+//     event.preventDefault();
+
+
+
+//     try {
+//         const { data } = await addNewHouse({
+//             variables: { ...newHouseFormData }
+//         });
+
+//         console.log(data);
+//         //Auth.login(data.login.token);
+//     }
+//     catch (err) {
+//         console.error(err);
+//         //setShowAlert(true);
+//     }
+
+//     setNewHouseFormData({
+//         //username: '',
+//         homeName: '',
+//         address: '',
+//         yearBought: '',
+//         yearBuilt: '',
+//         squareFootage: '',
+//         value: '',
+//         lotSize: ''
+//     });
+// }
+
+// //default add details button renders, onclick hides button
+// //and renders the additional details section
+// state = {
+//     isActive: true
+// }
+
+// const toggleShow = () => {
+//     this.setState({
+//         isActive: false
+//     });
+// }
+
+
 
 
 export default AboutHouse;

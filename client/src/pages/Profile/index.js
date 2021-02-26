@@ -1,17 +1,27 @@
 //reference deep-thoughts Profile.js
 import React from 'react';
-import Header from '../../components/Header';
+import HeaderLI from '../../components/HeaderLoggedIn'
 import HomeList from '../../components/HomeList';
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
+import { useParams } from 'react-router-dom';
 
 //import Auth from '../../utils/auth';
 
 import './profileStyle.css';
 
+
 const Profile = () => {
-    const { loading, data } = useQuery(GET_ME);
-    const user = data.me;
+
+    const { username: userParam } = useParams();
+
+    const { loading, data } = useQuery(GET_ME, {
+        variables: { username: userParam }
+    });
+
+    console.log(data);
+    const user = data?.me || {};
+    console.log(user);
 
     //message if data hasn't yet arrived
     if (loading) {
@@ -20,16 +30,30 @@ const Profile = () => {
 
     return (
         <div>
-            <Header />
+            <HeaderLI />
             <div className="row">
                 <div className='col-4'>
-                    <button className="btn btn-primary" id="addNew">
+                    <button type="button" className="btn btn-primary" id="addNew">
                         Add a New File
                     </button>
                 </div>
             </div>
 
             <div className="container py-5">
+                <div className="row pb-5 mb-4">
+                    <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <div className="card shadow-sm border-0 rounded">
+                            <div className="card-body p-0"><img src="../../Assets/splashPage02.jpg" alt="" className="w-100 card-img-top" />
+                                <div className="p-4">
+                                    <h5 className="mb-2">Home</h5>
+                                    <p className="small text-muted mt-1 address">address</p>
+                                    <p className="small text-muted mt-1 cityState">milwaukee wi</p>
+                                    <p className="small text-muted mt-1 zip">55555</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <HomeList
                     username={user.username}
                     savedHomes={user.savedHomes}

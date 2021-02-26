@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Profile from '../pages/Profile';
 import Splash from '../pages/Splash';
-import Header from '../components/Header';
+import Header from './HeaderSplash';
 
 const ProfilePage = () => {
 

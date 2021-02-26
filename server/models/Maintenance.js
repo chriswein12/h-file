@@ -38,6 +38,4 @@ const maintenanceSchema = new Schema(
     }
 );
 
-const Maintenance = model('Maintenence', maintenanceSchema);
-
-module.exports = Maintenance;
+module.exports = maintenanceSchema;

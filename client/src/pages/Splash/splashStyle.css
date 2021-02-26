@@ -62,7 +62,7 @@
   /* hide profile icon until user logs in and add drop down  */
   a.profileIcon {
       padding: 0;
-      display:none;
+      /* display:none; */
   }
   
   

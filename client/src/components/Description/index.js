@@ -5,7 +5,7 @@ const Description = (props) => {
     return (
         <form id="splashPage-form">
             <div>
-                <h1>House-it going?<p>font change</p></h1>
+                <h1>House-it going!</h1>
                 <p>At House-it we realize how stressful staying organized as a homeowner can be.
                 Files and documents for your home get thrown in that cluttered box in the basement,
                 never to be seen again...
@@ -17,10 +17,10 @@ const Description = (props) => {
             </div>
             <div className="row">
                 <div className="col-5 splashButtons">
-                    <button onClick={props.signup} className="btn btn-danger">Sign Up Now</button>
+                    <button type="button" onClick={props.signup} className="btn btn-danger">Sign Up Now</button>
                 </div>
                 <div className="col-5 splashButtons">
-                    <button onClick={props.login} className="btn btn-primary">login</button>
+                    <button type="button" onClick={props.login} className="btn btn-primary">login</button>
                 </div>
             </div>
         </form>

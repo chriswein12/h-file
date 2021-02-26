@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-
-import Header from '../components/Header';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_HOME } from '../utils/queries'
+import HeaderLI from '../components/HeaderLoggedIn'
 import HomeNav from '../components/HomeNav';
 import ViewIndex from '../components/ViewIndex';
 
@@ -37,11 +38,11 @@ function Home({ username }) {
 
     return (
         <div className="home-container">
-            <Header />
+            <HeaderLI />
             <Container>
                 <Row>
                     <Col>
-                        <button className="link-add-file-btn">
+                        <button type="button" className="link-add-file-btn">
                             <Link to={AddFile}>
                                 <h2>Add a New File</h2>
                             </Link>

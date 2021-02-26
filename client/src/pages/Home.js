@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_HOME } from '../utils/queries'
-import Header from '../components/Header';
+import Header from '../components/HeaderSplash';
 import HomeNav from '../components/HomeNav';
 import ViewIndex from '../components/ViewIndex';
 

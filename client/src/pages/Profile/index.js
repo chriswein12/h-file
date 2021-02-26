@@ -1,7 +1,7 @@
 //reference deep-thoughts Profile.js
 import React from 'react';
 import HeaderLI from '../../components/HeaderLoggedIn'
-import Header from '../../components/Header';
+import Header from '../../components/HeaderSplash';
 import HomeList from '../../components/HomeList';
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/react-hooks';

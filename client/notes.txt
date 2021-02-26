@@ -98,3 +98,15 @@ sending props from here
 
 HomeList.js
 have Darryl add fancy cards/design here
+
+Front End - Aaron and Darryl
+Back End - Chris and Zach
+
+Front End Success
+- page navigation
+
+Fron End Challenges
+- passing information
+
+Back End Successes
+- 

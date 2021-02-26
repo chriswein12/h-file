@@ -10,7 +10,7 @@ import { useQuery } from '@apollo/react-hooks';
 import './profileStyle.css';
 
 const Profile = () => {
-    const {loading, data} = useQuery(GET_ME);
+    const { loading, data } = useQuery(GET_ME);
     const user = data.me;
 
     //message if data hasn't yet arrived
@@ -30,7 +30,7 @@ const Profile = () => {
             </div>
 
             <div className="container py-5">
-                <HomeList 
+                <HomeList
                     username={user.username}
                     savedHomes={user.savedHomes}
                 />

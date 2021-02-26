@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_HOME } from '../utils/queries'
-import Header from '../components/Header';
+import HeaderLI from '../components/HeaderLoggedIn'
 import HomeNav from '../components/HomeNav';
 import ViewIndex from '../components/ViewIndex';
 
@@ -38,7 +38,7 @@ function Home({ username }) {
 
     return (
         <div className="home-container">
-            <Header />
+            <HeaderLI />
             <Container>
                 <Row>
                     <Col>

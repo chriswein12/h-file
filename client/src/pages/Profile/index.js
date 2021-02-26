@@ -1,17 +1,24 @@
 //reference deep-thoughts Profile.js
 import React from 'react';
 import HeaderLI from '../../components/HeaderLoggedIn'
-import Header from '../../components/Header';
 import HomeList from '../../components/HomeList';
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
+import { useParams } from 'react-router-dom';
 
 //import Auth from '../../utils/auth';
 
 import './profileStyle.css';
 
+
 const Profile = () => {
-    const {loading, data} = useQuery(GET_ME);
+
+    const { username: userParam } = useParams();
+
+    const { loading, data } = useQuery(GET_ME, {
+        variables: { username: userParam }
+      });
+
     console.log(data);
     const user = data?.me || {};
     console.log(user);

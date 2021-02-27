@@ -8,8 +8,6 @@ import { useParams } from 'react-router-dom';
 
 //import Auth from '../../utils/auth';
 
-import './profileStyle.css';
-
 
 const Profile = () => {
 

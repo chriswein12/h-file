@@ -4,9 +4,6 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_SERVICE } from '../../utils/mutations';
 
 //need login mutation and Auth?
-
-import './Services.css'
-
 function Services() {
     const [newServiceFormData, setNewServiceFormData] = useState({
         serviceTitle: '',

@@ -5,8 +5,6 @@ import { ADD_REMODEL } from '../../utils/mutations';
 
 //need login mutation and Auth?
 
-import './Remodels.css'
-
 function Remodels() {
     const [newRemodelFormData, setNewRemodelFormData] = useState({
         remodelTitle: '',

@@ -17,17 +17,16 @@ import './App.css';
 
 
 const client = new ApolloClient({
-    request: operation => {
-      const token = localStorage.getItem('id_token');
-  
+    request: (operation) => {
+      const token = localStorage.getItem('id_token')
       operation.setContext({
         headers: {
           authorization: token ? `Bearer ${token}` : ''
         }
-      });
+      })
     },
-    uri: 'http://localhost:3001/graphql'
-  });
+    uri: '/graphql',
+  })
 
 
 function App() {

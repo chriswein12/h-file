@@ -11,18 +11,20 @@ import './css/AddFile.css';
 function AddFile() {
     return (
         <div className="add-file-container">
-            <button className="add-file-button" id="add-product-btn">
-                <Link to={Products}>Add Product</Link>
-            </button>
-            <button className="add-file-button" id="add-service-btn">
-                <Link to={Services}>Add Service</Link>
-            </button>
-            <button className="add-file-button" id="add-remodel-btn">
-                <Link to={Remodels}>Add Remodel</Link>
-            </button>
-            <button className="add-file-button" id="add-house-btn">
-                <Link to={AboutHome}>Add New Home</Link>
-            </button>
+            <ul>
+                <li className="add-file" id="add-product">
+                    <Link to={Products}>Add Product</Link>
+                </li>
+                <li className="add-file" id="add-service">
+                    <Link to={Services}>Add Service</Link>
+                </li>
+                <li className="add-file" id="add-remodel">
+                    <Link to={Remodels}>Add Remodel</Link>
+                </li>
+                <li className="add-file" id="add-house">
+                    <Link to={AboutHome}>Add New Home</Link>
+                </li>
+            </ul>
         </div>
     );
 }

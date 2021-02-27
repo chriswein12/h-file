@@ -17,7 +17,7 @@ const Profile = () => {
 
     const { loading, data } = useQuery(GET_ME, {
         variables: { username: userParam }
-      });
+    });
 
     console.log(data);
     const user = data?.me || {};
@@ -54,7 +54,7 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <HomeList 
+                <HomeList
                     username={user.username}
                     savedHomes={user.savedHomes}
                 />

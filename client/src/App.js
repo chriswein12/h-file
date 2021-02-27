@@ -31,12 +31,11 @@ const client = new ApolloClient({
 
 
 function App() {
-
     return (
         <ApolloProvider client={client}>
             <Router>
                 <Switch>
-                    <Route excact path="/profile">
+                    <Route exact path="/profile">
                         <Profile />
                     </Route>
                     {/* <Route exact path="/whatever">

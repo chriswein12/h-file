@@ -4,7 +4,7 @@ import { ADD_USER } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
 import { Redirect, useParams, Link } from 'react-router-dom';
 
-import Auth, { login } from '../../utils/auth';
+import Auth from '../../utils/auth';
 import '../../pages/Splash/splashStyle.css';
 
 
@@ -20,21 +20,24 @@ const Signup = (props) => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
+
         setUserInfo({
             ...userInfo,
             [name]: value
         });
+        console.log(userInfo)
     }
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+        debugger;
         try {
             const { data } = await addNewUser({
                 variables: { ...userInfo }
             });
 
-            console.log(data);
+            console.log(data, "Here's your new user!");
+            Auth.login(data.addUser.token);
         }
         catch (err) {
             console.log(err);
@@ -69,11 +72,11 @@ const Signup = (props) => {
                 <label htmlFor="floatingPassword2">Confirm Password</label>
             </div>
             <div className="row">
-                <Link to='/profile' className=" col-4 submitSignupBtn">
+                <div className=" col-4 submitSignupBtn">
                     <button type="submit" className="btn btn-danger">
                        Submit
                     </button>
-                </Link>
+                </div>
                 <div className="row signupButtons">
                     <div className="col-4">
                         <button type="button" onClick={props.login} className="btn btn-primary">Already have an account?</button>

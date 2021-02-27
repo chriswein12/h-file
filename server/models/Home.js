@@ -4,11 +4,18 @@ const Products = require('./Product')
 const Remodels = require('./HomeRemodel');
 const Services = require('./Services');
 
-const homeAddressSchema = new Schema(
+
+const homeSchema = new Schema(
     {
-        addressId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId()
+        homeName: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        username: {
+            type: String,
+            required: true
         },
 
         street: {
@@ -37,23 +44,6 @@ const homeAddressSchema = new Schema(
             min: 5,
             max:5
         },
-    }
-)
-
-const homeSchema = new Schema(
-    {
-        homeName: {
-            type: String,
-            required: true,
-            trim: true
-        },
-
-        username: {
-            type: String,
-            required: true
-        },
-
-        address: {homeAddressSchema},
 
         yearBought: {
             type: Number,

@@ -12,7 +12,10 @@ const typeDefs = gql`
         _id: ID!
         homeName: String!
         username: String!
-        address: Address!
+        street: String!
+        city: String!
+        state: String!
+        zip: Int!
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
@@ -22,15 +25,6 @@ const typeDefs = gql`
         homeRemodels: [Remodel]
         homeProducts: [Product]
         homeMaintenance: [Maintenance]
-    }
-
-
-    type Address {
-        addressId: ID
-        street: String
-        city: String
-        state: String
-        zip: Int
     }
 
     type Services {
@@ -88,19 +82,15 @@ const typeDefs = gql`
 
     input HomeInput {
         homeName: String
-        address: AddressInput
+        street: String
+        city: String
+        state: String
+        zip: Int
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
         value: Int
         lotSize: Int
-    }
-
-    input AddressInput {
-        street: String
-        city: String
-        state: String
-        zip: Int
     }
 
     input ServiceInput {

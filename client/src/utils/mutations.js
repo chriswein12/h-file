@@ -36,7 +36,10 @@ export const ADD_HOME = gql`
             savedHomes {
                 _id
                 homeName
-                address
+                street
+                city
+                state
+                zip
                 yearBought
                 yearBuilt
                 squareFootage
@@ -56,7 +59,7 @@ export const ADD_PRODUCT = gql`
                 _id
                 productName
                 productPrice
-                datePurchase
+                datePurchased
                 productRoom
                 serialNumber
                 modelNumber
@@ -77,10 +80,10 @@ export const ADD_REMODEL = gql`
                 _id
                 remodelTitle
                 remodelRoom
-                remodelDate
+                remodelStartDate
+                remodelEndDate
                 remodelCost
                 remodelDetails
-               
             }
         }
     }
@@ -97,7 +100,6 @@ export const ADD_SERVICE = gql`
                 serviceFrequency
                 serviceDate
                 serviceDescription
-
             }
         }
     }

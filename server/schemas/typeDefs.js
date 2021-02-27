@@ -99,7 +99,6 @@ const typeDefs = gql`
         serviceFrequency: String
         serviceDate: String
         serviceDescription: String
-        serviceContact: [BusinessCardInput]
     }
 
     input RemodelInput {
@@ -109,7 +108,6 @@ const typeDefs = gql`
         remodelEndDate: String
         remodelCost: Int
         remodelDetails: String
-        remodelContacts: [BusinessCardInput]
     }
 
     input BusinessCardInput {

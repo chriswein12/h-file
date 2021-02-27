@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../pages/Splash/splashStyle.css';
+import '../../pages/css/splashStyle.css';
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';

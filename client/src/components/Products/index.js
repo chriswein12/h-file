@@ -5,8 +5,6 @@ import { ADD_PRODUCT } from '../../utils/mutations';
 
 //need login mutation and Auth?
 
-import './Products.css'
-
 function Products() {
     const [newProductFormData, setNewProductFormData] = useState({
         productName: '',

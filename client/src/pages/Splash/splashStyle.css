@@ -106,7 +106,7 @@
     display: flex;
     flex-direction: column;
     /* margin: 6% auto; */
-    margin-top: 3%;
+    margin-top: 10;
     margin-left: 69%;
     max-width: 30%;
     width: 80vw;
@@ -162,8 +162,25 @@
   }
   
 
-  
-  
+  /* @media screen and (max-width: 500px) {
+    #signup-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3%;
+      margin-left: 69%;
+      max-width: 30%;
+      width: 80vw;
+      height: 60%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px 0 rgb(35 35 35 / 16%);
+      opacity: 0.8;
+      color: navy;
+      text-align: left;
+    }
+  }
+   */
   
   
   @media screen and (max-width: 500px) {

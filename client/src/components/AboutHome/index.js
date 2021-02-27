@@ -6,7 +6,6 @@ import { ADD_HOME } from '../../utils/mutations';
 
 //need login mutation and Auth?
 
-import './AboutHome.css'
 
 // function AboutHouse() {
 //     const [newHouseFormData, setNewHouseFormData] = useState({

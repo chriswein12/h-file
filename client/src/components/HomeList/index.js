@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//check server connection for savedHomes
 function HomeList( username, savedHomes ) {
     if (!savedHomes.length) {
         return <h3>Homes that you have added will appear here</h3>;

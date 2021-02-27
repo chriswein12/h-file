@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Header from '../../components/HeaderSplash';
-import Description from '../../components/Description';
-import Login from '../../components/Login';
-import Signup from '../../components/SignUp';
+import Header from '../components/HeaderSplash';
+import Description from '../components/Description';
+import Login from '../components/Login';
+import Signup from '../components/SignUp';
 // import '../Splash/splashStyle.css';
 
 const SplashPage = () => {

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 //setting secret and expiration time
-const secret = 'grouphome28npm';
+const secret = process.env.SECRET;
 const expiration = '12h';
 
 module.exports = {

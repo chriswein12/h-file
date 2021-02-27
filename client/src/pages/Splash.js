@@ -3,7 +3,7 @@ import Header from '../components/HeaderSplash';
 import Description from '../components/Description';
 import Login from '../components/Login';
 import Signup from '../components/SignUp';
-// import '../Splash/splashStyle.css';
+import './css/splashStyle.css'
 
 const SplashPage = () => {
 

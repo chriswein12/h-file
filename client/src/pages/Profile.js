@@ -1,8 +1,8 @@
 //reference deep-thoughts Profile.js
 import React from 'react';
-import HeaderLI from '../../components/HeaderLoggedIn'
-import HomeList from '../../components/HomeList';
-import { GET_ME } from '../../utils/queries';
+import HeaderLI from '../components/HeaderLoggedIn'
+import HomeList from '../components/HomeList';
+import { GET_ME } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
 import { useParams } from 'react-router-dom';
 

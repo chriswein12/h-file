@@ -8,8 +8,8 @@ import ApolloClient from 'apollo-boost';
 
 
 //import pages good habit to have matching names
-import SplashPage from './pages/Splash/index.js';
-import Profile from './pages/Profile/index.js';
+import SplashPage from './pages/Splash.js';
+import Profile from './pages/Profile.js';
 import Home from './pages/Home';
 
 //import css

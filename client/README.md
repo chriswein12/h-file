@@ -7,13 +7,13 @@ Use GraphQL with a Node.js and Express.js server.
 * done
 
 Use MongoDB and the Mongoose ODM for the database.
-* 
+* done
 
 Use queries and mutations for retrieving, adding, updating, and deleting data.
 * done
 
 Be deployed using Heroku (with data).
-* 
+* done
 
 Meet the minimum requirements of a PWA:
 
@@ -37,7 +37,7 @@ Include authentication (JWT).
 * done
 
 Protect sensitive API key information on the server.
-* 
+* done
 
 Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, quality comments, etc.).
 * done

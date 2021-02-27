@@ -6,7 +6,6 @@ import { ADD_HOME } from '../../utils/mutations';
 
 //need login mutation and Auth?
 
-
 // function AboutHouse() {
 //     const [newHouseFormData, setNewHouseFormData] = useState({
 //         homeName: '',

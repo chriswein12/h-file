@@ -7,6 +7,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useParams } from 'react-router-dom';
 
 //import Auth from '../../utils/auth';
+import './css/profileStyle.css';
 
 
 const Profile = () => {

@@ -33,7 +33,12 @@ const SplashPage = () => {
     return (
         <div>
             <Header />
+            
+            <br />
+            <br />
             {renderForm(currentForm)}
+
+            
         </div>
         
     )

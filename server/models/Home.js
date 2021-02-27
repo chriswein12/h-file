@@ -38,11 +38,11 @@ const homeSchema = new Schema(
         },
 
         zip: {
-            type: Number,
+            type: String,
             required: true,
             trim: true,
-            min: 5,
-            max:5
+            minLength: 5,
+            maxLength:5
         },
 
         yearBought: {

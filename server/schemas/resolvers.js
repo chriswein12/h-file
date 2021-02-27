@@ -18,25 +18,13 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        home: async (parent, { _id }) => {
+        home: async (parent, { _id }, context) => {
+            if (context.user) {
             return Home.findOne({ _id });
-        },
+            }
 
-        services: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
-
-        remodels: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
-
-        products: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
-
-        maintenance: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
+            throw new AuthenticationError('Not logged in');
+        }
 
 
     },
@@ -152,6 +140,32 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
+
+        removeHome: async (parent, { _id }, context ) => {
+            if (context.user) {
+                const deletedHome = await Home.findByIdAndDelete(_id);
+                return deletedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        removeService: async (parent, { homeId, serviceId }, context ) => {
+            if (context.user) {
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId},
+                    { $pull: { homeServices: { _id: serviceId }}},
+                    { new: true}
+                );
+                return updatedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+// removeRemodel
+// removeProduct
+// removeMaintenance
+
+
     }
 
     

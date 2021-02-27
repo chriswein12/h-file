@@ -15,7 +15,7 @@ const typeDefs = gql`
         street: String!
         city: String!
         state: String!
-        zip: Int!
+        zip: String!
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
@@ -29,6 +29,7 @@ const typeDefs = gql`
 
     type Services {
         _id: ID!
+        homeId: ID
         serviceTitle: String!
         serviceCost: Int!
         serviceFrequency: String
@@ -85,7 +86,7 @@ const typeDefs = gql`
         street: String
         city: String
         state: String
-        zip: Int
+        zip: String
         yearBought: Int
         yearBuilt: Int
         squareFootage: Int
@@ -142,10 +143,6 @@ const typeDefs = gql`
     type Query {
         me: User
         home(_id: ID!): Home
-        services(homeId: ID!): Home
-        remodels(homeId: ID!): Home
-        products(homeId: ID!): Home
-        maintenance(homeId: ID!): Home
     }
 
     type Mutation {
@@ -156,6 +153,11 @@ const typeDefs = gql`
         addRemodel(remodelData: RemodelInput!): Remodel
         addProduct(productData: ProductInput!): Product
         addMaintenance(maintenanceData: MaintenanceInput!): Maintenance
+        removeHome(_id: ID!): Home
+        removeService(homeId: ID!, serviceId: ID!): Home
+        removeRemodel(homeId: ID!, remodelId: ID!): Home
+        removeProduct(homeId: ID!, productId: ID!): Home
+        removeMaintenance(homeId: ID!, maintenanceId: ID!): Home
     }
 
     type Auth {

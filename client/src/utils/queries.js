@@ -11,16 +11,10 @@ export const GET_ME = gql`
             savedHomes {
                 _id
                 homeName
-                username
-                    street
-                    city
-                    state
-                    zip
-                yearBought
-                yearBuilt
-                squareFootage
-                value
-                lotSize
+                street
+                city
+                state
+                zip
             }
         }
     }

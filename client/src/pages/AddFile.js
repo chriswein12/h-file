@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import AboutHome from '../components/AboutHome';
-import Products from '../components/Products';
-import Remodels from '../components/Remodels';
-import Services from '../components/Services';
+import AddHome from '../components/AddHome';
+import AddProducts from '../components/AddProducts';
+import AddRemodels from '../components/AddRemodels';
+import AddServices from '../components/AddServices';
 
 import './css/AddFile.css';
 
@@ -13,16 +13,16 @@ function AddFile() {
         <div className="add-file-container">
             <ul>
                 <li className="add-file" id="add-product">
-                    <Link to={Products}>Add Product</Link>
+                    <Link to={AddProducts}>Add Product</Link>
                 </li>
                 <li className="add-file" id="add-service">
-                    <Link to={Services}>Add Service</Link>
+                    <Link to={AddServices}>Add Service</Link>
                 </li>
                 <li className="add-file" id="add-remodel">
-                    <Link to={Remodels}>Add Remodel</Link>
+                    <Link to={AddRemodels}>Add Remodel</Link>
                 </li>
                 <li className="add-file" id="add-house">
-                    <Link to={AboutHome}>Add New Home</Link>
+                    <Link to={AddHome}>Add New Home</Link>
                 </li>
             </ul>
         </div>

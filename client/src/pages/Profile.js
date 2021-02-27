@@ -4,7 +4,7 @@ import HeaderLI from '../components/HeaderLoggedIn'
 import HomeList from '../components/HomeList';
 import { GET_ME } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 //import Auth from '../../utils/auth';
 import './css/profileStyle.css';
@@ -32,9 +32,11 @@ const Profile = () => {
             <HeaderLI />
             <div className="row">
                 <div className='col-4'>
-                    <button type="button" className="btn btn-primary" id="addNew">
-                        Add a New File
-                    </button>
+                    <Link to='/AboutHome'>
+                        <button type="button" className="btn btn-primary" id="addNew">
+                            Add New Home
+                        </button>
+                    </Link>
                 </div>
             </div>
 

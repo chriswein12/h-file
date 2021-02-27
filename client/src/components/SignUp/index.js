@@ -30,7 +30,7 @@ const Signup = (props) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        debugger;
+
         try {
             const { data } = await addNewUser({
                 variables: { ...userInfo }

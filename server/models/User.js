@@ -1,43 +1,36 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const homeSchema = require('./Home');
-
 const userSchema = new Schema(
     {
         username: {
             type: String,
             required: true,
             unique: true,
+            trim: true
         },
         email: {
             type: String,
             required: true,
             unique: true,
-            match: [/.+@.+\..+/, 'Please Enter Valid Email Address'],
+            match: [/.{1,}@(.{1,}[^@])\.\w{2,3}/g, 'Please Enter Valid Email Address'],
         },
         password: {
-            type:String,
+            type: String,
             required: true,
+            minlength: 4
         },
 
         savedHomes: [{
             type: Schema.Types.ObjectId,
             ref: "Home"
-        }],
-
-        
-            toJSON: {
-                virtuals: true,
-            },
-        
-
+        }]
     }
 );
 
 //hash password for user
 userSchema.pre('save', async function (next) {
-    if(this.isNew || this.isModified('password')) {
+    if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }

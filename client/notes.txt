@@ -1,0 +1,112 @@
+added react-bootstrap
+    npm i react-boostrap bootstrap
+    src/index.js: import 'bootstrap/dist/css/bootstrap.min.css';
+
+css idea
+name each after their respective page/component
+    page: keep in css folder inside pages folder
+    component: keep in each component folder
+
+AddFile.js
+buttons don't have to be buttons
+may have to revisit switch vs links
+
+All Forms
+? possible for array and loop?
+double check naming conventions
+? date input type?
+import mutations from @apollo-react/hooks
+
+AboutHouse.js
+? need login mutation and auth?
+? rename value to homeValue?
+? split up address?
+I think the ternary operator did the trick, may need to tweak true/false
+
+Products.js
+? form group for "room"
+    have array for options?
+    allow adding rooms to other?
+
+Remodels.js
+?   //room as type=select
+    room: '',
+    //company
+    split out as sub inputs for companies worked with?
+    make these hide/show?
+    //products
+    how to layout input array?
+add BusinessCard component
+? add products array?
+
+Services.js
+add BusinessCard component
+? add products array?
+
+House.js
+? add Nav/Content components to imitate react-portfolio?
+button doesn't have to be a button
+
+All View components
+reference queries file (useQuery())
+
+ViewAboutHouse.js
+
+ViewProducts.js
+add array of objects to display all products
+
+ViewRemodels.js
+add array of objects to display all remodels
+
+ViewServices.js
+add array of objects to display all services
+
+mutations.js
+Auth.js is being built out, may have to revisit
+? _id vs homeId? figure out connections
+? also, _id vs all other instances of _id? may have to differentiate
+? type Home {
+    homeServices: [Services]
+    homeRemodels: [Remodel]
+    homeProducts: [Product]
+    homeMaintenances: [Maintenance]
+} should I build out a breakdown for each bit of info gathered,
+    or will that be gathered in the other forms?
+
+build out BusinessCard component
+need BusinessCard input
+
+typeDefs ?
+type Query {
+        me: User
+        home(_id: ID!): Home
+        services(_id: ID!): Home
+        remodels(_id: ID!): Home
+        products(_id: ID!): Home
+        maintenance(_id: ID!): Home
+    }
+
+Equivalencies (use React Router?)
+Portfolio H-file
+App House
+Nav (create)HomeNav
+Page (create)ViewIndex
+PageContent (may not need, see drill down from Page to PC)
+
+Profile.js
+sending props from here
+
+HomeList.js
+have Darryl add fancy cards/design here
+
+Front End - Aaron and Darryl
+Back End - Chris and Zach
+
+Front End Success
+- page navigation
+
+Fron End Challenges
+- passing information
+
+Back End Successes
+- 

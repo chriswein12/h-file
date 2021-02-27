@@ -1,7 +1,8 @@
-const userModel = require ('./User');
-const homeModel = require ('./Home');
-const productModel = require ('./Product');
-const serviceModel = require ('./Services');
-const homeRemodelModel = require ('./HomeRemodels');
+const User = require ('./User');
+const Home = require ('./Home');
+const Product = require ('./Product');
+const Services = require ('./Services');
+const Remodel = require ('./HomeRemodel');
+const Maintenance = require('./Maintenance');
 
-module.exports = { userModel, homeModel, productModel, serviceModel, homeRemodelModel };
+module.exports = { User, Home, Product, Services, Remodel, Maintenance };

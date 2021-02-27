@@ -12,12 +12,10 @@ export const GET_ME = gql`
                 _id
                 homeName
                 username
-                address {
                     street
                     city
                     state
                     zip
-                }
                 yearBought
                 yearBuilt
                 squareFootage
@@ -33,7 +31,10 @@ export const GET_HOME = gql`
         home(_id: $id) {
             _id
             homeName
-            address
+            street
+            city
+            state
+            zip
             yearBought
             yearBuilt
             squareFootage

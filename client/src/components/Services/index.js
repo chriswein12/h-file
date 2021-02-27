@@ -1,28 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_SERVICE } from '../../utils/mutations';
-
-//need login mutation and Auth?
+import Auth from '../../utils/auth';
 
 function Services() {
+    //set initial form state
     const [newServiceFormData, setNewServiceFormData] = useState({
         serviceTitle: '',
         serviceCost: '',
         serviceFrequency: '',
         serviceDate: '',
-        serviceDescription: '',
-        serviceContact: ''
-    })
+        serviceDescription: ''
+    });
 
-    //add front end validation?
-    //const [validated] = useState(false);
+    //set for validation
+    const [validated] = useState(false);
 
-    //add alert for auth issues?
-    //const [showAlert, setShowAlert] = useState(false);
+    //state for alerts
+    const [showAlert, setShowAlert] = useState(false);
+
+    //toggle button/additional info inputs
+    const [hidden, setHidden] = useState(false);
 
     //create const for anticipated mutation (will need to update)
     const [addNewService, { error }] = useMutation(ADD_SERVICE);
+
+    //set up alert effect
+    useEffect(() => {
+        if (error) {
+            setShowAlert(true);
+        } else {
+            setShowAlert(false);
+        }
+    }, [error]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -35,9 +46,13 @@ function Services() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        //won't require entire form to be complete,
-        //so full validity check not needed,
-        //maybe partial validity
+        //react bootstrap validation - 
+        //does it only work on <Form.Control required />?
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
 
         try {
             const { data } = await addNewService({
@@ -45,33 +60,19 @@ function Services() {
             });
 
             console.log(data);
-            //Auth.login(data.login.token);
+            Auth.login(data.login.token);
         }
         catch (err) {
             console.error(err);
-            //setShowAlert(true);
+            setShowAlert(true);
         }
 
         setNewServiceFormData({
-            //username: '',
             serviceTitle: '',
             serviceCost: '',
             serviceFrequency: '',
             serviceDate: '',
-            serviceDescription: '',
-            serviceContact: ''
-        });
-    }
-
-    //default add details button renders, onclick hides button
-    //and renders the additional details section
-    const state = {
-        isActive: true
-    }
-
-    const toggleShow = () => {
-        this.setState({
-            isActive: false
+            serviceDescription: ''
         });
     }
 
@@ -79,7 +80,15 @@ function Services() {
         <div>
             <h2>New Service</h2>
             <div className="new-service-details">
-                <Form>
+                <Form noValidate validated={validated}>
+                    <Alert
+                        dismissible
+                        onClose={() => setShowAlert(false)}
+                        show={showAlert}
+                        variant='danger'
+                    >
+                        Something went wrong!
+                    </Alert>
                     <div className="new-service-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -95,7 +104,7 @@ function Services() {
                         <Form.Group>
                             <Form.Label htmlFor="serviceCost">Service Cost</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="number"
                                 name="serviceCost"
                                 onChange={handleInputChange}
                                 value={newServiceFormData.serviceCost}
@@ -122,7 +131,7 @@ function Services() {
                         <Form.Group>
                             <Form.Label htmlFor="serviceDate">Date of Service</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="date"
                                 name="serviceDate"
                                 onChange={handleInputChange}
                                 value={newServiceFormData.serviceDate}
@@ -131,12 +140,12 @@ function Services() {
                         </Form.Group>
                     </div>
                     <div className="new-service-additional">
-                        {this.state.isActive ?
+                        {hidden === false ?
                             (
                                 <Button
                                     id="new-remodel-additional-btn"
                                     type="button"
-                                    onClick={toggleShow}
+                                    onClick={() => setHidden(true)}
                                 >
                                     Add More Details?
                                 </Button>
@@ -154,22 +163,12 @@ function Services() {
                                             required
                                         />
                                     </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="serviceContact">Service Contact</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="serviceContact"
-                                            onChange={handleInputChange}
-                                            value={newServiceFormData.serviceContact}
-                                            required
-                                        />
-                                    </Form.Group>
                                 </div>
                             )
                         }
                     </div>
                     <Button
-                        id="new-house-submit-btn"
+                        id="new-service-submit-btn"
                         type="submit"
                         onClick={handleFormSubmit}
                     >

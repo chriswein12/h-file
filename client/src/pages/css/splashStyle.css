@@ -15,13 +15,23 @@
   
   .container {
     height: 100%;
-    width: 100%
+    width: 100%;
+    padding: 25px;
+    opacity: 0.8;
+    margin-left: 375px;
+  }
+
+  .splashF {
+    border-radius: 15px;
+  }
+
+  .splashF h2 {
+    text-align: center;
   }
   
   .header {
     overflow: hidden;
     width: 100%;
-    /* background-color: #f1f1f1; */
     background-color: navy;
     padding: 20px 10px;
     opacity: 0.9;
@@ -42,6 +52,7 @@
   .header a.logo {
     font-size: 25px;
     font-weight: bold;
+    color: white;
   }
   
   .header a:hover {
@@ -64,62 +75,7 @@
       padding: 0;
       /* display:none; */
   }
-  
-  
-  #splashPage-form {
-    display: flex;
-    flex-direction: column;
-    margin: 6% auto;
-    /* margin-top: 6%; */
-    margin-left: 69%;
-    max-width: 30%;
-    width: 80vw;
-    height: 60%;
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 rgb(35 35 35 / 16%);
-    opacity: 0.8;
-    color: navy;
-    text-align: left;
-  }
-  
-  #login-form {
-    display: flex;
-    flex-direction: column;
-    /* margin: 6% auto; */
-    margin-top: 6%;
-    margin-left: 69%;
-    max-width: 30%;
-    width: 80vw;
-    height: 60%;
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 rgb(35 35 35 / 16%);
-    opacity: 0.8;
-    color: navy;
-    text-align: left;
-  }
-  
-  #signup-form {
-    display: flex;
-    flex-direction: column;
-    /* margin: 6% auto; */
-    margin-top: 10;
-    margin-left: 69%;
-    max-width: 30%;
-    width: 80vw;
-    height: 60%;
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 rgb(35 35 35 / 16%);
-    opacity: 0.8;
-    color: navy;
-    text-align: left;
-  }
-  
+
   .loginHeader {
     text-align: center;
     margin-bottom: 10%;
@@ -146,42 +102,40 @@
 
   .submitSignupBtn {
     margin: 5% auto;
+    padding-left: 10% ;
   }
   .signupButtons {
     margin-top: 10% auto;
-    padding-left: 20%;
+    padding-left: 32%;
   }
   
   
   .loginSubmitButton {
     margin: 5% auto;
+    padding-left: 10%;
   }
   .loginCreateButton {
       margin-top: 10% auto;
-      padding-left: 25%;
+      padding-left: 35%;
   }
+
+  #addNew {
+    display: flex;
+    padding: 20px;
+    margin-top: 3%;
+    margin-left: 80%;
+}
+
   
 
-  /* @media screen and (max-width: 500px) {
-    #signup-form {
-      display: flex;
-      flex-direction: column;
-      margin-top: 3%;
-      margin-left: 69%;
-      max-width: 30%;
-      width: 80vw;
-      height: 60%;
-      background-color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px 0 rgb(35 35 35 / 16%);
-      opacity: 0.8;
-      color: navy;
-      text-align: left;
+  @media screen and (max-width: 768px) {
+
+    .container {
+      margin: auto;
     }
+
   }
-   */
-  
+
   
   @media screen and (max-width: 500px) {
     .header a {
@@ -189,8 +143,35 @@
       display: block;
       text-align: left;
     }
+
+    header .header {
+      width: 100%;
+    }
     
     .header-right {
       float: none;
+    }
+
+    .container {
+      margin: auto;
+    }
+
+    form .container {
+      margin: auto;
+    }
+
+    .submitSignupBtn {
+      padding-left: 5% ;
+    }
+    .signupButtons {
+      padding-left: 20%;
+    }
+    
+    
+    .loginSubmitButton {
+      padding-left: 5%;
+    }
+    .loginCreateButton {
+        padding-left: 25%;
     }
   }

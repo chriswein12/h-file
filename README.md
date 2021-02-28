@@ -6,9 +6,9 @@ This website is designed to revolutionize the home maintenance process and bring
 <br/>
 
 ## Table of Contents
-* [How It Works](#how it works)
+* [How-it-Works](#how-it-works)
 * [Website Features](#website features)
-* [Plans-For-Future-Development](#plans for future development)
+* [Plans-](#plans for future development)
 * [Website Features](#website features)
 
 ## How it Works

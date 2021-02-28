@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_SERVICE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-function Services() {
+function AddServices() {
     //set initial form state
     const [newServiceFormData, setNewServiceFormData] = useState({
         serviceTitle: '',
@@ -186,4 +186,4 @@ function Services() {
     )
 }
 
-export default Services;
+export default AddServices;

@@ -1,13 +1,13 @@
 # House-It
 
 ## Description of the Website
-This website is designed to create and share wishlists with friends, family or groups. 
-Users are able to create their wishlist and send a unique link to specific people who are able to view items the original user has added to their wishlist. 
-
+This website is designed to revolutionize the home maintenance process and bring peace of mind to homeowners everywhere. One of the greatest hurdles homeowners face is organization, especially when it comes to files and records of the most importance. With this website we bring a modern and intuitive file system that puts your home's essential records at your fingertips.
+ 
 <br/>
 
 ## How it Works
-* The user first signs up for an account that allows them access to their own dashboard. The dashboard will show any and all wishlists they have created.
+* The user first signs up for an account that allows them access to their own Profile. The profile will allow the user to add a home.
+
 * Next, the user selects the button to create and then name a new wishlist.
 * The user then is able to fill out a form to add items to the wishlist, with the option of name, price, location with optional description and url link to item. 
 * After, the user is able to send their wishlist to other member in the group they are requesting gifts from using the "Share" button which will generate a url link that can be copied for use in email or messengers. 
@@ -32,8 +32,8 @@ Users are able to create their wishlist and send a unique link to specific peopl
   
 <br/>
 
-## Link to 12Wishes Website
-https://twelve-wishes.herokuapp.com/
+## Link to House-it Website
+
 
 <br/>
 
@@ -55,4 +55,4 @@ https://twelve-wishes.herokuapp.com/
 
 ## Credits
 
-*Project completed by Chris Wein, Sara Krizan, Cal Johnson and John Anderson*
+*Project completed by Chris Wein, Aaron Geiger, Darryl Simpson and Zach Howell*

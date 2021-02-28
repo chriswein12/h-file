@@ -13,8 +13,7 @@ function ViewProducts() {
     //useMutation REMOVE_PRODUCT
 
     //ViewProducts name def in queries?
-    const productData = data.home
-    console.log(productData);
+    const productData = data?.home || {};
 
     //message if data hasn't yet arrived
     if (loading) {

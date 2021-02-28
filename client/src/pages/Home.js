@@ -7,19 +7,19 @@ import { GET_HOME } from '../utils/queries'
 import HeaderLI from '../components/HeaderLoggedIn'
 import HomeNav from '../components/HomeNav';
 import ViewIndex from '../components/ViewIndex';
-
 import AddFile from './AddFile';
 
 import './css/Home.css'
 
-function Home({ username }) {
+function Home() {
     const { id: homeId } = useParams();
 
     const { loading, data } = useQuery(GET_HOME, {
         variables: { id: homeId }
     });
 
-    const home = data.home;
+    const home = data?.home || {};
+    console.log(home);
 
     //const to set names for views inside div to be rendered
     const [views] = useState([
@@ -42,17 +42,17 @@ function Home({ username }) {
             <Container>
                 <Row>
                     <Col>
-                        <button type="button" className="link-add-file-btn">
+                        <div>
                             <Link to={AddFile}>
                                 <h2>Add a New File</h2>
                             </Link>
-                        </button>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
                         <div>
-                            <h1>{username}'s Home</h1>
+                            <h1>{home.homeName}</h1>
                         </div>
                         <div>
                             {/* image? will need another query */}
@@ -71,6 +71,7 @@ function Home({ username }) {
                             {/* pass down props to component */}
                             <ViewIndex
                                 currentView={currentView}
+                                home={home}
                             ></ViewIndex>
                         </div>
                     </Col>

@@ -11,6 +11,7 @@ import AboutHome from './components/AddHome';
 import SplashPage from './pages/Splash.js';
 import Profile from './pages/Profile.js';
 import Home from './pages/Home';
+import AddFile from './pages/AddFile';
 
 //import css
 import './App.css';
@@ -36,8 +37,9 @@ function App() {
                 <Switch>
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/profile/:id" component={Home} />
-                    <Route exact path="/AboutHome" component={AboutHome} />
-                    <Route exact path="/" component={SplashPage} />
+                    <Route exact path="/AddHome" component={AboutHome} />
+                    <Route exact path="/AddFile" component={AddFile} />
+                    <Route exact path="/" component={SplashPage} /> 
                 </Switch>
             </Router>
         </ApolloProvider>

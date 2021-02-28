@@ -58,13 +58,19 @@ function Products() {
             event.stopPropagation();
         }
 
+        //get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
         try {
             const { data } = await addNewProduct({
                 variables: { ...newProductFormData }
             });
 
-            console.log(data);
-            Auth.login(data.login.token);
+            //window.location.assign('/profile/:id');
         }
         catch (err) {
             console.error(err);

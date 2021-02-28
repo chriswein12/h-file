@@ -65,12 +65,11 @@ function AboutHome() {
         }
         
         try {
-            console.log(newHomeFormData)
             const { data } = await addNewHome({
                 variables: { homeData: { ...newHomeFormData }}
             });
 
-            console.log(data);
+            window.location()
         }
         catch (err) {
             console.error(err);

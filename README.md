@@ -66,7 +66,7 @@ This website is designed to revolutionize the home maintenance process and bring
 
 ## Mobile Display
 
-![Screenshot (173)](https://user-images.githubusercontent.com/68923037/109429326-d63dfb00-79c0-11eb-8989-7b86aa0aef09.png)
+![mobile](https://user-images.githubusercontent.com/68923037/109429687-a4c62f00-79c2-11eb-95fd-c27e5ed4d6a5.png)
 
 <br/>
 

@@ -1,7 +1,7 @@
 //may need to bring useQuery on GET_ME for username
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_HOME } from '../utils/queries'
 import HeaderLI from '../components/HeaderLoggedIn'
@@ -27,9 +27,11 @@ function Home() {
         { name: 'Services' }
     ]);
 
+    const [key, setKey] = useState('About Home');
+
 
     //const to set view about home as default rendered page
-    const [currentView, setCurrentView] = useState(views[0]);
+    const [currentView, setCurrentView] = useState('About Home');
  
 
     if (loading) {
@@ -60,24 +62,36 @@ function Home() {
                         </div>
                     </Col>
                     <Col>
-                        <div>
-                            {/* pass down props to component */}
-                            <HomeNav
-                                views={views}
-                                currentView={currentView}
-                                setCurrentView={setCurrentView}
-                            ></HomeNav>
-                        </div>
-                        <div>
-                            {/* pass down props to component */}
-                            <ViewIndex
-                                currentView={currentView}
-                                home={home}
-                            ></ViewIndex>
-                        </div>
+                    <div className="home-info-container">
+                    <Tabs
+                        id="controlled-tab"
+                        activeKey={key}
+                        onSelect={(k) => {
+                            setKey(k);
+                            setCurrentView(k);
+                            }}
+                        >
+                            {/* map over view names */}
+                            {views.map(view => (
+                                <Tab
+                                    eventKey={view.name}
+                                    title={view.name}
+                                >
+                                    <div className="list-container">
+                                        {/* pass down props to component */}
+                                        <ViewIndex
+                                            currentView={currentView}
+                                            home={home}
+                                        ></ViewIndex>
+                                    </div>
+                                </Tab>
+                            ))}
+                    </Tabs>  
+                    </div>  
                     </Col>
                 </Row>
             </Container>
+
         </div>
 
     );

@@ -12,7 +12,7 @@ import SplashPage from './pages/Splash.js';
 import Profile from './pages/Profile.js';
 import Home from './pages/Home';
 import AddFile from './pages/AddFile';
-import AddRemodels from './components/AddProducts';
+import AddRemodels from './components/AddRemodels';
 import AddProducts from './components/AddProducts';
 import AddServices from './components/AddServices';
 

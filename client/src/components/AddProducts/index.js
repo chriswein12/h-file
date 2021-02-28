@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 function AddProducts({ homeId }) {
     //set initial form state
-    const [newProductFormData, setNewProductFormData] = useState({
+    const [productData, setproductData] = useState({
         productName: '',
         productPrice: '',
         datePurchased: '',
@@ -41,8 +41,8 @@ function AddProducts({ homeId }) {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setNewProductFormData({
-            ...newProductFormData,
+        setproductData({
+            ...productData,
             [name]: value
         });
     }
@@ -66,18 +66,19 @@ function AddProducts({ homeId }) {
         }
 
         try {
-            const { data } = await addNewProduct({
-                variables: { ...newProductFormData }
+            const {data} = await addNewProduct({
+                variables: { productData, homeId }
             });
+            console.log(data);
 
-            //window.location.assign('/profile/:id');
+            window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);
             setShowAlert(true);
         }
 
-        setNewProductFormData({
+        setproductData({
             productName: '',
             productPrice: '',
             datePurchased: '',
@@ -105,7 +106,7 @@ function AddProducts({ homeId }) {
                                 type="text"
                                 name="productName"
                                 onChange={handleInputChange}
-                                value={newProductFormData.productName}
+                                value={productData.productName}
                                 required
                             />
                         </Form.Group>
@@ -115,7 +116,7 @@ function AddProducts({ homeId }) {
                                 type="number"
                                 name="productPrice"
                                 onChange={handleInputChange}
-                                value={newProductFormData.productPrice}
+                                value={productData.productPrice}
                                 required
                             />
                         </Form.Group>
@@ -125,7 +126,7 @@ function AddProducts({ homeId }) {
                                 type="date"
                                 name="datePurchased"
                                 onChange={handleInputChange}
-                                value={newProductFormData.datePurchased}
+                                value={productData.datePurchased}
                                 required
                             />
                         </Form.Group>
@@ -149,19 +150,11 @@ function AddProducts({ homeId }) {
                                     <Form.Group>
                                         <Form.Label htmlFor="productRoom">Room</Form.Label>
                                         <Form.Control
-                                            type="select"
+                                            type="text"
                                             name="productRoom"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.productRoom}
-                                        >
-                                            <option>Living Room</option>
-                                            <option>Kitchen</option>
-                                            <option>Basement</option>
-                                            <option>Master Bedroom</option>
-                                            <option>Bedroom</option>
-                                            <option>Outside</option>
-                                            <option>Other/Add</option>
-                                        </Form.Control>
+                                            value={productData.productRoom}
+                                        />
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label htmlFor="serialNumber">Serial Number</Form.Label>
@@ -169,7 +162,7 @@ function AddProducts({ homeId }) {
                                             type="text"
                                             name="serialNumber"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.serialNumber}
+                                            value={productData.serialNumber}
                                         />
                                     </Form.Group>
                                     <Form.Group>
@@ -178,7 +171,7 @@ function AddProducts({ homeId }) {
                                             type="text"
                                             name="modelNumber"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.modelNumber}
+                                            value={productData.modelNumber}
                                         />
                                     </Form.Group>
                                     <Form.Group>
@@ -187,7 +180,7 @@ function AddProducts({ homeId }) {
                                             type="text"
                                             name="warrantyLength"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.warrantyLength}
+                                            value={productData.warrantyLength}
                                         />
                                     </Form.Group>
                                     <Form.Group>
@@ -196,7 +189,7 @@ function AddProducts({ homeId }) {
                                             type="text"
                                             name="productLink"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.productLink}
+                                            value={productData.productLink}
                                         />
                                     </Form.Group>
                                     <Form.Group>
@@ -206,7 +199,7 @@ function AddProducts({ homeId }) {
                                             rows={5}
                                             name="additionalDetails"
                                             onChange={handleInputChange}
-                                            value={newProductFormData.additionalDetails}
+                                            value={productData.additionalDetails}
                                         />
                                     </Form.Group>
                                     {/* upload goes here when added */}

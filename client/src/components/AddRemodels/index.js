@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 function AddRemodels({ homeId }) {
     //set initial form state
-    const [newRemodelFormData, setNewRemodelFormData] = useState({
+    const [remodelData, setremodelData] = useState({
         remodelTitle: '',
         remodelRoom: '',
         remodelStartDate: '',
@@ -38,8 +38,8 @@ function AddRemodels({ homeId }) {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setNewRemodelFormData({
-            ...newRemodelFormData,
+        setremodelData({
+            ...remodelData,
             [name]: value
         });
     }
@@ -63,16 +63,19 @@ function AddRemodels({ homeId }) {
         }
 
         try {
-            const { data } = await addNewRemodel({
-                variables: { ...newRemodelFormData }
+            const {data} = await addNewRemodel({
+                variables: { remodelData, homeId }
             });
+            console.log(data);
+
+            window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);
             setShowAlert(true);
         }
 
-        setNewRemodelFormData({
+        setremodelData({
             remodelTitle: '',
             remodelRoom: '',
             remodelStartDate: '',
@@ -97,27 +100,19 @@ function AddRemodels({ homeId }) {
                                 type="text"
                                 name="remodelTitle"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelTitle}
+                                value={remodelData.remodelTitle}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelRoom">Remodel Room</Form.Label>
                             <Form.Control
-                                type="select"
+                                type="text"
                                 name="remodelRoom"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelRoom}
+                                value={remodelData.remodelRoom}
                                 required
-                            >
-                                <option>Living Room</option>
-                                <option>Kitchen</option>
-                                <option>Basement</option>
-                                <option>Master Bedroom</option>
-                                <option>Bedroom</option>
-                                <option>Outside</option>
-                                <option>Other/Add</option>
-                            </Form.Control>
+                            />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelStartDate">Remodel Start Date</Form.Label>
@@ -125,7 +120,7 @@ function AddRemodels({ homeId }) {
                                 type="date"
                                 name="remodelStartDate"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelStartDate}
+                                value={remodelData.remodelStartDate}
                                 required
                             />
                         </Form.Group>
@@ -135,7 +130,7 @@ function AddRemodels({ homeId }) {
                                 type="date"
                                 name="remodelEndDate"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelEndDate}
+                                value={remodelData.remodelEndDate}
                                 required
                             />
                         </Form.Group>
@@ -160,7 +155,7 @@ function AddRemodels({ homeId }) {
                                             type="number"
                                             name="remodelCost"
                                             onChange={handleInputChange}
-                                            value={newRemodelFormData.remodelCost}
+                                            value={remodelData.remodelCost}
                                         />
                                     </Form.Group>
                                     <Form.Group>
@@ -169,7 +164,7 @@ function AddRemodels({ homeId }) {
                                             type="text"
                                             name="remodelDetails"
                                             onChange={handleInputChange}
-                                            value={newRemodelFormData.remodelDetails}
+                                            value={remodelData.remodelDetails}
                                         />
                                     </Form.Group>
                                 </div>

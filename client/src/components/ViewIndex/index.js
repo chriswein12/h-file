@@ -18,7 +18,7 @@ function ViewIndex(props) {
             case 'About Home':
                 return <ViewAboutHome home={home} />;
             case 'Products':
-                return <ViewProducts home={home.homeProducts} />;
+                return <ViewProducts home={home} />;
             case 'Remodels':
                 return <ViewRemodels home={home.homeRemodels} />;
             case 'Services':

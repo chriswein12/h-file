@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Modal } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_HOME } from '../../utils/mutations';
 import Auth from '../../utils/auth';
@@ -69,7 +69,7 @@ function AboutHome() {
                 variables: { homeData: { ...newHomeFormData }}
             });
 
-            window.location()
+            window.location('/profile')
         }
         catch (err) {
             console.error(err);
@@ -88,6 +88,8 @@ function AboutHome() {
             value: '',
             lotSize: ''
         });
+
+        
     }
 
     return (

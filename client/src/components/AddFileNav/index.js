@@ -4,32 +4,33 @@ function AddFileNav(props) {
     //destructuring props passed in from Home.js
     const {
         fileTypes = [],
-        currentType,
         setCurrentType
     } = props;
 
     return (
         <div className="add-file-nav-list-wrapper">
-            <ul className="add-file-nav-list">
+            <div className="add-file-nav-list">
                 {/* map over fileType names */}
-                {fileTypes.map(Type => (
-                    <li
+                {fileTypes.map(type => (
+                    <button
                         className="add-file-nav-list-items"
-                        key={Type.name}
+                        key={type.name}
                     >
                         <h3
-                            className={`${
-                                currentType.name === Type.name && "fileTypes"
-                            }`}
-                            onClick={() => setCurrentType(Type)}
+
+                            onClick={() => setCurrentType(type)}
                         >
-                            {Type.name}
+                            {type.name}
                         </h3>
-                    </li>
+                    </button>
                 ))}
-            </ul>
+            </div>
         </div>
     )
 }
+
+//                            className={`${
+//     currentType.name === type.name && "fileTypes"
+// }`}
 
 export default AddFileNav;

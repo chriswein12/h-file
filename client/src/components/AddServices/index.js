@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 function AddServices({ homeId }) {
     //set initial form state
-    const [newServiceFormData, setNewServiceFormData] = useState({
+    const [serviceData, setserviceData] = useState({
         serviceTitle: '',
         serviceCost: '',
         serviceFrequency: '',
@@ -37,8 +37,8 @@ function AddServices({ homeId }) {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setNewServiceFormData({
-            ...newServiceFormData,
+        setserviceData({
+            ...serviceData,
             [name]: value
         });
     }
@@ -63,15 +63,18 @@ function AddServices({ homeId }) {
 
         try {
             const { data } = await addNewService({
-                variables: { ...newServiceFormData }
+                variables: { serviceData, homeId }
             });
+            console.log(data);
+
+            window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);
             setShowAlert(true);
         }
 
-        setNewServiceFormData({
+        setserviceData({
             serviceTitle: '',
             serviceCost: '',
             serviceFrequency: '',
@@ -95,7 +98,7 @@ function AddServices({ homeId }) {
                                 type="text"
                                 name="serviceTitle"
                                 onChange={handleInputChange}
-                                value={newServiceFormData.serviceTitle}
+                                value={serviceData.serviceTitle}
                                 required
                             />
                         </Form.Group>
@@ -105,26 +108,19 @@ function AddServices({ homeId }) {
                                 type="number"
                                 name="serviceCost"
                                 onChange={handleInputChange}
-                                value={newServiceFormData.serviceCost}
+                                value={serviceData.serviceCost}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="serviceFrequency">Service Frequency</Form.Label>
                             <Form.Control
-                                type="select"
+                                type="text"
                                 name="serviceFrequency"
                                 onChange={handleInputChange}
-                                value={newServiceFormData.serviceFrequency}
+                                value={serviceData.serviceFrequency}
                                 required
-                            >
-                                <option>One-time</option>
-                                <option>Monthly</option>
-                                <option>Every 3 Months</option>
-                                <option>Every 6 Months</option>
-                                <option>Yearly</option>
-                                <option>Other/Add</option>
-                            </Form.Control>
+                            />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="serviceDate">Date of Service</Form.Label>
@@ -132,7 +128,7 @@ function AddServices({ homeId }) {
                                 type="date"
                                 name="serviceDate"
                                 onChange={handleInputChange}
-                                value={newServiceFormData.serviceDate}
+                                value={serviceData.serviceDate}
                                 required
                             />
                         </Form.Group>
@@ -157,8 +153,8 @@ function AddServices({ homeId }) {
                                             rows={5}
                                             name="serviceDescription"
                                             onChange={handleInputChange}
-                                            value={newServiceFormData.serviceDescription}
-                                            required
+                                            value={serviceData.serviceDescription}
+
                                         />
                                     </Form.Group>
                                 </div>

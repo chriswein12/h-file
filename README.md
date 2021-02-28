@@ -8,12 +8,12 @@ This website is designed to revolutionize the home maintenance process and bring
 ## Table of Contents
 * [How it Works](#how-it-works)
 * [Website Features](#website-features)
-* [Website Features](#website-features)
 * [Plans for Future Development](#plans-for-future-development)
 * [House It Website](#house-it-website)
 * [Desktop Display](#desktop-display)
 * [Mobile Display](#mobile-display)
 * [Credits](#credits)
+
 
 <br/>
 

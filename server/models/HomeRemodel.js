@@ -20,7 +20,7 @@ const remodelSchema = new Schema(
             required: true
         },
 
-        remodelEndtDate: {
+        remodelEndDate: {
             type: Date
         },
 

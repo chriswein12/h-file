@@ -1,36 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_REMODEL } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
-//need login mutation and Auth?
-
-import './Remodels.css'
-
-function Remodels() {
-    const [newRemodelFormData, setNewRemodelFormData] = useState({
+function AddRemodels({ homeId }) {
+    //set initial form state
+    const [remodelData, setremodelData] = useState({
         remodelTitle: '',
         remodelRoom: '',
         remodelStartDate: '',
         remodelEndDate: '',
         remodelCost: '',
-        remodelDetails: '',
-        remodelContacts: ''
+        remodelDetails: ''
     });
 
-    //add front end validation?
-    //const [validated] = useState(false);
+    //set for validation
+    const [validated] = useState(false);
 
-    //add alert for auth issues?
-    //const [showAlert, setShowAlert] = useState(false);
+    //state for alerts
+    const [showAlert, setShowAlert] = useState(false);
 
-    //create const for anticipated mutation (will need to update)
+    //toggle button/additional info inputs
+    const [hidden, setHidden] = useState(false);
+
+    //create const for useMutation(ADD_REMODEL)
     const [addNewRemodel, { error }] = useMutation(ADD_REMODEL);
+
+    //set up alert effect
+    useEffect(() => {
+        if (error) {
+            setShowAlert(true);
+        } else {
+            setShowAlert(false);
+        }
+    }, [error]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setNewRemodelFormData({
-            ...newRemodelFormData,
+        setremodelData({
+            ...remodelData,
             [name]: value
         });
     }
@@ -38,52 +47,51 @@ function Remodels() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        //won't require entire form to be complete,
-        //so full validity check not needed,
-        //maybe partial validity
+        //react bootstrap validation - 
+        //does it only work on <Form.Control required />?
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        //get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
 
         try {
-            const { data } = await addNewRemodel({
-                variables: { ...newRemodelFormData }
+            const {data} = await addNewRemodel({
+                variables: { remodelData, homeId }
             });
-
             console.log(data);
-            //Auth.login(data.login.token);
+
+            window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);
-            //setShowAlert(true);
+            setShowAlert(true);
         }
 
-        setNewRemodelFormData({
-            //username: '',
+        setremodelData({
             remodelTitle: '',
             remodelRoom: '',
             remodelStartDate: '',
             remodelEndDate: '',
             remodelCost: '',
-            remodelDetails: '',
-            remodelContacts: ''
-        });
-    }
-
-    //default add details button renders, onclick hides button
-    //and renders the additional details section
-    const state = {
-        isActive: true
-    }
-
-    const toggleShow = () => {
-        this.setState({
-            isActive: false
+            remodelDetails: ''
         });
     }
 
     return (
-        <div>
-            <h2>New Remodel</h2>
+        <div className="addHome">
             <div className="new-remodel-details">
-                <Form>
+            <h2>New Remodel</h2>
+
+                <Form noValidate validated={validated}>
+                    
                     <div className="new-remodel-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -92,55 +100,48 @@ function Remodels() {
                                 type="text"
                                 name="remodelTitle"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelTitle}
+                                value={remodelData.remodelTitle}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelRoom">Remodel Room</Form.Label>
                             <Form.Control
-                                type="select"
+                                type="text"
                                 name="remodelRoom"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelRoom}
-                            >
-                                <option>Living Room</option>
-                                <option>Kitchen</option>
-                                <option>Basement</option>
-                                <option>Master Bedroom</option>
-                                <option>Bedroom</option>
-                                <option>Outside</option>
-                                <option>Other/Add</option>
-                            </Form.Control>
+                                value={remodelData.remodelRoom}
+                                required
+                            />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelStartDate">Remodel Start Date</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="date"
                                 name="remodelStartDate"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelStartDate}
+                                value={remodelData.remodelStartDate}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelEndDate">Remodel End Date</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="date"
                                 name="remodelEndDate"
                                 onChange={handleInputChange}
-                                value={newRemodelFormData.remodelEndDate}
+                                value={remodelData.remodelEndDate}
                                 required
                             />
                         </Form.Group>
                     </div>
                     <div className="new-remodel-additional">
-                        {this.state.isActive ?
+                        {hidden === false ?
                             (
                                 <Button
                                     id="new-remodel-additional-btn"
                                     type="button"
-                                    onClick={toggleShow}
+                                    onClick={() => setHidden(true)}
                                 >
                                     Add More Details?
                                 </Button>
@@ -151,10 +152,10 @@ function Remodels() {
                                     <Form.Group>
                                         <Form.Label htmlFor="remodelCost">Remodel Cost</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="number"
                                             name="remodelCost"
                                             onChange={handleInputChange}
-                                            value={newRemodelFormData.remodelCost}
+                                            value={remodelData.remodelCost}
                                         />
                                     </Form.Group>
                                     <Form.Group>
@@ -163,24 +164,23 @@ function Remodels() {
                                             type="text"
                                             name="remodelDetails"
                                             onChange={handleInputChange}
-                                            value={newRemodelFormData.remodelDetails}
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="remodelContacts">Remodel Contacts</Form.Label>
-                                        <Form.Control
-                                            type="email"
-                                            name="remodelContacts"
-                                            onChange={handleInputChange}
-                                            value={newRemodelFormData.remodelContacts}
+                                            value={remodelData.remodelDetails}
                                         />
                                     </Form.Group>
                                 </div>
                             )
                         }
+                        <Alert
+                        dismissible
+                        onClose={() => setShowAlert(false)}
+                        show={showAlert}
+                        variant='danger'
+                    >
+                        Something went wrong!
+                    </Alert>
                     </div>
                     <Button
-                        id="new-house-submit-btn"
+                        id="new-remodel-submit-btn"
                         type="submit"
                         onClick={handleFormSubmit}
                     >
@@ -192,4 +192,4 @@ function Remodels() {
     )
 }
 
-export default Remodels;
+export default AddRemodels;

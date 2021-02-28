@@ -1,31 +1,54 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import AddProducts from '../components/AddProducts';
+import AddRemodels from '../components/AddRemodels';
+import AddServices from '../components/AddServices';
+import AddFileContent from '../components/AddFileContent';
+import FileType from '../components/FileType';
+import AddFileNav from '../components/AddFileNav';
+import { useParams } from 'react-router-dom';
 
-import AboutHome from '../components/AboutHome';
-import Products from '../components/Products';
-import Remodels from '../components/Remodels';
-import Services from '../components/Services';
-
-import './css/AddFile.css';
-
+//pass in currentView from Home.js
 function AddFile() {
+
+    const { id: homeId } = useParams();
+
+
+    const [fileTypes] = useState([
+        { name: 'Product' },
+        { name: 'Remodel' },
+        { name: 'Service' }
+    ]);
+
+    const [currentType, setCurrentType] = useState(fileTypes);
+
+    //switch statement to provide clicked view to render
+    function renderType() {
+
+        switch (currentType.name) {
+            case 'Product':
+                return <AddProducts homeId={homeId} />;
+            case 'Remodel':
+                return <AddRemodels homeId={homeId} />;
+            case 'Service':
+                return <AddServices homeId={homeId} />;
+            default: 
+                return <FileType />;
+        }
+    }
+
     return (
-        <div className="add-file-container">
-            <ul>
-                <li className="add-file" id="add-product">
-                    <Link to={Products}>Add Product</Link>
-                </li>
-                <li className="add-file" id="add-service">
-                    <Link to={Services}>Add Service</Link>
-                </li>
-                <li className="add-file" id="add-remodel">
-                    <Link to={Remodels}>Add Remodel</Link>
-                </li>
-                <li className="add-file" id="add-house">
-                    <Link to={AboutHome}>Add New Home</Link>
-                </li>
-            </ul>
+       <>
+       <div>
+            <AddFileNav
+                fileTypes={fileTypes}
+                currentType={currentType}
+                setCurrentType={setCurrentType}
+            />
         </div>
+        <div>
+            {renderType()}
+        </div>
+        </>
     );
 }
 

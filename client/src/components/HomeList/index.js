@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function HomeList( username, savedHomes ) {
+//check server connection for savedHomes
+function HomeList({ username, savedHomes }) {
     if (!savedHomes.length) {
         return <h3>Homes that you have added will appear here</h3>;
     }
@@ -17,26 +18,26 @@ function HomeList( username, savedHomes ) {
                         {/* have Link contain card? */}
                         {/* build out card here */}
                         {/* savedHomes.image (when applicable) */}
-                        {savedHomes.homeName}
-                        {savedHomes.address}
+                        <div className="row pb-5 mb-4">
+                            <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <div className="card shadow-sm border-0 rounded">
+                                    <div className="card-body p-0">
+                                        <div className="p-4">
+                                        <h5 className="mb-2">{home.homeName}</h5>
+                                        <p className="small text-muted mt-1 address">{home.street}</p>
+                                        <p className="small text-muted mt-1 cityState">{home.city}, {home.state} {home.zip}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </Link>
                 </div>
             ))}
-        </div>
+        </div >
     );
 }
 
 export default HomeList;
 
 
-/*<div className="row pb-5 mb-4">
-    <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
-        <div className="card shadow-sm border-0 rounded">
-            <div className="card-body p-0"><img src="../../Assets/splashPage02.jpg" alt="" className="w-100 card-img-top" />
-                <div className="p-4">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*/

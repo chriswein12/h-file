@@ -8,18 +8,17 @@ import HeaderLI from '../components/HeaderLoggedIn'
 import HomeNav from '../components/HomeNav';
 import ViewIndex from '../components/ViewIndex';
 
-import AddFile from './AddFile';
-
 import './css/Home.css'
 
-function Home({ username }) {
+function Home() {
     const { id: homeId } = useParams();
 
     const { loading, data } = useQuery(GET_HOME, {
         variables: { id: homeId }
     });
 
-    const home = data.home;
+    const home = data?.home || {};
+    console.log(home);
 
     //const to set names for views inside div to be rendered
     const [views] = useState([
@@ -29,8 +28,10 @@ function Home({ username }) {
         { name: 'Services' }
     ]);
 
+
     //const to set view about home as default rendered page
     const [currentView, setCurrentView] = useState(views[0]);
+ 
 
     if (loading) {
         return <div>Loading...</div>;
@@ -39,20 +40,21 @@ function Home({ username }) {
     return (
         <div className="home-container">
             <HeaderLI />
+
             <Container>
                 <Row>
                     <Col>
-                        <button type="button" className="link-add-file-btn">
-                            <Link to={AddFile}>
-                                <h2>Add a New File</h2>
-                            </Link>
-                        </button>
+                        <Link to={`/AddFile/${homeId}`}>
+                            <button type="button" className="btn btn-primary" id="addNewFile">
+                                Add New File
+                            </button>
+                        </Link>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
                         <div>
-                            <h1>{username}'s Home</h1>
+                            <h1>{home.homeName}</h1>
                         </div>
                         <div>
                             {/* image? will need another query */}
@@ -71,12 +73,14 @@ function Home({ username }) {
                             {/* pass down props to component */}
                             <ViewIndex
                                 currentView={currentView}
+                                home={home}
                             ></ViewIndex>
                         </div>
                     </Col>
                 </Row>
             </Container>
         </div>
+
     );
 }
 

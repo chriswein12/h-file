@@ -11,18 +11,10 @@ export const GET_ME = gql`
             savedHomes {
                 _id
                 homeName
-                username
-                address {
-                    street
-                    city
-                    state
-                    zip
-                }
-                yearBought
-                yearBuilt
-                squareFootage
-                value
-                lotSize
+                street
+                city
+                state
+                zip
             }
         }
     }
@@ -33,7 +25,10 @@ export const GET_HOME = gql`
         home(_id: $id) {
             _id
             homeName
-            address
+            street
+            city
+            state
+            zip
             yearBought
             yearBuilt
             squareFootage
@@ -68,7 +63,7 @@ export const GET_HOME = gql`
                 serviceDate
                 serviceDescription
             }
-            homeMaintenance {
+            homeMaintenances {
                 _id
                 maintName
                 maintCost

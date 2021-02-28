@@ -11,9 +11,8 @@ const servicesSchema = new Schema(
         },
 
         serviceCost: {
-            type: Number,
-            required: true,
-            min: 0
+            type: String,
+            required: true
         },
 
         serviceFrequency: {
@@ -26,7 +25,6 @@ const servicesSchema = new Schema(
 
         serviceDescription: {
             type: String,
-            required: true,
             maxLength: 500
         },
 

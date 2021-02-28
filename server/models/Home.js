@@ -4,11 +4,18 @@ const Products = require('./Product')
 const Remodels = require('./HomeRemodel');
 const Services = require('./Services');
 
-const homeAddressSchema = new Schema(
+
+const homeSchema = new Schema(
     {
-        addressId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId()
+        homeName: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        username: {
+            type: String,
+            required: true
         },
 
         street: {
@@ -31,53 +38,31 @@ const homeAddressSchema = new Schema(
         },
 
         zip: {
-            type: Number,
+            type: String,
             required: true,
             trim: true,
-            min: 5,
-            max:5
+            minLength: 5,
+            maxLength:5
         },
-    }
-)
-
-const homeSchema = new Schema(
-    {
-        homeName: {
-            type: String,
-            required: true,
-            trim: true
-        },
-
-        username: {
-            type: String,
-            required: true
-        },
-
-        address: {homeAddressSchema},
 
         yearBought: {
-            type: Number,
-            min: 1000
+            type: String
         },
 
         yearBuilt: {
-            type: Number,
-            min: 1000
+            type: String
         },
 
         squareFootage: {
-            type: Number,
-            min: 0
+            type: String
         },
 
         value: {
-            type: Number,
-            min: 0
+            type: String
         },
 
         lotSize: {
-            type: Number,
-            min: 0
+            type: String
         },
 
         // pulling in the objects from other models that will be in Homes

@@ -193,13 +193,13 @@ function AddProducts({ homeId }) {
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="additionalDetails">Additional Details</Form.Label>
+                                        <Form.Label htmlFor="productDetails">Additional Details</Form.Label>
                                         <Form.Control
                                             type="textarea"
                                             rows={5}
-                                            name="additionalDetails"
+                                            name="productDetails"
                                             onChange={handleInputChange}
-                                            value={productData.additionalDetails}
+                                            value={productData.productDetails}
                                         />
                                     </Form.Group>
                                     {/* upload goes here when added */}

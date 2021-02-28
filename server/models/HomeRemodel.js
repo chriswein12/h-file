@@ -16,12 +16,12 @@ const remodelSchema = new Schema(
         },
 
         remodelStartDate: {
-            type: Date,
+            type: String,
             required: true
         },
 
         remodelEndDate: {
-            type: Date
+            type: String
         },
 
         remodelCost: {

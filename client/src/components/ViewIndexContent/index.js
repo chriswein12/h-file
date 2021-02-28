@@ -1,11 +1,14 @@
 import React from 'react';
+import '../../App.css'
 
 function ViewIndexContent(props) {
     return (
         <div>
             <div className="vic-wrapper">
-                {/* use props to render selected views */}
-                {props.children}
+                <div className="vic-views">
+                    {/* use props to render selected views */}
+                    {props.children}
+                </div>
             </div>
         </div>
     );

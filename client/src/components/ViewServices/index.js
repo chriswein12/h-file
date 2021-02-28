@@ -9,8 +9,6 @@ function ViewServices({ home }) {
         return <h4>No services have been added</h4>
     }
 
-    console.log(home);
-
     return (
         <div>
             {home.homeServices && home.homeServices.map(service => (

@@ -20,7 +20,7 @@ const servicesSchema = new Schema(
         },
 
         serviceDate: {
-            type: Date
+            type: String
         },
 
         serviceDescription: {

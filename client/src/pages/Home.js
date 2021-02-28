@@ -18,7 +18,6 @@ function Home() {
     });
 
     const home = data?.home || {};
-    console.log(homeId);
 
     //const to set names for views inside div to be rendered
     const [views] = useState([

@@ -5,14 +5,22 @@ function ViewRemodels({ home }) {
         return <h4>Loading...</h4>
     }
 
+    if (!home.homeRemodels.length) {
+        return <h4>No remodels have been added</h4>
+    }
+
     return (
         <div>
-            <div>Remodel Title: {home.remodelTitle}</div>
-            <div>Room: {home.remodelRoom}</div>
-            <div>Start Date: {home.remodelStartDate}</div>
-            <div>End Date: {home.remodelEndDate}</div>
-            <div>Total Cost: {home.remodelCost}</div>
-            <div>Remodel Details: {home.remodelDetails}</div>
+            {home.homeRemodels && home.homeRemodels.map(remodel => (
+                <div key={remodel._id}>
+                    <div>Remodel Title: {remodel.remodelTitle}</div>
+                    <div>Room: {remodel.remodelRoom}</div>
+                    <div>Start Date: {remodel.remodelStartDate}</div>
+                    <div>End Date: {remodel.remodelEndDate}</div>
+                    <div>Total Cost: {remodel.remodelCost}</div>
+                    <div>Remodel Details: {remodel.remodelDetails}</div>
+                </div>
+            ))}
         </div>
     );
 }

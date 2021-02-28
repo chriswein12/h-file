@@ -63,7 +63,7 @@ export const GET_HOME = gql`
                 serviceDate
                 serviceDescription
             }
-            homeMaintenance {
+            homeMaintenances {
                 _id
                 maintName
                 maintCost

@@ -12,31 +12,26 @@ const typeDefs = gql`
         _id: ID!
         homeName: String!
         username: String!
-        address: Address!
-        yearBought: Int
-        yearBuilt: Int
-        squareFootage: Int
-        value: Int
-        lotSize: Int
+        street: String!
+        city: String!
+        state: String!
+        zip: String!
+        yearBought: String
+        yearBuilt: String
+        squareFootage: String
+        value: String
+        lotSize: String
         homeServices: [Services]
         homeRemodels: [Remodel]
         homeProducts: [Product]
-        homeMaintenance: [Maintenance]
-    }
-
-
-    type Address {
-        addressId: ID
-        street: String
-        city: String
-        state: String
-        zip: Int
+        homeMaintenances: [Maintenance]
     }
 
     type Services {
         _id: ID!
+        homeId: ID
         serviceTitle: String!
-        serviceCost: Int!
+        serviceCost: String!
         serviceFrequency: String
         serviceDate: String
         serviceDescription: String
@@ -48,8 +43,8 @@ const typeDefs = gql`
         remodelTitle: String!
         remodelRoom: String!
         remodelStartDate: String!
-        remodelEndDate: String!
-        remodelCost: Int
+        remodelEndDate: String
+        remodelCost: String
         remodelDetails: String
         remodelContacts: [BusinessCard]
     }
@@ -57,7 +52,7 @@ const typeDefs = gql`
     type Product {
         _id: ID!
         productName: String!
-        productPrice: Int!
+        productPrice: String!
         datePurchased: String!
         productRoom: String
         serialNumber: String
@@ -70,7 +65,7 @@ const typeDefs = gql`
     type Maintenance {
         _id: ID!
         maintName: String!
-        maintCost: Int!
+        maintCost: String!
         nextMaintDate: String!
         maintFrequency: String!
         pastMaintDates: [String]
@@ -88,28 +83,23 @@ const typeDefs = gql`
 
     input HomeInput {
         homeName: String
-        address: AddressInput
-        yearBought: Int
-        yearBuilt: Int
-        squareFootage: Int
-        value: Int
-        lotSize: Int
-    }
-
-    input AddressInput {
         street: String
         city: String
         state: String
-        zip: Int
+        zip: String
+        yearBought: String
+        yearBuilt: String
+        squareFootage: String
+        value: String
+        lotSize: String
     }
 
     input ServiceInput {
         serviceTitle: String
-        serviceCost: Int
+        serviceCost: String
         serviceFrequency: String
         serviceDate: String
         serviceDescription: String
-        serviceContact: [BusinessCardInput]
     }
 
     input RemodelInput {
@@ -117,9 +107,8 @@ const typeDefs = gql`
         remodelRoom: String
         remodelStartDate: String
         remodelEndDate: String
-        remodelCost: Int
+        remodelCost: String
         remodelDetails: String
-        remodelContacts: [BusinessCardInput]
     }
 
     input BusinessCardInput {
@@ -132,7 +121,7 @@ const typeDefs = gql`
 
     input ProductInput {
         productName: String
-        productPrice: Int
+        productPrice: String
         datePurchased: String
         productRoom: String
         serialNumber: String
@@ -144,7 +133,7 @@ const typeDefs = gql`
 
     input MaintenanceInput {
         maintName: String
-        maintCost: Int
+        maintCost: String
         nextMaintDate: String
         maintFrequency: String
         pastMaintDates: [String]
@@ -154,10 +143,6 @@ const typeDefs = gql`
     type Query {
         me: User
         home(_id: ID!): Home
-        services(homeId: ID!): Home
-        remodels(homeId: ID!): Home
-        products(homeId: ID!): Home
-        maintenance(homeId: ID!): Home
     }
 
     type Mutation {
@@ -165,9 +150,14 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addHome(homeData: HomeInput!): Home
         addService(homeId: ID!, serviceData: ServiceInput!): Home
-        addRemodel(remodelData: RemodelInput!): Remodel
-        addProduct(productData: ProductInput!): Product
-        addMaintenance(maintenanceData: MaintenanceInput!): Maintenance
+        addRemodel(homeId: ID!, remodelData: RemodelInput!): Home
+        addProduct(homeId: ID!, productData: ProductInput!): Home
+        addMaintenance(homeId: ID!, maintenanceData: MaintenanceInput!): Home
+        removeHome(_id: ID!): Home
+        removeService(homeId: ID!, serviceId: ID!): Home
+        removeRemodel(homeId: ID!, remodelId: ID!): Home
+        removeProduct(homeId: ID!, productId: ID!): Home
+        removeMaintenance(homeId: ID!, maintenanceId: ID!): Home
     }
 
     type Auth {

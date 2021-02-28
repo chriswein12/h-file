@@ -1,4 +1,4 @@
-const { User, Home, Product, Services, Remodel, Maintenance  } = require('../models');
+const { User, Home } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -18,27 +18,13 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        home: async (parent, { _id }) => {
+        home: async (parent, { _id }, context) => {
+            if (context.user) {
             return Home.findOne({ _id });
-        },
+            }
 
-        services: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
-
-        remodels: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
-
-        products: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
-
-        maintenance: async (parent, { _id }) => {
-            return Home.findOne({ _id });
-        },
-
-
+            throw new AuthenticationError('Not logged in');
+        }
     },
 
     Mutation: {
@@ -143,7 +129,7 @@ const resolvers = {
                 
                 const updatedHome = await Home.findOneAndUpdate(
                     { _id: homeId },
-                    { $push: { homeMaintenance: maintenanceData } },
+                    { $push: { homeMaintenances: maintenanceData } },
                     { new: true, runValidators: true }
                 );
                     console.log("It works!")
@@ -152,6 +138,65 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
+
+        removeHome: async (parent, { _id }, context ) => {
+            if (context.user) {
+                const deletedHome = await Home.findByIdAndDelete(_id);
+                return deletedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        removeService: async (parent, { homeId, serviceId }, context ) => {
+            if (context.user) {
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId},
+                    { $pull: { homeServices: { _id: serviceId }}},
+                    { new: true}
+                );
+                return updatedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        removeRemodel: async (parent, { homeId, remodelId }, context ) => {
+            if (context.user) {
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId},
+                    { $pull: { homeRemodels: { _id: remodelId }}},
+                    { new: true}
+                );
+                return updatedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        removeProduct: async (parent, { homeId, productId }, context ) => {
+            if (context.user) {
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId},
+                    { $pull: { homeProducts: { _id: productId }}},
+                    { new: true}
+                );
+                return updatedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+
+        removeMaintenance: async (parent, { homeId, maintenanceId }, context ) => {
+            if (context.user) {
+                const updatedHome = await Home.findOneAndUpdate(
+                    { _id: homeId},
+                    { $pull: { homeMaintenances: { _id: maintenanceId }}},
+                    { new: true}
+                );
+                return updatedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+
     }
 
     

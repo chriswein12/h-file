@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_PRODUCT } from '../../utils/mutations';
-
-//need login mutation and Auth?
-
-import './Products.css'
+import Auth from '../../utils/auth';
 
 function Products() {
+    //set initial form state
     const [newProductFormData, setNewProductFormData] = useState({
         productName: '',
         productPrice: '',
@@ -17,20 +15,30 @@ function Products() {
         modelNumber: '',
         warrantyLength: '',
         productLink: '',
-        purchaseLocation: '',
-        additionalDetails: ''
+        productDetails: ''
     });
 
-    //add front end validation?
-    //const [validated] = useState(false);
+    //set for validation
+    const [validated] = useState(false);
 
-    //add alert for auth issues?
-    //const [showAlert, setShowAlert] = useState(false);
+    //state for alerts
+    const [showAlert, setShowAlert] = useState(false);
+
+    //toggle button/additional info inputs
+    const [hidden, setHidden] = useState(false);
 
     //create const for anticipated mutation (will need to update)
     const [addNewProduct, { error }] = useMutation(ADD_PRODUCT);
 
-    //reference Form.Control (bootstrap)
+    //set up alert effect
+    useEffect(() => {
+        if (error) {
+            setShowAlert(true);
+        } else {
+            setShowAlert(false);
+        }
+    }, [error]);
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setNewProductFormData({
@@ -42,25 +50,34 @@ function Products() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        //won't require entire form to be complete,
-        //so full validity check not needed,
-        //maybe partial validity
+        //react bootstrap validation - 
+        //does it only work on <Form.Control required />?
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        //get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
 
         try {
             const { data } = await addNewProduct({
                 variables: { ...newProductFormData }
             });
 
-            console.log(data);
-            //Auth.login(data.login.token)
+            //window.location.assign('/profile/:id');
         }
         catch (err) {
             console.error(err);
-            //setShowAlert(true);
+            setShowAlert(true);
         }
 
         setNewProductFormData({
-            //username: '',
             productName: '',
             productPrice: '',
             datePurchased: '',
@@ -69,20 +86,7 @@ function Products() {
             modelNumber: '',
             warrantyLength: '',
             productLink: '',
-            purchaseLocation: '',
-            additionalDetails: ''
-        });
-    }
-
-    //default add details button renders, onclick hides button
-    //and renders the additional details section
-    const state = {
-        isActive: true
-    }
-
-    const toggleShow = () => {
-        this.setState({
-            isActive: false
+            productDetails: ''
         });
     }
 
@@ -90,7 +94,15 @@ function Products() {
         <div>
             <h2>New Product</h2>
             <div className="new-product-details">
-                <Form>
+                <Form noValidate validated={validated}>
+                    <Alert 
+                        dismissible 
+                        onClose={() => setShowAlert(false)}
+                        show={showAlert}
+                        variant='danger'
+                    >
+                        Something went wrong!
+                    </Alert>
                     <div className="new-product-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -106,7 +118,7 @@ function Products() {
                         <Form.Group>
                             <Form.Label htmlFor="productPrice">Product Price</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="number"
                                 name="productPrice"
                                 onChange={handleInputChange}
                                 value={newProductFormData.productPrice}
@@ -116,7 +128,7 @@ function Products() {
                         <Form.Group>
                             <Form.Label htmlFor="datePurchased">Date Purchased</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="date"
                                 name="datePurchased"
                                 onChange={handleInputChange}
                                 value={newProductFormData.datePurchased}
@@ -125,15 +137,17 @@ function Products() {
                         </Form.Group>
                     </div>
                     <div className="new-product-additional">
-                        {this.state.isActive ?
+                        {hidden === false ?
                             (
-                                <Button
-                                    id="new-product-additional-btn"
-                                    type="button"
-                                    onClick={toggleShow}
-                                >
-                                    Add More Details?
-                                </Button>
+                                <div>
+                                    <Button
+                                        id="new-product-additional-btn"
+                                        type="button"
+                                        onClick={() => setHidden(true)}
+                                    >
+                                        Add More Details?
+                                    </Button>
+                                </div>
                             ) :
                             (
                                 <div>
@@ -192,15 +206,6 @@ function Products() {
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="purchaseLocation">Purchase Location</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="purchaseLocation"
-                                            onChange={handleInputChange}
-                                            value={newProductFormData.purchaseLocation}
-                                        />
-                                    </Form.Group>
-                                    <Form.Group>
                                         <Form.Label htmlFor="additionalDetails">Additional Details</Form.Label>
                                         <Form.Control
                                             type="textarea"
@@ -216,7 +221,7 @@ function Products() {
                         }
                     </div>
                     <Button
-                        id="new-house-submit-btn"
+                        id="new-product-submit-btn"
                         type="submit"
                         onClick={handleFormSubmit}
                     >

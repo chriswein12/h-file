@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_REMODEL } from '../../utils/mutations';
-
-//need login mutation and Auth?
-
-import './Remodels.css'
+import Auth from '../../utils/auth';
 
 function Remodels() {
+    //set initial form state
     const [newRemodelFormData, setNewRemodelFormData] = useState({
         remodelTitle: '',
         remodelRoom: '',
         remodelStartDate: '',
         remodelEndDate: '',
         remodelCost: '',
-        remodelDetails: '',
-        remodelContacts: ''
+        remodelDetails: ''
     });
 
-    //add front end validation?
-    //const [validated] = useState(false);
+    //set for validation
+    const [validated] = useState(false);
 
-    //add alert for auth issues?
-    //const [showAlert, setShowAlert] = useState(false);
+    //state for alerts
+    const [showAlert, setShowAlert] = useState(false);
 
-    //create const for anticipated mutation (will need to update)
+    //toggle button/additional info inputs
+    const [hidden, setHidden] = useState(false);
+
+    //create const for useMutation(ADD_REMODEL)
     const [addNewRemodel, { error }] = useMutation(ADD_REMODEL);
+
+    //set up alert effect
+    useEffect(() => {
+        if (error) {
+            setShowAlert(true);
+        } else {
+            setShowAlert(false);
+        }
+    }, [error]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -38,44 +47,38 @@ function Remodels() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        //won't require entire form to be complete,
-        //so full validity check not needed,
-        //maybe partial validity
+        //react bootstrap validation - 
+        //does it only work on <Form.Control required />?
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        //get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
 
         try {
             const { data } = await addNewRemodel({
                 variables: { ...newRemodelFormData }
             });
-
-            console.log(data);
-            //Auth.login(data.login.token);
         }
         catch (err) {
             console.error(err);
-            //setShowAlert(true);
+            setShowAlert(true);
         }
 
         setNewRemodelFormData({
-            //username: '',
             remodelTitle: '',
             remodelRoom: '',
             remodelStartDate: '',
             remodelEndDate: '',
             remodelCost: '',
-            remodelDetails: '',
-            remodelContacts: ''
-        });
-    }
-
-    //default add details button renders, onclick hides button
-    //and renders the additional details section
-    const state = {
-        isActive: true
-    }
-
-    const toggleShow = () => {
-        this.setState({
-            isActive: false
+            remodelDetails: ''
         });
     }
 
@@ -83,7 +86,15 @@ function Remodels() {
         <div>
             <h2>New Remodel</h2>
             <div className="new-remodel-details">
-                <Form>
+                <Form noValidate validated={validated}>
+                    <Alert
+                        dismissible
+                        onClose={() => setShowAlert(false)}
+                        show={showAlert}
+                        variant='danger'
+                    >
+                        Something went wrong!
+                    </Alert>
                     <div className="new-remodel-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -103,6 +114,7 @@ function Remodels() {
                                 name="remodelRoom"
                                 onChange={handleInputChange}
                                 value={newRemodelFormData.remodelRoom}
+                                required
                             >
                                 <option>Living Room</option>
                                 <option>Kitchen</option>
@@ -116,7 +128,7 @@ function Remodels() {
                         <Form.Group>
                             <Form.Label htmlFor="remodelStartDate">Remodel Start Date</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="date"
                                 name="remodelStartDate"
                                 onChange={handleInputChange}
                                 value={newRemodelFormData.remodelStartDate}
@@ -126,7 +138,7 @@ function Remodels() {
                         <Form.Group>
                             <Form.Label htmlFor="remodelEndDate">Remodel End Date</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="date"
                                 name="remodelEndDate"
                                 onChange={handleInputChange}
                                 value={newRemodelFormData.remodelEndDate}
@@ -135,12 +147,12 @@ function Remodels() {
                         </Form.Group>
                     </div>
                     <div className="new-remodel-additional">
-                        {this.state.isActive ?
+                        {hidden === false ?
                             (
                                 <Button
                                     id="new-remodel-additional-btn"
                                     type="button"
-                                    onClick={toggleShow}
+                                    onClick={() => setHidden(true)}
                                 >
                                     Add More Details?
                                 </Button>
@@ -151,7 +163,7 @@ function Remodels() {
                                     <Form.Group>
                                         <Form.Label htmlFor="remodelCost">Remodel Cost</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="number"
                                             name="remodelCost"
                                             onChange={handleInputChange}
                                             value={newRemodelFormData.remodelCost}
@@ -166,21 +178,12 @@ function Remodels() {
                                             value={newRemodelFormData.remodelDetails}
                                         />
                                     </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="remodelContacts">Remodel Contacts</Form.Label>
-                                        <Form.Control
-                                            type="email"
-                                            name="remodelContacts"
-                                            onChange={handleInputChange}
-                                            value={newRemodelFormData.remodelContacts}
-                                        />
-                                    </Form.Group>
                                 </div>
                             )
                         }
                     </div>
                     <Button
-                        id="new-house-submit-btn"
+                        id="new-remodel-submit-btn"
                         type="submit"
                         onClick={handleFormSubmit}
                     >

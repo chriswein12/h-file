@@ -1,43 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
-
 import { ADD_HOME } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
-//need login mutation and Auth?
-
-import './AboutHome.css'
-
-// function AboutHouse() {
-//     const [newHouseFormData, setNewHouseFormData] = useState({
-//         homeName: '',
-//         //expand out address info?
-//         address: '',
-//         yearBought: '',
-//         yearBuilt: '',
-//         squareFootage: '',
-//         value: '',
-//         lotSize: ''
-//     });
-
-function AboutHouse() {
-    //set intial from state
-    const [newHouseFormData, setNewHouseFormData] = useState({
+function AboutHome() {
+    //set intial form state
+    const [newHomeFormData, setNewHomeFormData] = useState({
         homeName: '',
-        address: '',
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
         yearBought: '',
         yearBuilt: '',
         squareFootage: '',
         value: '',
         lotSize: ''
     });
+
     //set for validation
     const [validated] = useState(false);
+
     //state for alerts
     const [showAlert, setShowAlert] = useState(false);
-    const [addNewHouse, { error }] = useMutation(ADD_HOME);
 
-    //setting up alert effect
+    //toggle button/additional info inputs
+    const [hidden, setHidden] = useState(false);
+
+    //create const for useMutation(ADD_HOME)
+    const [addNewHome, { error }] = useMutation(ADD_HOME);
+
+    //set up alert effect
     useEffect(() => {
         if (error) {
             setShowAlert(true);
@@ -48,8 +42,8 @@ function AboutHouse() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setNewHouseFormData({
-            ...newHouseFormData,
+        setNewHomeFormData({
+            ...newHomeFormData,
             [name]: value
         });
     }
@@ -57,25 +51,37 @@ function AboutHouse() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        //react bootstrap validation - 
+        //does it only work on <Form.Control required />?
+        // const form = event.currentTarget;
+        // if (form.checkValidity() === false) {
+        //     event.preventDefault();
+        //     // event.stopPropagation();
+        // }
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-
+        if (!token) {
+          return false;
+        }
+        
         try {
-            const { data } = await addNewHouse({
-                variables: { ...newHouseFormData }
+            const { data } = await addNewHome({
+                variables: { homeData: { ...newHomeFormData }}
             });
 
-            console.log(data);
-            //Auth.login(data.login.token);
+            window.location()
         }
         catch (err) {
             console.error(err);
-            //setShowAlert(true);
+            setShowAlert(true);
         }
 
-        setNewHouseFormData({
-            //username: '',
+        setNewHomeFormData({
             homeName: '',
-            address: '',
+            street: '',
+            city: '',
+            state: '',
+            zip: '',
             yearBought: '',
             yearBuilt: '',
             squareFootage: '',
@@ -84,32 +90,22 @@ function AboutHouse() {
         });
     }
 
-    //default add details button renders, onclick hides button
-    //and renders the additional details section
-    const state = {
-        isActive: true
-    }
-
-    const toggleShow = () => {
-        this.setState({
-            isActive: false
-        });
-    };
-
     return (
+        <div className="addHome">
+            <div className="new-home-details">
+            <h2>New Home</h2>
 
-        
-        
-
-        <div>
-            <h2>New House</h2>
-            <div className="new-house-details">
                 {/* for validation functionality stated above */}
-                <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-                    <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-                        Something went wrong with your House Info!
+                <Form noValidate validated={validated}>
+                    <Alert 
+                        dismissible 
+                        onClose={() => setShowAlert(false)} 
+                        show={showAlert} 
+                        variant='danger'
+                    >
+                        Something went wrong!
                     </Alert>
-                    <div className="new-house-required">
+                    <div className="new-home-required">
                         <h3>Required Details</h3>
                         <Form.Group>
                             <Form.Label htmlFor="homeName">Home Name</Form.Label>
@@ -117,31 +113,63 @@ function AboutHouse() {
                                 type="text"
                                 name="homeName"
                                 onChange={handleInputChange}
-                                value={newHouseFormData.homeName}
+                                value={newHomeFormData.homeName}
                                 required
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label htmlFor="address">Address</Form.Label>
+                            <Form.Label htmlFor="street">Street Address</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="address"
+                                name="street"
                                 onChange={handleInputChange}
-                                value={newHouseFormData.address}
+                                value={newHomeFormData.street}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor="city">City</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="city"
+                                onChange={handleInputChange}
+                                value={newHomeFormData.city}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor="state">State</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="state"
+                                onChange={handleInputChange}
+                                value={newHomeFormData.state}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor="zip">Zip Code</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="zip"
+                                onChange={handleInputChange}
+                                value={newHomeFormData.zip}
                                 required
                             />
                         </Form.Group>
                     </div>
-                    <div className="new-house-additional">
-                        {this.state.isActive ?
+                    <div className="new-home-additional">
+                        {hidden === false ?
                             (
-                                <Button
-                                    id="new-house-additional-btn"
-                                    type="button"
-                                    onClick={toggleShow}
-                                >
-                                    Add More Details?
-                                </Button>
+                                <div>
+                                    <Button
+                                        id="new-home-additional-btn"
+                                        type="button"
+                                        onClick={() => setHidden(true)}
+                                    >
+                                        Add More Details?
+                                    </Button>
+                                </div>
                             ) :
                             (
                                 <div>
@@ -149,46 +177,46 @@ function AboutHouse() {
                                     <Form.Group>
                                         <Form.Label htmlFor="yearBought">Year Bought</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="number"
                                             name="yearBought"
                                             onChange={handleInputChange}
-                                            value={newHouseFormData.yearBought}
+                                            value={newHomeFormData.yearBought}
                                         />
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label htmlFor="yearBuilt">Year Built</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="number"
                                             name="yearBuilt"
                                             onChange={handleInputChange}
-                                            value={newHouseFormData.yearBuilt}
+                                            value={newHomeFormData.yearBuilt}
                                         />
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label htmlFor="squareFootage">Square Footage</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="number"
                                             name="squareFootage"
                                             onChange={handleInputChange}
-                                            value={newHouseFormData.squareFootage}
+                                            value={newHomeFormData.squareFootage}
                                         />
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label htmlFor="value">Value</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="number"
                                             name="value"
                                             onChange={handleInputChange}
-                                            value={newHouseFormData.value}
+                                            value={newHomeFormData.value}
                                         />
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label htmlFor="lotSize">Lot Size</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="number"
                                             name="lotSize"
                                             onChange={handleInputChange}
-                                            value={newHouseFormData.lotSize}
+                                            value={newHomeFormData.lotSize}
                                         />
                                     </Form.Group>
                                     {/* picture input will go here when added */}
@@ -197,7 +225,7 @@ function AboutHouse() {
                         }
                     </div>
                     <Button
-                        id="new-house-submit-btn"
+                        id="new-home-submit-btn"
                         type="submit"
                         onClick={handleFormSubmit}
                     >
@@ -209,67 +237,4 @@ function AboutHouse() {
     );
 };
 
-//add front end validation?
-//const [validated] = useState(false);
-
-//add alert for auth issues?
-//const [showAlert, setShowAlert] = useState(false);
-
-//create const for anticipated mutation (will need to update)
-//const [addNewHouse, { error }] = useMutation(ADD_HOME);
-
-//reference Form.Control (bootstrap)
-// const handleInputChange = (event) => {
-//     const { name, value } = event.target;
-//     setNewHouseFormData({
-//         ...newHouseFormData,
-//         [name]: value
-//     });
-// }
-
-// const handleFormSubmit = async (event) => {
-//     event.preventDefault();
-
-
-
-//     try {
-//         const { data } = await addNewHouse({
-//             variables: { ...newHouseFormData }
-//         });
-
-//         console.log(data);
-//         //Auth.login(data.login.token);
-//     }
-//     catch (err) {
-//         console.error(err);
-//         //setShowAlert(true);
-//     }
-
-//     setNewHouseFormData({
-//         //username: '',
-//         homeName: '',
-//         address: '',
-//         yearBought: '',
-//         yearBuilt: '',
-//         squareFootage: '',
-//         value: '',
-//         lotSize: ''
-//     });
-// }
-
-// //default add details button renders, onclick hides button
-// //and renders the additional details section
-// state = {
-//     isActive: true
-// }
-
-// const toggleShow = () => {
-//     this.setState({
-//         isActive: false
-//     });
-// }
-
-
-
-
-export default AboutHouse;
+export default AboutHome;

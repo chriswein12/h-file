@@ -12,7 +12,7 @@ function HomeNav(props) {
         <div className="home-nav-list-wrapper">
             <ul className="home-nav-list">
                 {/* map over view names */}
-                {views.map((View) => {
+                {views.map(View => (
                     <li
                         className="home-nav-list-items"
                         key={View.name}
@@ -26,7 +26,7 @@ function HomeNav(props) {
                             {View.name}
                         </h3>
                     </li>
-                })}
+                ))}
             </ul>
         </div>
     )

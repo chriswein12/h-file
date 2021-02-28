@@ -13,8 +13,7 @@ function ViewServices() {
     //useMutation REMOVE_SERVICE
 
     //ViewServices name def in queries/resolvers?
-    const serviceData = data.home
-    console.log(serviceData);
+    const serviceData = data?.home || {};
 
     //message if data hasn't yet arrived
     if (loading) {

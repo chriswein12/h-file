@@ -9,12 +9,12 @@ const productsSchema = new Schema(
         },
 
         productPrice: {
-            type: Number,
+            type: String,
             required: true,
         },
 
         datePurchased: {
-            type: Date,
+            type: String,
             required: true,
         },
 

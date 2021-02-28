@@ -46,28 +46,23 @@ const homeSchema = new Schema(
         },
 
         yearBought: {
-            type: Number,
-            min: 1000
+            type: String
         },
 
         yearBuilt: {
-            type: Number,
-            min: 1000
+            type: String
         },
 
         squareFootage: {
-            type: Number,
-            min: 0
+            type: String
         },
 
         value: {
-            type: Number,
-            min: 0
+            type: String
         },
 
         lotSize: {
-            type: Number,
-            min: 0
+            type: String
         },
 
         // pulling in the objects from other models that will be in Homes

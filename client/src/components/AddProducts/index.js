@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_PRODUCT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-function Products() {
+function AddProducts({ homeId }) {
     //set initial form state
     const [newProductFormData, setNewProductFormData] = useState({
         productName: '',
@@ -52,11 +52,11 @@ function Products() {
 
         //react bootstrap validation - 
         //does it only work on <Form.Control required />?
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        //const form = event.currentTarget;
+        //if (form.checkValidity() === false) {
+        //    event.preventDefault();
+        //    event.stopPropagation();
+        //}
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -93,10 +93,10 @@ function Products() {
     return (
         <div className="addHome">
             <div className="new-product-details">
-            <h2>New Product</h2>
+                <h2>New Product</h2>
 
                 <Form noValidate validated={validated}>
-                    
+
                     <div className="new-product-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -213,13 +213,13 @@ function Products() {
                                 </div>
                             )
                         }
-                        <Alert 
-                        dismissible 
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        Something went wrong!
+                        <Alert
+                            dismissible
+                            onClose={() => setShowAlert(false)}
+                            show={showAlert}
+                            variant='danger'
+                        >
+                            Something went wrong!
                     </Alert>
                     </div>
                     <Button
@@ -235,4 +235,4 @@ function Products() {
     )
 }
 
-export default Products;
+export default AddProducts;

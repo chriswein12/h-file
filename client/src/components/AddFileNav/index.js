@@ -1,5 +1,4 @@
 import React from 'react';
-import AddFile from '../../pages/AddFile';
 
 function AddFileNav(props) {
     //destructuring props passed in from Home.js

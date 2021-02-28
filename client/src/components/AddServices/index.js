@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_SERVICE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-function AddServices() {
+function AddServices({ homeId }) {
     //set initial form state
     const [newServiceFormData, setNewServiceFormData] = useState({
         serviceTitle: '',
@@ -83,10 +83,10 @@ function AddServices() {
     return (
         <div className="addHome">
             <div className="new-service-details">
-            <h2>New Service</h2>
+                <h2>New Service</h2>
 
                 <Form noValidate validated={validated}>
-                    
+
                     <div className="new-service-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -165,12 +165,12 @@ function AddServices() {
                             )
                         }
                         <Alert
-                        dismissible
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        Something went wrong!
+                            dismissible
+                            onClose={() => setShowAlert(false)}
+                            show={showAlert}
+                            variant='danger'
+                        >
+                            Something went wrong!
                     </Alert>
                     </div>
                     <Button

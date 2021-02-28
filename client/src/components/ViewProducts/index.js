@@ -7,15 +7,15 @@ function ViewProducts({ home }) {
 
     return (
         <div>
-            <div>Product Name: {home.productName}</div>
-            <div>Price: {home.productPrice}</div>
-            <div>Date Purchased: {home.datePurchased}</div>
-            <div>Room: {home.productRoom}</div>
-            <div>Serial Number: {home.serialNumber}</div>
-            <div>Model Number: {home.modelNumber}</div>
-            <div>Warranty Length: {home.warrantyLength}</div>
-            <div>Web Link: {home.productLink}</div>
-            <div>Additional Details: {home.productDetails}</div>
+            <div>Product Name: {home.homeProducts.productName}</div>
+            <div>Price: {home.homeProducts.productPrice}</div>
+            <div>Date Purchased: {home.homeProducts.datePurchased}</div>
+            <div>Room: {home.homeProducts.productRoom}</div>
+            <div>Serial Number: {home.homeProducts.serialNumber}</div>
+            <div>Model Number: {home.homeProducts.modelNumber}</div>
+            <div>Warranty Length: {home.homeProducts.warrantyLength}</div>
+            <div>Web Link: {home.homeProducts.productLink}</div>
+            <div>Additional Details: {home.homeProducts.productDetails}</div>
         </div>
     );
 }

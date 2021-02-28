@@ -6,8 +6,10 @@ This website is designed to revolutionize the home maintenance process and bring
 <br/>
 
 ## Table of Contents
-* [How it Works].(#how it Works)
-* [Website Features].(#website features)
+* [How It Works](#how it works)
+* [Website Features](#website features)
+* [PlansForFutureDevelopment](#plansforfuturedevelopment)
+* [Website Features](#website features)
 
 ## How it Works
 * The user first signs up for an account that allows them access to their own Profile. The profile will allow the user to add a home.
@@ -68,7 +70,7 @@ This website is designed to revolutionize the home maintenance process and bring
 
 ## Credits
 
-* Project completed by 
+* Project Completed by 
 * Chris Wein - https://github.com/chriswein12
 * Aaron Geiger - https://github.com/geigea84
 * Darryl Simpson - https://github.com/DarrylSimpson

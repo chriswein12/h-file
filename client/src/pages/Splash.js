@@ -3,6 +3,7 @@ import Header from '../components/HeaderSplash';
 import Description from '../components/Description';
 import Login from '../components/Login';
 import Signup from '../components/SignUp';
+import Auth from '../utils/auth';
 import './css/splashStyle.css'
 
 const SplashPage = () => {
@@ -29,6 +30,14 @@ const SplashPage = () => {
     const loginView = () => {
         setCurrentForm('Login')
     };
+
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (token) {
+        window.location.assign('/profile');
+
+    }
 
     return (
         <div>

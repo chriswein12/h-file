@@ -25,7 +25,6 @@ const servicesSchema = new Schema(
 
         serviceDescription: {
             type: String,
-            required: true,
             maxLength: 500
         },
 

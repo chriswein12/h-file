@@ -5,6 +5,18 @@ This website is designed to revolutionize the home maintenance process and bring
  
 <br/>
 
+## Table of Contents
+* [How it Works](#how-it-works)
+* [Website Features](#website-features)
+* [Plans for Future Development](#plans-for-future-development)
+* [House It Website](#house-it-website)
+* [Desktop Display](#desktop-display)
+* [Mobile Display](#mobile-display)
+* [Credits](#credits)
+
+
+<br/>
+
 ## How it Works
 * The user first signs up for an account that allows them access to their own Profile. The profile will allow the user to add a home.
 
@@ -32,20 +44,29 @@ This website is designed to revolutionize the home maintenance process and bring
   
 <br/>
 
-## Link to House-it Website
+## Plans for Future Development
+* Functionality to add picutres of warranties, user manuals, before and after pictures of services done to the home etc.
+* Intergrate Companies
+    * Request and purchase products and services from website directly for home on profile.
+    * Advertisements and special deals for companies and local buisnesses near home on website for registered users.
+    * Ability to scan QR codes or UPC's to automatically add products.
+    
+    
+
+## House-It Website
 
 
 <br/>
 
-## How the Website Looks on a Desktop Display
+## Desktop Display
 
-![.gif of full-screen website](./assets/screenshots/desktop.gif)
+![Screenshot (172)](https://user-images.githubusercontent.com/68923037/109429318-c9210c00-79c0-11eb-8ced-0595dbc8a886.png)
 
 <br/>
 
-## How the Website Looks on a Mobile Display
+## Mobile Display
 
-![.gif of full-screen website](./assets/screenshots/mobile.gif)
+![mobile](https://user-images.githubusercontent.com/68923037/109429687-a4c62f00-79c2-11eb-95fd-c27e5ed4d6a5.png)
 
 <br/>
 
@@ -55,4 +76,8 @@ This website is designed to revolutionize the home maintenance process and bring
 
 ## Credits
 
-*Project completed by Chris Wein, Aaron Geiger, Darryl Simpson and Zach Howell*
+* Project Completed by 
+* Chris Wein - https://github.com/chriswein12
+* Aaron Geiger - https://github.com/geigea84
+* Darryl Simpson - https://github.com/DarrylSimpson
+* Zach Howell - https://github.com/ZachAH

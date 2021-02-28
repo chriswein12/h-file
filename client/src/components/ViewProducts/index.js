@@ -9,8 +9,6 @@ function ViewProducts({ home }) {
         return <h4>No products have been added</h4>
     }
 
-    console.log(home);
-
     return (
         <div>
             {home.homeProducts && home.homeProducts.map(product => (

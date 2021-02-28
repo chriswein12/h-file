@@ -53,19 +53,24 @@ function AboutHome() {
 
         //react bootstrap validation - 
         //does it only work on <Form.Control required />?
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        // const form = event.currentTarget;
+        // if (form.checkValidity() === false) {
+        //     event.preventDefault();
+        //     // event.stopPropagation();
+        // }
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+        if (!token) {
+          return false;
+        }
+        
         try {
+            console.log(newHomeFormData)
             const { data } = await addNewHome({
-                variables: { ...newHomeFormData }
+                variables: { homeData: { ...newHomeFormData }}
             });
 
             console.log(data);
-            Auth.login(data.login.token);
         }
         catch (err) {
             console.error(err);

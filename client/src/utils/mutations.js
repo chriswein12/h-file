@@ -31,11 +31,9 @@ export const ADD_USER = gql`
 export const ADD_HOME = gql`
     mutation addHome($homeData: HomeInput!) {
         addHome(homeData: $homeData) {
-            _id
-            username
-            savedHomes {
                 _id
                 homeName
+                username
                 street
                 city
                 state
@@ -45,7 +43,6 @@ export const ADD_HOME = gql`
                 squareFootage
                 value
                 lotSize
-            }
         }
     }
 `;

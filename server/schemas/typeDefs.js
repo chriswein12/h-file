@@ -16,11 +16,11 @@ const typeDefs = gql`
         city: String!
         state: String!
         zip: String!
-        yearBought: Int
-        yearBuilt: Int
-        squareFootage: Int
-        value: Int
-        lotSize: Int
+        yearBought: String
+        yearBuilt: String
+        squareFootage: String
+        value: String
+        lotSize: String
         homeServices: [Services]
         homeRemodels: [Remodel]
         homeProducts: [Product]
@@ -31,7 +31,7 @@ const typeDefs = gql`
         _id: ID!
         homeId: ID
         serviceTitle: String!
-        serviceCost: Int!
+        serviceCost: String!
         serviceFrequency: String
         serviceDate: String
         serviceDescription: String
@@ -44,7 +44,7 @@ const typeDefs = gql`
         remodelRoom: String!
         remodelStartDate: String!
         remodelEndDate: String!
-        remodelCost: Int
+        remodelCost: String
         remodelDetails: String
         remodelContacts: [BusinessCard]
     }
@@ -52,7 +52,7 @@ const typeDefs = gql`
     type Product {
         _id: ID!
         productName: String!
-        productPrice: Int!
+        productPrice: String!
         datePurchased: String!
         productRoom: String
         serialNumber: String
@@ -65,7 +65,7 @@ const typeDefs = gql`
     type Maintenance {
         _id: ID!
         maintName: String!
-        maintCost: Int!
+        maintCost: String!
         nextMaintDate: String!
         maintFrequency: String!
         pastMaintDates: [String]
@@ -87,16 +87,16 @@ const typeDefs = gql`
         city: String
         state: String
         zip: String
-        yearBought: Int
-        yearBuilt: Int
-        squareFootage: Int
-        value: Int
-        lotSize: Int
+        yearBought: String
+        yearBuilt: String
+        squareFootage: String
+        value: String
+        lotSize: String
     }
 
     input ServiceInput {
         serviceTitle: String
-        serviceCost: Int
+        serviceCost: String
         serviceFrequency: String
         serviceDate: String
         serviceDescription: String
@@ -107,7 +107,7 @@ const typeDefs = gql`
         remodelRoom: String
         remodelStartDate: String
         remodelEndDate: String
-        remodelCost: Int
+        remodelCost: String
         remodelDetails: String
     }
 
@@ -121,7 +121,7 @@ const typeDefs = gql`
 
     input ProductInput {
         productName: String
-        productPrice: Int
+        productPrice: String
         datePurchased: String
         productRoom: String
         serialNumber: String
@@ -133,7 +133,7 @@ const typeDefs = gql`
 
     input MaintenanceInput {
         maintName: String
-        maintCost: Int
+        maintCost: String
         nextMaintDate: String
         maintFrequency: String
         pastMaintDates: [String]

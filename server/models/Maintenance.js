@@ -9,14 +9,13 @@ const maintenanceSchema = new Schema(
         },
 
         maintCost: {
-            type: Number,
-            required: true,
-            min: 0
+            type: String,
+            required: true
         },
 
         nextMaintDate: {
-            type: Date,
-            required: false,
+            type: String,
+            required: false
         },
 
         maintFrequency: {
@@ -26,7 +25,7 @@ const maintenanceSchema = new Schema(
 
         pastMaintDates: [
             {
-                type: Date,
+                type: String
             }
         ],
 

@@ -69,7 +69,7 @@ This website is designed to revolutionize the home maintenance process and bring
 ## Credits
 
 * Project completed by 
-Chris Wein - https://github.com/chriswein12
-Aaron Geiger - https://github.com/geigea84
-Darryl Simpson - https://github.com/DarrylSimpson
-Zach Howell - https://github.com/ZachAH
+* Chris Wein - https://github.com/chriswein12
+* Aaron Geiger - https://github.com/geigea84
+* Darryl Simpson - https://github.com/DarrylSimpson
+* Zach Howell - https://github.com/ZachAH

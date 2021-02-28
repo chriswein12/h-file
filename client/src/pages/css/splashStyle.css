@@ -1,3 +1,5 @@
+/* $default-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315); */
+
 * {
     box-sizing: border-box;
   }
@@ -18,7 +20,10 @@
     width: 100%;
     padding: 25px;
     opacity: 0.8;
-    margin-left: 375px;
+  }
+
+  .splash-container {
+    box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
   }
 
   .splashF {
@@ -154,7 +159,7 @@
   margin: auto;
 }
 
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 768px) {
 
     .container {
       margin: auto;
@@ -200,4 +205,4 @@
     .loginCreateButton {
         padding-left: 25%;
     }
-  }
+  } */

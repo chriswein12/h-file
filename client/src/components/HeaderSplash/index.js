@@ -6,7 +6,7 @@ function Header() {
     return (
 
         <header className="header">
-            <a className="logo">House-it</a>
+            <a className="logo">House-It</a>
             <div className="header-right">
                 <Link to="/profile">
                     <button className="btn btn-primary">Profile</button>

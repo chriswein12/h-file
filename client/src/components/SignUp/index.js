@@ -54,7 +54,7 @@ const Signup = (props) => {
             <div className="row">
                 <div className="col-lg-6"></div>
 
-                <div className="col-lg-6 col-sm-12 bg-white p-3 splashF">
+                <div className="col-lg-6 splash-container bg-white p-3 splashF">
 
 
                     <h1 className="signupHeader">Sign Up</h1>

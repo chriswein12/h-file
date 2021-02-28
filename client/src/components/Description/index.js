@@ -9,15 +9,15 @@ const Description = (props) => {
 
                 <div className="col-lg-6"></div>
 
-                <div className="col-lg-6 col-sm-12 bg-white p-3 splashF">
-                    <h2>House-it going!</h2>
-                    <p>At House-it we realize how stressful staying organized as a homeowner can be.
+                <div className="col-lg-6 bg-white p-3 splashF splash-container">
+                    <h2>House-It going!</h2>
+                    <p>At House-It we realize how stressful staying organized as a homeowner can be.
                     Files and documents for your home get thrown in that cluttered box in the basement,
                     never to be seen again...
             </p>
                     <br />
                     <p>
-                        With House-it you can access all of your homeowner filed and information with the click of a button!
+                        With House-It you can access all of your homeowner filed and information with the click of a button!
             </p>
                     <div className="row">
                         <div className="col-2 p-1 offset-3">

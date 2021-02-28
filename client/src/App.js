@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 //import components
-import AboutHome from './components/AddHome';
+import AddHome from './components/AddHome';
 
 //import pages good habit to have matching names
 import SplashPage from './pages/Splash.js';
@@ -37,7 +37,7 @@ function App() {
                 <Switch>
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/profile/:id" component={Home} />
-                    <Route exact path="/AddHome" component={AboutHome} />
+                    <Route exact path="/AddHome" component={AddHome} />
                     <Route exact path="/AddFile" component={AddFile} />
                     <Route exact path="/" component={SplashPage} /> 
                 </Switch>

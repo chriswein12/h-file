@@ -1,8 +1,5 @@
 import React from 'react';
 
-//require authorization?
-//import Auth from '../../utils/auth';
-
 function ViewAboutHome({ home }) {
     if (!home) {
         return <h4>Loading...</h4>

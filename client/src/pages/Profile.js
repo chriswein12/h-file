@@ -30,7 +30,7 @@ const Profile = () => {
             <HeaderLI />
             <div className="row">
                 <div className='col-4'>
-                    <Link to='/AboutHome'>
+                    <Link to='/AddHome'>
                         <button type="button" className="btn btn-primary" id="addNew">
                             Add New Home
                         </button>

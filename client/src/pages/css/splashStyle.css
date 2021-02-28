@@ -142,6 +142,17 @@
   margin: auto;
 }
 
+.new-product-details {
+  margin: auto;
+}
+
+.new-remodel-details {
+  margin: auto;
+}
+
+.new-service-details {
+  margin: auto;
+}
 
   @media screen and (max-width: 768px) {
 

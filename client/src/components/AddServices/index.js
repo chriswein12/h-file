@@ -81,18 +81,12 @@ function Services() {
     }
 
     return (
-        <div>
-            <h2>New Service</h2>
+        <div className="addHome">
             <div className="new-service-details">
+            <h2>New Service</h2>
+
                 <Form noValidate validated={validated}>
-                    <Alert
-                        dismissible
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        Something went wrong!
-                    </Alert>
+                    
                     <div className="new-service-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -170,6 +164,14 @@ function Services() {
                                 </div>
                             )
                         }
+                        <Alert
+                        dismissible
+                        onClose={() => setShowAlert(false)}
+                        show={showAlert}
+                        variant='danger'
+                    >
+                        Something went wrong!
+                    </Alert>
                     </div>
                     <Button
                         id="new-service-submit-btn"

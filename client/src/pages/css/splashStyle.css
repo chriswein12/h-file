@@ -120,13 +120,28 @@
   }
 
   #addNew {
-    display: flex;
+    display:flex;
     padding: 20px;
     margin-top: 3%;
     margin-left: 80%;
 }
 
-  
+.addHome {
+  display: flex;
+  background-color:darkslategray;
+  opacity: 0.8;
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: center;
+  color: white;
+}
+
+.new-home-details {
+  margin: auto;
+}
+
 
   @media screen and (max-width: 768px) {
 

@@ -87,9 +87,10 @@ function AboutHome() {
     }
 
     return (
-        <div>
-            <h2>New Home</h2>
+        <div className="addHome">
             <div className="new-home-details">
+            <h2>New Home</h2>
+
                 {/* for validation functionality stated above */}
                 <Form noValidate validated={validated}>
                     <Alert 

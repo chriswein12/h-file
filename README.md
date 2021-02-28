@@ -6,8 +6,8 @@ This website is designed to revolutionize the home maintenance process and bring
 <br/>
 
 ## Table of Contents
-* [How it Works](#How it Works)
-* [Website Features](#Website Features)
+* [How it Works].(#How it Works)
+* [Website Features].(#Website Features)
 
 ## How it Works
 * The user first signs up for an account that allows them access to their own Profile. The profile will allow the user to add a home.

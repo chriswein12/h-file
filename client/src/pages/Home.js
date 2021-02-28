@@ -42,7 +42,7 @@ function Home() {
             <Container>
                 <Row>
                     <Col>
-                        <Link to='/AddFile'>
+                        <Link to={`/AddFile/${homeId}`}>
                             <button type="button" className="btn btn-primary" id="addNewFile">
                                 Add New File
                             </button>

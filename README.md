@@ -60,13 +60,13 @@ This website is designed to revolutionize the home maintenance process and bring
 
 ## Desktop Display
 
-
+![Screenshot (172)](https://user-images.githubusercontent.com/68923037/109429318-c9210c00-79c0-11eb-8ced-0595dbc8a886.png)
 
 <br/>
 
 ## Mobile Display
 
-
+![Screenshot (173)](https://user-images.githubusercontent.com/68923037/109429326-d63dfb00-79c0-11eb-8989-7b86aa0aef09.png)
 
 <br/>
 

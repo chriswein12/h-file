@@ -1,33 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import AddProducts from '../components/AddProducts';
 import AddRemodels from '../components/AddRemodels';
 import AddServices from '../components/AddServices';
+import AddFileContent from '../components/AddFileContent';
+import FileType from '../components/FileType';
 
-import './css/AddFile.css';
+//pass in currentView from Home.js
+function AddFile({ currentType }) {
 
-function AddFile() {
+    //switch statement to provide clicked view to render
+    function renderType() {
+        switch (currentType.name) {
+            default:
+                return <FileType />;
+            case 'Add a Product':
+                return <AddProducts />;
+            case 'Add a Remodel':
+                return <AddRemodels />;
+            case 'Add a Service':
+                return <AddServices />;
+        }
+    }
+
     return (
-        <div className="add-file-container">
-            <div>
-                This is the add file page
-               <div className="add-file" id="add-product">
-                    <Link to={AddProducts}>
-                        <button type="button">Add Product</button>
-                    </Link>
-                </div>
-                <div className="add-file" id="add-service">
-                    <Link to={AddServices}>
-                        <button type="button">Add Service</button>
-                    </Link>
-                </div>
-                <div className="add-file" id="add-remodel">
-                    <Link to={AddRemodels}>
-                        <button type="button">Add Remodel</button>
-                    </Link>
-                </div>
-            </div>
+        <div>
+            <AddFileContent>{renderType()}</AddFileContent>
         </div>
     );
 }

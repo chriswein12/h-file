@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_REMODEL } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-function Remodels() {
+function AddRemodels() {
     //set initial form state
     const [newRemodelFormData, setNewRemodelFormData] = useState({
         remodelTitle: '',
@@ -197,4 +197,4 @@ function Remodels() {
     )
 }
 
-export default Remodels;
+export default AddRemodels;

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../App.css'
+
 function HomeNav(props) {
     //destructuring props passed in from Home.js
     const {
@@ -13,7 +15,7 @@ function HomeNav(props) {
             <ul className="home-nav-list">
                 {/* map over view names */}
                 {views.map(View => (
-                    <li
+                    <div
                         className="home-nav-list-items"
                         key={View.name}
                     >
@@ -25,7 +27,7 @@ function HomeNav(props) {
                         >
                             {View.name}
                         </h3>
-                    </li>
+                    </div>
                 ))}
             </ul>
         </div>

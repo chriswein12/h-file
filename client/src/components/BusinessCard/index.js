@@ -46,7 +46,6 @@ function BusinessCard() {
                 variables: { ...newBusinessCardFormData }
             });
 
-            console.log(data);
             //Auth.login(data.login.token);
         }
         catch (err) {

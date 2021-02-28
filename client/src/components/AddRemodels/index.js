@@ -55,13 +55,17 @@ function Remodels() {
             event.stopPropagation();
         }
 
+        //get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
         try {
             const { data } = await addNewRemodel({
                 variables: { ...newRemodelFormData }
             });
-
-            console.log(data);
-            Auth.login(data.login.token);
         }
         catch (err) {
             console.error(err);

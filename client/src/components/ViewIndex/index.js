@@ -6,20 +6,25 @@ import ViewServices from '../ViewServices';
 import ViewIndexContent from '../ViewIndexContent'
 
 //pass in currentView from Home.js
-function ViewIndex({ currentView }) {
+function ViewIndex(props) {
+    const {
+        currentView,
+        home
+    } = props;
+
     //switch statement to provide clicked view to render
     function renderView() {
         switch (currentView.name) {
             case 'About Home':
-                return <ViewAboutHome />;
+                return <ViewAboutHome home={home} />;
             case 'Products':
-                return <ViewProducts />;
+                return <ViewProducts home={home.homeProducts} />;
             case 'Remodels':
-                return <ViewRemodels />;
+                return <ViewRemodels home={home.homeRemodels} />;
             case 'Services':
-                return <ViewServices />;
+                return <ViewServices home={home.homeServices} />;
             default:
-                return <ViewAboutHome />;
+                return <ViewAboutHome home={home} />;
         }
     }
 

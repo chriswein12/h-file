@@ -25,7 +25,6 @@ const Signup = (props) => {
             ...userInfo,
             [name]: value
         });
-        console.log(userInfo)
     }
 
     const handleFormSubmit = async (event) => {
@@ -36,7 +35,6 @@ const Signup = (props) => {
                 variables: { ...userInfo }
             });
 
-            console.log(data, "Here's your new user!");
             Auth.login(data.addUser.token);
         }
         catch (err) {

@@ -13,8 +13,7 @@ function ViewRemodels() {
     //useMutation REMOVE_REMODEL
 
     //ViewRemodels name def in queries/resolvers?
-    const remodelData = data.home
-    console.log(remodelData);
+    const remodelData = data?.home || {};
 
     //message if data hasn't yet arrived
     if (loading) {

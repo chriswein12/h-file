@@ -42,11 +42,11 @@ function Home() {
             <Container>
                 <Row>
                     <Col>
-                        <div>
-                            <Link to={AddFile}>
-                                <h2>Add a New File</h2>
-                            </Link>
-                        </div>
+                        <Link to='/AddFile'>
+                            <button type="button" className="btn btn-primary" id="addNewFile">
+                                Add New File
+                            </button>
+                        </Link>
                     </Col>
                 </Row>
                 <Row>

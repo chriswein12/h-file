@@ -11,14 +11,21 @@ function AddFile() {
     return (
         <div className="add-file-container">
             <div>
-                <div className="add-file" id="add-product">
-                    <Link to={AddProducts}>Add Product</Link>
+                This is the add file page
+               <div className="add-file" id="add-product">
+                    <Link to={AddProducts}>
+                        <button type="button">Add Product</button>
+                    </Link>
                 </div>
                 <div className="add-file" id="add-service">
-                    <Link to={AddServices}>Add Service</Link>
+                    <Link to={AddServices}>
+                        <button type="button">Add Service</button>
+                    </Link>
                 </div>
                 <div className="add-file" id="add-remodel">
-                    <Link to={AddRemodels}>Add Remodel</Link>
+                    <Link to={AddRemodels}>
+                        <button type="button">Add Remodel</button>
+                    </Link>
                 </div>
             </div>
         </div>

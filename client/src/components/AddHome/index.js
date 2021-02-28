@@ -97,14 +97,7 @@ function AboutHome() {
 
                 {/* for validation functionality stated above */}
                 <Form noValidate validated={validated}>
-                    <Alert 
-                        dismissible 
-                        onClose={() => setShowAlert(false)} 
-                        show={showAlert} 
-                        variant='danger'
-                    >
-                        Something went wrong!
-                    </Alert>
+                    
                     <div className="new-home-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -223,6 +216,14 @@ function AboutHome() {
                                 </div>
                             )
                         }
+                        <Alert 
+                        dismissible 
+                        onClose={() => setShowAlert(false)} 
+                        show={showAlert} 
+                        variant='danger'
+                    >
+                        Something went wrong!
+                    </Alert>
                     </div>
                     <Button
                         id="new-home-submit-btn"

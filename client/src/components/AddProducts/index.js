@@ -91,18 +91,12 @@ function Products() {
     }
 
     return (
-        <div>
-            <h2>New Product</h2>
+        <div className="addHome">
             <div className="new-product-details">
+            <h2>New Product</h2>
+
                 <Form noValidate validated={validated}>
-                    <Alert 
-                        dismissible 
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        Something went wrong!
-                    </Alert>
+                    
                     <div className="new-product-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -219,6 +213,14 @@ function Products() {
                                 </div>
                             )
                         }
+                        <Alert 
+                        dismissible 
+                        onClose={() => setShowAlert(false)}
+                        show={showAlert}
+                        variant='danger'
+                    >
+                        Something went wrong!
+                    </Alert>
                     </div>
                     <Button
                         id="new-product-submit-btn"

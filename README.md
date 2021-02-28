@@ -6,10 +6,16 @@ This website is designed to revolutionize the home maintenance process and bring
 <br/>
 
 ## Table of Contents
-* [How-it-Works](#how-it-works)
-* [Website Features](#website features)
-* [Plans-](#plans for future development)
-* [Website Features](#website features)
+* [How it Works](#how-it-works)
+* [Website Features](#website-features)
+* [Website Features](#website-features)
+* [Plans for Future Development](#plans-for-future-development)
+* [House It Website](#house-it-website)
+* [Desktop Display](#desktop-display)
+* [Mobile Display](#mobile-display)
+* [Credits](#credits)
+
+<br/>
 
 ## How it Works
 * The user first signs up for an account that allows them access to their own Profile. The profile will allow the user to add a home.
@@ -47,18 +53,18 @@ This website is designed to revolutionize the home maintenance process and bring
     
     
 
-## Link to House-it Website
+## House-It Website
 
 
 <br/>
 
-## How the Website Looks on a Desktop Display
+## Desktop Display
 
 
 
 <br/>
 
-## How the Website Looks on a Mobile Display
+## Mobile Display
 
 
 

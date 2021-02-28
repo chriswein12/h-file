@@ -49,7 +49,48 @@ function Home() {
     return (
         <div className="home-container">
             <HeaderLI />
-            {hidden === false ?
+
+            <Container>
+                <Row>
+                    <Col>
+                        <Link to={`/AddFile/${homeId}`}>
+                            <button type="button" className="btn btn-primary" id="addNewFile">
+                                Add New File
+                            </button>
+                        </Link>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div>
+                            <h1>{home.homeName}</h1>
+                        </div>
+                        <div>
+                            {/* image? will need another query */}
+                        </div>
+                    </Col>
+                    <Col>
+                        <div>
+                            {/* pass down props to component */}
+                            <HomeNav
+                                views={views}
+                                currentView={currentView}
+                                setCurrentView={setCurrentView}
+                            ></HomeNav>
+                        </div>
+                        <div>
+                            {/* pass down props to component */}
+                            <ViewIndex
+                                currentView={currentView}
+                                home={home}
+                            ></ViewIndex>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+
+{/*{hidden === false ?
                 (
                     <div>
                         <AddFileNav
@@ -113,7 +154,8 @@ function Home() {
                     </Container >
                 )
             }
-        </div >
+        </div >*/}
+
     );
 }
 

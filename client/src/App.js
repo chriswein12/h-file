@@ -44,7 +44,7 @@ function App() {
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/profile/:id" component={Home} />
                     <Route exact path="/AddHome" component={AddHome} />
-                    <Route exact path="/AddFile" component={AddFile} />
+                    <Route exact path="/AddFile/:id" component={AddFile} />
                     <Route exact path="/" component={SplashPage} /> 
                 </Switch>
             </Router>

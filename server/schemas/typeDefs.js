@@ -24,7 +24,7 @@ const typeDefs = gql`
         homeServices: [Services]
         homeRemodels: [Remodel]
         homeProducts: [Product]
-        homeMaintenance: [Maintenance]
+        homeMaintenances: [Maintenance]
     }
 
     type Services {
@@ -43,7 +43,7 @@ const typeDefs = gql`
         remodelTitle: String!
         remodelRoom: String!
         remodelStartDate: String!
-        remodelEndDate: String!
+        remodelEndDate: String
         remodelCost: String
         remodelDetails: String
         remodelContacts: [BusinessCard]
@@ -150,9 +150,9 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addHome(homeData: HomeInput!): Home
         addService(homeId: ID!, serviceData: ServiceInput!): Home
-        addRemodel(remodelData: RemodelInput!): Remodel
-        addProduct(productData: ProductInput!): Product
-        addMaintenance(maintenanceData: MaintenanceInput!): Maintenance
+        addRemodel(homeId: ID!, remodelData: RemodelInput!): Home
+        addProduct(homeId: ID!, productData: ProductInput!): Home
+        addMaintenance(homeId: ID!, maintenanceData: MaintenanceInput!): Home
         removeHome(_id: ID!): Home
         removeService(homeId: ID!, serviceId: ID!): Home
         removeRemodel(homeId: ID!, remodelId: ID!): Home

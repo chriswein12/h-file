@@ -129,7 +129,7 @@ const resolvers = {
                 
                 const updatedHome = await Home.findOneAndUpdate(
                     { _id: homeId },
-                    { $push: { homeMaintenance: maintenanceData } },
+                    { $push: { homeMaintenances: maintenanceData } },
                     { new: true, runValidators: true }
                 );
                     console.log("It works!")

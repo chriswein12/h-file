@@ -86,10 +86,10 @@ function AddServices({ homeId }) {
     return (
         <div className="addHome">
             <div className="new-service-details">
-            <h2>New Service</h2>
+                <h2>New Service</h2>
 
                 <Form noValidate validated={validated}>
-                    
+
                     <div className="new-service-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -161,12 +161,12 @@ function AddServices({ homeId }) {
                             )
                         }
                         <Alert
-                        dismissible
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        Something went wrong!
+                            dismissible
+                            onClose={() => setShowAlert(false)}
+                            show={showAlert}
+                            variant='danger'
+                        >
+                            Something went wrong!
                     </Alert>
                     </div>
                     <Button

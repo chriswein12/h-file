@@ -49,11 +49,11 @@ function AddRemodels({ homeId }) {
 
         //react bootstrap validation - 
         //does it only work on <Form.Control required />?
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        //const form = event.currentTarget;
+        //if (form.checkValidity() === false) {
+        //    event.preventDefault();
+        //    event.stopPropagation();
+        //}
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -88,10 +88,10 @@ function AddRemodels({ homeId }) {
     return (
         <div className="addHome">
             <div className="new-remodel-details">
-            <h2>New Remodel</h2>
+                <h2>New Remodel</h2>
 
                 <Form noValidate validated={validated}>
-                    
+
                     <div className="new-remodel-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -171,12 +171,12 @@ function AddRemodels({ homeId }) {
                             )
                         }
                         <Alert
-                        dismissible
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        Something went wrong!
+                            dismissible
+                            onClose={() => setShowAlert(false)}
+                            show={showAlert}
+                            variant='danger'
+                        >
+                            Something went wrong!
                     </Alert>
                     </div>
                     <Button

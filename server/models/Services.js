@@ -25,7 +25,8 @@ const servicesSchema = new Schema(
 
         serviceDescription: {
             type: String,
-            maxLength: 500
+            maxLength: 500,
+            trim: true
         },
 
         contact: [businessCardSchema]

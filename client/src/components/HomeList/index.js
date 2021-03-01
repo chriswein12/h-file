@@ -15,9 +15,6 @@ function HomeList({ username, savedHomes }) {
                     <Link
                         to={`/profile/${home._id}`}
                     >
-                        {/* have Link contain card? */}
-                        {/* build out card here */}
-                        {/* savedHomes.image (when applicable) */}
                         <div className="row pb-5 mb-4">
                             <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
                                 <div className="card shadow-sm border-0 rounded">

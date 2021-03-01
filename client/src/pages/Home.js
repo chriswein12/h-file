@@ -9,9 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import Auth from '../utils/auth';
 import HeaderLI from '../components/HeaderLoggedIn'
-import HomeNav from '../components/HomeNav';
 import ViewIndex from '../components/ViewIndex';
-import image from '../Assets/blue_re-pict-house-base.png_128.png';
 import '../App.css'
 
 //var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -35,10 +33,6 @@ function Home() {
     const [removeHome, { error }] = useMutation(REMOVE_HOME);
 
     const home = data?.home || {};
-
-    console.log(home);
-    console.log(home._id);
-
 
     const handleRemoveHome = async (_id) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -73,7 +67,7 @@ function Home() {
 
     //const to set view about home as default rendered page
     const [currentView, setCurrentView] = useState('About Home');
- 
+
 
     if (loading) {
         return <div>Loading...</div>;
@@ -101,16 +95,16 @@ function Home() {
                                     <div className="home-title">
                                         <span className="h1 home-name">{home.homeName}</span>
                                         <span>
-                                        <Button
-                                            variant="primary"
-                                            type="button"
-                                            onClick={() => setHidden(false)}
+                                            <Button
+                                                variant="primary"
+                                                type="button"
+                                                onClick={() => setHidden(false)}
                                             >
-                                            <FontAwesomeIcon icon={faEdit} />
-                                        </Button>
+                                                <FontAwesomeIcon icon={faEdit} />
+                                            </Button>
                                         </span>
                                     </div>
-                                   
+
                                 </div>
                             ) :
                             (
@@ -164,36 +158,35 @@ function Home() {
                             <img src={image} />
                         </div>
                     </Col> */}
-                    </Row>
-                    <Row>
+                </Row>
+                <Row>
                     <Col>
-
-                    <div className="home-info-container">
-                    <Tabs
-                        id="controlled-tab"
-                        activeKey={key}
-                        onSelect={(k) => {
-                            setKey(k);
-                            setCurrentView(k);
-                            }}
-                        >
-                            {/* map over view names */}
-                            {views.map(view => (
-                                <Tab
-                                    eventKey={view.name}
-                                    title={view.name}
-                                >
-                                    <div className="list-container">
-                                        {/* pass down props to component */}
-                                        <ViewIndex
-                                            currentView={currentView}
-                                            home={home}
-                                        ></ViewIndex>
-                                    </div>
-                                </Tab>
-                            ))}
-                    </Tabs>  
-                    </div>  
+                        <div className="home-info-container">
+                            <Tabs
+                                id="controlled-tab"
+                                activeKey={key}
+                                onSelect={(k) => {
+                                    setKey(k);
+                                    setCurrentView(k);
+                                }}
+                            >
+                                {/* map over view names */}
+                                {views.map(view => (
+                                    <Tab
+                                        eventKey={view.name}
+                                        title={view.name}
+                                    >
+                                        <div className="list-container">
+                                            {/* pass down props to component */}
+                                            <ViewIndex
+                                                currentView={currentView}
+                                                home={home}
+                                            ></ViewIndex>
+                                        </div>
+                                    </Tab>
+                                ))}
+                            </Tabs>
+                        </div>
 
                     </Col>
                 </Row>

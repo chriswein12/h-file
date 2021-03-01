@@ -82,8 +82,8 @@ function Home() {
     return (
         <div>
             <HeaderLI />
-
-            <Container className="home-container">
+            <br />
+            <Container className="home-container home-info-container">
                 <Row className="bottom-border">
                     <Col >
                         <Link to={`/AddFile/${homeId}`}>
@@ -168,7 +168,7 @@ function Home() {
                     <Row>
                     <Col>
 
-                    <div className="home-info-container">
+                    <div>
                     <Tabs
                         id="controlled-tab"
                         activeKey={key}

@@ -157,6 +157,7 @@ const typeDefs = gql`
         removeRemodel(homeId: ID!, remodelId: ID!): Home
         removeProduct(homeId: ID!, productId: ID!): Home
         removeMaintenance(homeId: ID!, maintenanceId: ID!): Home
+        updateHome(_id: ID!, homeName: String!): Home
     }
 
     type Auth {

@@ -31,7 +31,7 @@ const Profile = () => {
             <div className="row">
                 <div className='col-4'>
                     <Link to='/AddHome'>
-                        <button type="button" className="btn btn-primary" id="addNew">
+                        <button type="button" className="btn btn-primary add-home-btn" id="addNew">
                             Add New Home
                         </button>
                     </Link>

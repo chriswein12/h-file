@@ -159,6 +159,52 @@
   margin: auto;
 }
 
+.home-container {
+  opacity: 1;
+}
+
+.home-info-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow:  0 8px 16px 0 rgba(35, 35, 35, 0.315);
+}
+
+.list-container {
+  padding: 20px;
+}
+
+.date-item {
+  background-color: darkslategray;
+  color: white;
+  padding: 5px;
+  border-radius: 20px;
+
+}
+
+.accordian-item:hover {
+background-color: lightgray;
+}
+
+.home-title {
+  margin-bottom: 30px;
+}
+
+.home-name {
+  padding: 25px 30px 25px 0;
+}
+
+.bottom-border {
+  border-bottom: solid 1px black;
+  margin-bottom: 20px;
+}
+
+.add-file-btn, .add-home-btn {
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  margin-bottom: 15px;
+}
+
+
   /* @media screen and (max-width: 768px) {
 
     .container {

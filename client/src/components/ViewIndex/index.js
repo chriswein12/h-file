@@ -14,15 +14,15 @@ function ViewIndex(props) {
 
     //switch statement to provide clicked view to render
     function renderView() {
-        switch (currentView.name) {
+        switch (currentView) {
             case 'About Home':
                 return <ViewAboutHome home={home} />;
             case 'Products':
-                return <ViewProducts home={home.homeProducts} />;
+                return <ViewProducts home={home} />;
             case 'Remodels':
-                return <ViewRemodels home={home.homeRemodels} />;
+                return <ViewRemodels home={home} />;
             case 'Services':
-                return <ViewServices home={home.homeServices} />;
+                return <ViewServices home={home} />;
             default:
                 return <ViewAboutHome home={home} />;
         }

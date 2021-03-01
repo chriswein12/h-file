@@ -1,8 +1,9 @@
 import React from 'react';
+import '../../App.css';
 
 function FileType() {
     return (
-        <div>Please select a file type to add</div>
+        <div className="please-select-type">Please select a file type to add</div>
     );
 }
 

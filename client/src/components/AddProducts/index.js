@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_PRODUCT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-function Products({ homeId }) {
+function AddProducts({ homeId }) {
     //set initial form state
     const [productData, setproductData] = useState({
         productName: '',
@@ -52,11 +52,11 @@ function Products({ homeId }) {
 
         //react bootstrap validation - 
         //does it only work on <Form.Control required />?
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        //const form = event.currentTarget;
+        //if (form.checkValidity() === false) {
+        //    event.preventDefault();
+        //    event.stopPropagation();
+        //}
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -94,10 +94,10 @@ function Products({ homeId }) {
     return (
         <div className="addHome">
             <div className="new-product-details">
-            <h2>New Product</h2>
+                <h2>New Product</h2>
 
                 <Form noValidate validated={validated}>
-                    
+
                     <div className="new-product-required">
                         <h3>Required Details</h3>
                         <Form.Group>
@@ -193,26 +193,26 @@ function Products({ homeId }) {
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label htmlFor="additionalDetails">Additional Details</Form.Label>
+                                        <Form.Label htmlFor="productDetails">Additional Details</Form.Label>
                                         <Form.Control
                                             type="textarea"
                                             rows={5}
-                                            name="additionalDetails"
+                                            name="productDetails"
                                             onChange={handleInputChange}
-                                            value={productData.additionalDetails}
+                                            value={productData.productDetails}
                                         />
                                     </Form.Group>
                                     {/* upload goes here when added */}
                                 </div>
                             )
                         }
-                        <Alert 
-                        dismissible 
-                        onClose={() => setShowAlert(false)}
-                        show={showAlert}
-                        variant='danger'
-                    >
-                        Something went wrong!
+                        <Alert
+                            dismissible
+                            onClose={() => setShowAlert(false)}
+                            show={showAlert}
+                            variant='danger'
+                        >
+                            Something went wrong!
                     </Alert>
                     </div>
                     <Button
@@ -228,4 +228,4 @@ function Products({ homeId }) {
     )
 }
 
-export default Products;
+export default AddProducts;

@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const businessCardSchema = require('./BusinessCard');
 
@@ -20,7 +20,7 @@ const servicesSchema = new Schema(
         },
 
         serviceDate: {
-            type: Date
+            type: String
         },
 
         serviceDescription: {

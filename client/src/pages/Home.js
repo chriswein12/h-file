@@ -1,9 +1,11 @@
 //may need to bring useQuery on GET_ME for username
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
-import { useQuery } from '@apollo/react-hooks';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_HOME } from '../utils/queries'
+import { REMOVE_HOME } from '../utils/mutations'
+import Auth from '../utils/auth';
 import HeaderLI from '../components/HeaderLoggedIn'
 import HomeNav from '../components/HomeNav';
 import ViewIndex from '../components/ViewIndex';
@@ -18,21 +20,40 @@ import '../App.css'
 //style: 'mapbox://styles/mapbox/streets-v11'
 //});
 
-import './css/Home.css'
-
 function Home() {
     const { id: homeId } = useParams();
+
+    const [hidden, setHidden] = useState(true);
 
     const { loading, data } = useQuery(GET_HOME, {
         variables: { id: homeId }
     });
 
+    const [removeHome, { error }] = useMutation(REMOVE_HOME);
+
     const home = data?.home || {};
     console.log(home);
 
-    //const street = 
 
-    //const address = `1782%20Fordem%20Ave%2C%20Madison%2C%20WI%2053704`
+    const handleRemoveHome = async (homeId) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await removeHome({
+                variables: { homeId }
+            });
+
+            console.log(data);
+            window.location.assign('/profile');
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
 
     //const to set names for views inside div to be rendered
     const [views] = useState([
@@ -67,9 +88,68 @@ function Home() {
                 </Row>
                 <Row>
                     <Col>
-                        <div>
-                            <h1>{home.homeName}</h1>
-                        </div>
+                        {hidden === true ?
+                            (
+                                <div>
+                                    <div>
+                                        <h1>{home.homeName}</h1>
+                                    </div>
+                                    <div>
+                                        <Button
+                                            variant="primary"
+                                            type="button"
+                                            onClick={() => setHidden(false)}
+                                        >
+                                            edit
+                                        </Button>
+                                    </div>
+                                </div>
+                            ) :
+                            (
+                                <div>
+                                    <Form>
+                                        <Form.Group>
+                                            <Form.Control
+                                                type="text"
+                                                name="homeName"
+                                                placeholder="Enter updated home name"
+                                                //onChange={handleInputChange}
+                                                //value={newHomeFormData.homeName}
+                                                required
+                                            />
+                                        </Form.Group>
+                                        <div>
+                                            <Button
+                                                variant="success"
+                                                type="button"
+                                            >
+                                                Update Title
+                                            </Button>
+                                        </div>
+                                    </Form>
+                                    <div>
+                                        <div>
+                                            <Button
+                                                variant="danger"
+                                                type="button"
+                                                onClick={handleRemoveHome}
+                                            >
+                                                Delete Home
+                                            </Button>
+                                        </div>
+                                        <div>
+                                            <Button
+                                                variant="primary"
+                                                type="button"
+                                                onClick={() => setHidden(true)}
+                                            >
+                                                done
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </Col>
                     <Col>
                         <div>

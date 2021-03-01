@@ -61,7 +61,7 @@ function Home() {
         { name: 'About Home' },
         { name: 'Products' },
         { name: 'Remodels' },
-        { name: 'Services' }
+        { name: 'Services' },
     ]);
 
     const [key, setKey] = useState('About Home');
@@ -76,14 +76,14 @@ function Home() {
     }
 
     return (
-        <div className="home-container">
+        <div>
             <HeaderLI />
 
             <Container className="home-container">
-                <Row>
-                    <Col>
+                <Row className="bottom-border">
+                    <Col >
                         <Link to={`/AddFile/${homeId}`}>
-                            <button type="button" className="btn btn-primary" id="addNewFile">
+                            <button type="button btn-lg" className="btn-lg btn-primary add-file-btn" id="addNewFile">
                                 Add New File
                             </button>
                         </Link>

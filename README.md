@@ -2,6 +2,8 @@
 
 ## Description of the Website
 This website is designed to revolutionize the home maintenance process and bring peace of mind to homeowners everywhere. One of the greatest hurdles homeowners face is organization, especially when it comes to files and records of the most importance. With this website we bring a modern and intuitive file system that puts your home's essential records at your fingertips.
+
+![House-It](https://user-images.githubusercontent.com/68923037/109446566-87678400-7a07-11eb-919c-4756bc6b269f.gif)
  
 <br/>
 
@@ -20,11 +22,14 @@ This website is designed to revolutionize the home maintenance process and bring
 ## How it Works
 * The user first signs up for an account that allows them access to their own Profile. The profile will allow the user to add a home.
 
-* Next, the user selects the button to create and then name a new wishlist.
-* The user then is able to fill out a form to add items to the wishlist, with the option of name, price, location with optional description and url link to item. 
-* After, the user is able to send their wishlist to other member in the group they are requesting gifts from using the "Share" button which will generate a url link that can be copied for use in email or messengers. 
-* When using the unique link, friends and family can view the wishlist without the need to sign up/log in.  
-* Friends and family will not have the same options provided to the user who created the list for deleting, sharing, etc. They will only be able to view the list, not edit.
+* Once logged in the user can begin to add homes.
+    * Then from the profile page the user can click on their home and begin to add services, products, and any maintenence their home has had.
+
+* The user can then log off the website and log back in whenever they would like to see any services their home has had or add more services.
+
+* That is it a simple, fast and effective way to keep track of all your homes updates and past purchases.
+
+
 
 
 <br/>
@@ -32,9 +37,8 @@ This website is designed to revolutionize the home maintenance process and bring
 ## Website Features
 * Mobile Responsiveness
     * Each screen size has been tested to verify that the app is friendy and easy to use with all devices.
-* Users have the ability to create and maintain multiple wishlists. 
-* Shared wishlists are viewable without creating an account.  
-* Session data is used to determine who is signed in causing wishlists visuals to display differently based off which user is viewing the wishlist.  
+* Users have the ability to add mutliple homes and services.
+* Session data is used to determine who is logged in and pull up that users data for thier homes. 
 * Bycrypt is used to hash users password and create data security.  
 * Error handling is implemented to reduce data breakdowns. Checks include:
     * Using form parameters to limit input data in form fields. 
@@ -54,6 +58,8 @@ This website is designed to revolutionize the home maintenance process and bring
     
 
 ## House-It Website
+
+https://house-it.herokuapp.com/
 
 
 <br/>

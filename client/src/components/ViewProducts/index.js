@@ -35,6 +35,8 @@ function ViewProducts({ home }) {
                     <div>Warranty Length: {product.warrantyLength}</div>
                     <div>Web Link: {product.productLink}</div>
                     <div>Additional Details: {product.productDetails}</div>
+
+                    
                     </Card.Body>
                     </Accordion.Collapse>
 

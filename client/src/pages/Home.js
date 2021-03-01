@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Container, Row, Col, Tabs, Tab, Form, Button } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_HOME } from '../utils/queries'
-import { REMOVE_HOME } from '../utils/mutations'
+import { REMOVE_HOME, UPDATE_HOME } from '../utils/mutations'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import Auth from '../utils/auth';
@@ -31,13 +31,21 @@ function Home() {
     const { loading, data } = useQuery(GET_HOME, {
         variables: { id: homeId }
     });
-
     const [removeHome, { error }] = useMutation(REMOVE_HOME);
+    const [updateHome] = useMutation(UPDATE_HOME);
 
     const home = data?.home || {};
 
-    console.log(home);
-    console.log(home._id);
+    const [state, setState] = useState({homeName: home.homeName});
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setState({
+            ...state,
+            [name]: value
+        });
+        console.log(state)
+    }
 
 
     const handleRemoveHome = async (_id) => {
@@ -60,12 +68,33 @@ function Home() {
         }
     }
 
+    const handleUpdateHome = async (_id, homeName) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await updateHome({
+                variables: { _id, homeName }
+            });
+
+            console.log(data);
+        }
+        catch (err) {
+            console.error(err);
+        }
+
+        setHidden(true);
+    }
+
     //const to set names for views inside div to be rendered
     const [views] = useState([
         { name: 'About Home' },
         { name: 'Products' },
         { name: 'Remodels' },
-        { name: 'Services' },
+        { name: 'Services' }
     ]);
 
     const [key, setKey] = useState('About Home');
@@ -121,8 +150,8 @@ function Home() {
                                                 type="text"
                                                 name="homeName"
                                                 placeholder="Enter updated home name"
-                                                //onChange={handleInputChange}
-                                                //value={newHomeFormData.homeName}
+                                                onChange={handleInputChange}
+                                                value={state.homeName}
                                                 required
                                             />
                                         </Form.Group>
@@ -130,6 +159,7 @@ function Home() {
                                             <Button
                                                 variant="success"
                                                 type="button"
+                                                onClick={() => handleUpdateHome(home._id, state.homeName)}
                                             >
                                                 Update Title
                                             </Button>

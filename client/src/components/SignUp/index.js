@@ -5,7 +5,7 @@ import { GET_ME } from '../../utils/queries';
 import { Redirect, useParams, Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
-import '../../pages/css/splashStyle.css';
+import '../../pages/css/style.css';
 
 
 const Signup = (props) => {

@@ -6,9 +6,6 @@ import { GET_ME } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
 import { useParams, Link } from 'react-router-dom';
 
-//import Auth from '../../utils/auth';
-import './css/profileStyle.css';
-
 
 const Profile = () => {
 

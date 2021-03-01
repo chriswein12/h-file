@@ -4,7 +4,7 @@ import Description from '../components/Description';
 import Login from '../components/Login';
 import Signup from '../components/SignUp';
 import Auth from '../utils/auth';
-import './css/splashStyle.css'
+import './css/style.css'
 
 const SplashPage = () => {
 

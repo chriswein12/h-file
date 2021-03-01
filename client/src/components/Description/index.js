@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../pages/css/splashStyle.css';
+import '../../pages/css/style.css';
 
 const Description = (props) => {
     return (

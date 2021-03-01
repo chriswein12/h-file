@@ -32,8 +32,6 @@ function Home() {
     const [removeHome, { error }] = useMutation(REMOVE_HOME);
 
     const home = data?.home || {};
-    console.log(home);
-
 
     const handleRemoveHome = async (homeId) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;

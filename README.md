@@ -20,14 +20,14 @@ This website is designed to revolutionize the home maintenance process and bring
 <br/>
 
 ## How it Works
-* The user first signs up for an account that allows them access to their own Profile. The profile will allow the user to add a home.
+* The user first signs up for an account that allows them access to their own Profile. 
 
 * Once logged in the user can begin to add homes.
-    * Then from the profile page the user can click on their home and begin to add services, products, and any maintenence their home has had.
+    * From the profile page the user can click on their home and begin to add services, products, and any maintenence their home has had.
 
 * The user can then log off the website and log back in whenever they would like to see any services their home has had or add more services.
 
-* That is it a simple, fast and effective way to keep track of all your homes updates and past purchases.
+* That is it, a simple, fast and effective way to keep track of all your home's updates and past purchases.
 
 
 
@@ -38,8 +38,8 @@ This website is designed to revolutionize the home maintenance process and bring
 * Mobile Responsiveness
     * Each screen size has been tested to verify that the app is friendy and easy to use with all devices.
 * Users have the ability to add mutliple homes and services.
-* Session data is used to determine who is logged in and pull up that users data for thier homes. 
-* Bycrypt is used to hash users password and create data security.  
+* Session data is used to determine who is logged in and pull up that user's data for their homes. 
+* Bycrypt is used to hash the user's password and create data security.  
 * Error handling is implemented to reduce data breakdowns. Checks include:
     * Using form parameters to limit input data in form fields. 
     * Verifying email is valid on sign up.
@@ -49,8 +49,8 @@ This website is designed to revolutionize the home maintenance process and bring
 <br/>
 
 ## Plans for Future Development
-* Functionality to add picutres of warranties, user manuals, before and after pictures of services done to the home etc.
-* Intergrate Companies
+* Functionality to add pictures of warranties, user manuals, before and after pictures of services done to the home, etc.
+* Integrate Companies
     * Request and purchase products and services from website directly for home on profile.
     * Advertisements and special deals for companies and local buisnesses near home on website for registered users.
     * Ability to scan QR codes or UPC's to automatically add products.
@@ -82,7 +82,7 @@ https://house-it.herokuapp.com/
 
 ## Credits
 
-* Project Completed by 
+* Project Completed by: 
 * Chris Wein - https://github.com/chriswein12
 * Aaron Geiger - https://github.com/geigea84
 * Darryl Simpson - https://github.com/DarrylSimpson

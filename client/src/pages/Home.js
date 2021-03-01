@@ -57,7 +57,7 @@ function Home() {
         <div className="home-container">
             <HeaderLI />
 
-            <Container>
+            <Container className="home-container">
                 <Row>
                     <Col>
                         <Link to={`/AddFile/${homeId}`}>
@@ -73,6 +73,13 @@ function Home() {
                             <h1>{home.homeName}</h1>
                         </div>
                     </Col>
+                    {/* <Col>
+                    <div>
+                            <img src={image} />
+                        </div>
+                    </Col> */}
+                    </Row>
+                    <Row>
                     <Col>
 
                     <div className="home-info-container">
@@ -102,42 +109,9 @@ function Home() {
                     </Tabs>  
                     </div>  
 
-
-
-
-
-
-                        <div>
-                            <img src={image} />
-                        </div>
-
                     </Col>
                 </Row>
-                <div className="nav-list-and-view">
-                    <Row>
-                        <Col>
-                            <div>
-                                {/* pass down props to component */}
-                                <HomeNav
-                                    views={views}
-                                    currentView={currentView}
-                                    setCurrentView={setCurrentView}
-                                ></HomeNav>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <div className="view-index-wrapper">
-                                {/* pass down props to component */}
-                                <ViewIndex
-                                    currentView={currentView}
-                                    home={home}
-                                ></ViewIndex>
-                            </div>
-                        </Col>
-                    </Row>
-                </div>
+
             </Container>
 
         </div>

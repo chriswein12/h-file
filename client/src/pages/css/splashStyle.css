@@ -159,6 +159,10 @@
   margin: auto;
 }
 
+.home-container {
+  opacity: 1;
+}
+
 .home-info-container {
   background-color: white;
   padding: 20px;
@@ -169,6 +173,20 @@
 .list-container {
   padding: 20px;
 }
+
+.date-item {
+  background-color: darkslategray;
+  color: white;
+  padding: 5px;
+  border-radius: 20px;
+
+}
+
+.accordian-item:hover {
+background-color: lightgray;
+}
+
+
 
   /* @media screen and (max-width: 768px) {
 

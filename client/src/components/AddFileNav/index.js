@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import '../../App.css'
 
 function AddFileNav(props) {
     //destructuring props passed in from Home.js
@@ -12,7 +14,8 @@ function AddFileNav(props) {
             <div className="add-file-nav-list">
                 {/* map over fileType names */}
                 {fileTypes.map(type => (
-                    <button
+                    <Button
+                        variant="primary"
                         className="add-file-nav-list-items"
                         key={type.name}
                     >
@@ -22,7 +25,7 @@ function AddFileNav(props) {
                         >
                             {type.name}
                         </h3>
-                    </button>
+                    </Button>
                 ))}
             </div>
         </div>

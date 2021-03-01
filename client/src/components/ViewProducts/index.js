@@ -23,7 +23,6 @@ function ViewProducts({ home }) {
             });
 
             console.log(data);
-            setHidden(false);
         }
         catch (err) {
             console.error(err);

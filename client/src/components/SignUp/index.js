@@ -38,7 +38,7 @@ const Signup = (props) => {
             Auth.login(data.addUser.token);
         }
         catch (err) {
-            console.log(err);
+            console.error(err);
         }
 
         setUserInfo({

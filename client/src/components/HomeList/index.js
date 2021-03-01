@@ -8,6 +8,7 @@ function HomeList({ username, savedHomes }) {
     }
 
     return (
+
         <div className="profileName">
             <div className="row p-0 mb-4 ">
                 <div className="col-2 d-flex"></div>

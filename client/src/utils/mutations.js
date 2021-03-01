@@ -143,7 +143,7 @@ mutation removeService($homeId: ID!, $serviceId: ID!) {
     removeService(homeId: $homeId, serviceId: $serviceId) {
         homeName
             homeServices {
-                _id
+            _id
             serviceTitle
             serviceCost
             serviceFrequency

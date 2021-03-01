@@ -23,6 +23,9 @@ function ViewServices({ home }) {
             });
 
             console.log(data);
+
+            setHidden(false);
+            window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);

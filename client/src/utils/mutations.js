@@ -209,3 +209,18 @@ mutation removeMaintenance($homeId: ID!, $maintenanceId: ID!) {
         }
     }
 `;
+
+export const UPDATE_HOME = gql`
+mutation updateHome($_id: ID!, $homeName: String!) {
+    updateHome(_id: $_id, homeName: $homeName) {
+    _id
+    homeName
+    username
+    yearBought
+    yearBuilt
+    squareFootage
+    value
+    lotSize
+        }
+    }
+`;

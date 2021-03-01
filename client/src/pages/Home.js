@@ -61,7 +61,7 @@ function Home() {
         { name: 'About Home' },
         { name: 'Products' },
         { name: 'Remodels' },
-        { name: 'Services' }
+        { name: 'Services' },
     ]);
 
     const [key, setKey] = useState('About Home');

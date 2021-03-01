@@ -29,7 +29,6 @@ const typeDefs = gql`
 
     type Services {
         _id: ID!
-        homeId: ID
         serviceTitle: String!
         serviceCost: String!
         serviceFrequency: String

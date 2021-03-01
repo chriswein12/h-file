@@ -69,7 +69,7 @@ function AboutHome() {
                 variables: { homeData: { ...newHomeFormData }}
             });
 
-            window.location('/profile')
+            window.location.assign('/profile')
         }
         catch (err) {
             console.error(err);

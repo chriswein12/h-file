@@ -19,7 +19,7 @@
     height: 100%;
     width: 100%;
     padding: 25px;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   .splash-container {
@@ -124,6 +124,17 @@
       padding-left: 35%;
   }
 
+  .profileName {
+    /* background: white; */
+    border-radius: 15px;
+  }
+
+  .profileName h1 {
+    text-align: center;
+    color: white;
+  }
+  
+
   #addNew {
     display:flex;
     padding: 20px;
@@ -203,52 +214,3 @@ background-color: lightgray;
   box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
   margin-bottom: 15px;
 }
-
-
-  /* @media screen and (max-width: 768px) {
-
-    .container {
-      margin: auto;
-    }
-
-  }
-
-  
-  @media screen and (max-width: 500px) {
-    .header a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-
-    header .header {
-      width: 100%;
-    }
-    
-    .header-right {
-      float: none;
-    }
-
-    .container {
-      margin: auto;
-    }
-
-    form .container {
-      margin: auto;
-    }
-
-    .submitSignupBtn {
-      padding-left: 5% ;
-    }
-    .signupButtons {
-      padding-left: 20%;
-    }
-    
-    
-    .loginSubmitButton {
-      padding-left: 5%;
-    }
-    .loginCreateButton {
-        padding-left: 25%;
-    }
-  } */

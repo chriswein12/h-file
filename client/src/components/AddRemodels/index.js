@@ -63,7 +63,7 @@ function AddRemodels({ homeId }) {
         }
 
         try {
-            const {data} = await addNewRemodel({
+            const { data } = await addNewRemodel({
                 variables: { remodelData, homeId }
             });
             console.log(data);

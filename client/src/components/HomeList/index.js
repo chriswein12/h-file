@@ -8,32 +8,33 @@ function HomeList({ username, savedHomes }) {
     }
 
     return (
-        <div>
-            <h1>{username}'s Homes</h1>
-            {savedHomes && savedHomes.map(home => (
-                <div key={home._id}>
-                    <Link
-                        to={`/profile/${home._id}`}
-                    >
-                        {/* have Link contain card? */}
-                        {/* build out card here */}
-                        {/* savedHomes.image (when applicable) */}
-                        <div className="row pb-5 mb-4">
-                            <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                                <div className="card shadow-sm border-0 rounded">
-                                    <div className="card-body p-0">
-                                        <div className="p-4">
-                                        <h5 className="mb-2">{home.homeName}</h5>
+
+        <div className="profileName">
+            <div className="row p-0 mb-4 ">
+                <div className="col-2 d-flex"></div>
+                <h1 className="col-8 d-flex">{username}'s Homes</h1>
+                <div className="col-2 d-flex"></div>
+            </div>
+            <div className="container">
+                <div className="row">
+                    {savedHomes && savedHomes.map(home => (
+
+                        <div key={home._id} className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                            <div className="card shadow-sm border-0 rounded mb-4">
+                                <Link
+                                    to={`/profile/${home._id}`} className="card-body p-0 m-0"
+                                >
+                                    <div className="p-4">
+                                        <h5 className="mb-2 d-flex">{home.homeName}</h5>
                                         <p className="small text-muted mt-1 address">{home.street}</p>
                                         <p className="small text-muted mt-1 cityState">{home.city}, {home.state} {home.zip}</p>
-                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         </div>
-                    </Link>
+                    ))}
                 </div>
-            ))}
+            </div>
         </div >
     );
 }

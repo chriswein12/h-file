@@ -147,6 +147,18 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
+        updateHome: async (parent, {_id, homeName }, context) => {
+            if (context.user) {
+                updatedHome = await Home.findOneAndUpdate(
+                    { _id: _id},
+                    { homeName: homeName },
+                    { new: true}
+                );
+                return updatedHome;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
         removeService: async (parent, { homeId, serviceId }, context ) => {
             if (context.user) {
                 const updatedHome = await Home.findOneAndUpdate(

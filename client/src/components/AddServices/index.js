@@ -48,11 +48,11 @@ function AddServices({ homeId }) {
 
         //react bootstrap validation - 
         //does it only work on <Form.Control required />?
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        //const form = event.currentTarget;
+        //if (form.checkValidity() === false) {
+        //    event.preventDefault();
+        //    event.stopPropagation();
+        //}
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;

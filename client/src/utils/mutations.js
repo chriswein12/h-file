@@ -143,7 +143,7 @@ mutation removeService($homeId: ID!, $serviceId: ID!) {
     removeService(homeId: $homeId, serviceId: $serviceId) {
         homeName
             homeServices {
-                _id
+            _id
             serviceTitle
             serviceCost
             serviceFrequency
@@ -206,6 +206,21 @@ mutation removeMaintenance($homeId: ID!, $maintenanceId: ID!) {
               pastMaintDates
               maintDetails
             }
+        }
+    }
+`;
+
+export const UPDATE_HOME = gql`
+mutation updateHome($_id: ID!, $homeName: String!) {
+    updateHome(_id: $_id, homeName: $homeName) {
+    _id
+    homeName
+    username
+    yearBought
+    yearBuilt
+    squareFootage
+    value
+    lotSize
         }
     }
 `;

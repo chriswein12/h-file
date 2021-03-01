@@ -202,7 +202,6 @@ function AddProducts({ homeId }) {
                                             value={productData.productDetails}
                                         />
                                     </Form.Group>
-                                    {/* upload goes here when added */}
                                 </div>
                             )
                         }

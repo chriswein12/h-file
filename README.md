@@ -2,6 +2,8 @@
 
 ## Description of the Website
 This website is designed to revolutionize the home maintenance process and bring peace of mind to homeowners everywhere. One of the greatest hurdles homeowners face is organization, especially when it comes to files and records of the most importance. With this website we bring a modern and intuitive file system that puts your home's essential records at your fingertips.
+
+![House-It](https://user-images.githubusercontent.com/68923037/109446566-87678400-7a07-11eb-919c-4756bc6b269f.gif)
  
 <br/>
 
@@ -56,6 +58,8 @@ This website is designed to revolutionize the home maintenance process and bring
     
 
 ## House-It Website
+
+https://house-it.herokuapp.com/
 
 
 <br/>

@@ -36,7 +36,11 @@ function Home() {
 
     const home = data?.home || {};
 
-    const handleRemoveHome = async (homeId) => {
+    console.log(home);
+    console.log(home._id);
+
+
+    const handleRemoveHome = async (_id) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -45,7 +49,7 @@ function Home() {
 
         try {
             const { data } = await removeHome({
-                variables: { homeId }
+                variables: { _id }
             });
 
             console.log(data);
@@ -136,7 +140,7 @@ function Home() {
                                             <Button
                                                 variant="danger"
                                                 type="button"
-                                                onClick={handleRemoveHome}
+                                                onClick={() => handleRemoveHome(home._id)}
                                             >
                                                 Delete Home
                                             </Button>

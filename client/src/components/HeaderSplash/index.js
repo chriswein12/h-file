@@ -8,9 +8,6 @@ function Header() {
         <header className="header">
             <a className="logo">House-It</a>
             <div className="header-right">
-                <Link to="/profile">
-                    <button className="btn btn-primary">Profile</button>
-                </Link>
                 
             </div>
         </header>

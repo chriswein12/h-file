@@ -5,6 +5,8 @@ import { Container, Row, Col, Tabs, Tab, Form, Button } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_HOME } from '../utils/queries'
 import { REMOVE_HOME } from '../utils/mutations'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import Auth from '../utils/auth';
 import HeaderLI from '../components/HeaderLoggedIn'
 import HomeNav from '../components/HomeNav';
@@ -21,6 +23,7 @@ import '../App.css'
 //});
 
 function Home() {
+
     const { id: homeId } = useParams();
 
     const [hidden, setHidden] = useState(true);
@@ -91,18 +94,19 @@ function Home() {
                         {hidden === true ?
                             (
                                 <div>
-                                    <div>
-                                        <h1>{home.homeName}</h1>
-                                    </div>
-                                    <div>
+                                    <div className="home-title">
+                                        <span className="h1 home-name">{home.homeName}</span>
+                                        <span>
                                         <Button
                                             variant="primary"
                                             type="button"
                                             onClick={() => setHidden(false)}
-                                        >
-                                            edit
+                                            >
+                                            <FontAwesomeIcon icon={faEdit} />
                                         </Button>
+                                        </span>
                                     </div>
+                                   
                                 </div>
                             ) :
                             (
@@ -143,7 +147,7 @@ function Home() {
                                                 type="button"
                                                 onClick={() => setHidden(true)}
                                             >
-                                                done
+                                                Cancel
                                             </Button>
                                         </div>
                                     </div>

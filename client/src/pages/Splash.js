@@ -8,7 +8,15 @@ import './css/splashStyle.css'
 
 const SplashPage = () => {
 
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (token) {
+        window.location.assign('/profile');
+
+    }
+
     const [currentForm, setCurrentForm] = useState('Description');
+    
 
     const renderForm = () => {
         switch (currentForm) {
@@ -31,13 +39,6 @@ const SplashPage = () => {
         setCurrentForm('Login')
     };
 
-
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    if (token) {
-        window.location.assign('/profile');
-
-    }
 
     return (
         <div>

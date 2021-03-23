@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 //check server connection for savedHomes
 function HomeList({ username, savedHomes }) {
@@ -9,12 +11,8 @@ function HomeList({ username, savedHomes }) {
 
     return (
 
-        <div className="profileName">
-            <div className="row p-0 mb-4 ">
-                <div className="col-2 d-flex"></div>
-                <h1 className="col-8 d-flex">{username}'s Homes</h1>
-                <div className="col-2 d-flex"></div>
-            </div>
+        <div>
+            <h1 className="col-8 d-flex ps-3">{username}'s Homes</h1>
             <div className="container">
                 <div className="row">
                     {savedHomes && savedHomes.map(home => (
@@ -22,12 +20,15 @@ function HomeList({ username, savedHomes }) {
                         <div key={home._id} className="col-lg-3 col-md-6 mb-4 mb-lg-0">
                             <div className="card shadow-sm border-0 rounded mb-4">
                                 <Link
-                                    to={`/profile/${home._id}`} className="card-body p-0 m-0"
+                                    to={`/profile/${home._id}`} className="card-body home-card p-0 m-0"
                                 >
                                     <div className="p-4">
+                                        <div className="text-center">
+                                            <FontAwesomeIcon icon={faHome} className="icon-home" />
+                                        </div>
                                         <h5 className="mb-2 d-flex">{home.homeName}</h5>
-                                        <p className="small text-muted mt-1 address">{home.street}</p>
-                                        <p className="small text-muted mt-1 cityState">{home.city}, {home.state} {home.zip}</p>
+                                        <p className="small text-muted mt-4">{home.street}</p>
+                                        <p className="small text-muted">{home.city}, {home.state} {home.zip}</p>
                                     </div>
                                 </Link>
                             </div>

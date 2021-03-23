@@ -210,13 +210,7 @@ background-color: lightgray;
   margin-bottom: 20px;
 }
 
-.add-file-btn {
+.add-file-btn, .add-home-btn {
   box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
   margin-bottom: 15px;
-}
-
-.add-home-btn {
-  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
-  margin-bottom: 15px;
-  width: 100%;
 }

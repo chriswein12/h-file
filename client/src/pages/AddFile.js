@@ -5,6 +5,7 @@ import AddServices from '../components/AddServices';
 import AddFileContent from '../components/AddFileContent';
 import FileType from '../components/FileType';
 import AddFileNav from '../components/AddFileNav';
+import HeaderLI from '../components/HeaderLoggedIn';
 import { useParams } from 'react-router-dom';
 
 //pass in currentView from Home.js
@@ -39,6 +40,8 @@ function AddFile() {
     return (
        <>
        <div>
+           <HeaderLI />
+           <br />
             <AddFileNav
                 fileTypes={fileTypes}
                 currentType={currentType}

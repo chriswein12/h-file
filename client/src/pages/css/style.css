@@ -1,5 +1,5 @@
 /* $default-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315); */
-
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Fredoka+One&display=swap');
 * {
     box-sizing: border-box;
   }
@@ -37,14 +37,13 @@
   .header {
     overflow: hidden;
     width: 100%;
-    background-color: navy;
+    background-color: rgb(1, 1, 75);
     padding: 20px 10px;
-    opacity: 0.9;
+    opacity: 1;
   }
   
   .header a {
     float: left;
-    /* color: black; */
     color: white;
     text-align: center;
     padding: 12px;
@@ -55,9 +54,9 @@
   }
   
   .header a.logo {
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 35px;
     color: white;
+    font-family: 'Bowlby One', cursive;
   }
   
   .header a:hover {
@@ -78,7 +77,6 @@
   /* hide profile icon until user logs in and add drop down  */
   a.profileIcon {
       padding: 0;
-      /* display:none; */
   }
 
   .loginHeader {
@@ -127,11 +125,7 @@
   .profileName {
     /* background: white; */
     border-radius: 15px;
-  }
-
-  .profileName h1 {
     text-align: center;
-    color: white;
   }
   
 
@@ -213,4 +207,14 @@ background-color: lightgray;
 .add-file-btn, .add-home-btn {
   box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
   margin-bottom: 15px;
+}
+
+.home-card {
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  border-radius: 12px;
+}
+
+.icon-home {
+  font-size: 100px;
+  margin-bottom: 20px;
 }

@@ -1,5 +1,6 @@
 //reference deep-thoughts Profile.js
 import React from 'react';
+import { Container, Row, Col} from 'react-bootstrap';
 import HeaderLI from '../components/HeaderLoggedIn'
 import HomeList from '../components/HomeList';
 import { GET_ME } from '../utils/queries';
@@ -24,25 +25,28 @@ const Profile = () => {
 
     return (
         <div>
-            <HeaderLI />
-            <div className="row">
-                <div className='col-4'>
-                    <Link to='/AddHome'>
-                        <button type="button" className="btn btn-primary add-home-btn" id="addNew">
-                            Add New Home
-                        </button>
-                    </Link>
-                </div>
-            </div>
+            <HeaderLI
+                username={user.username}
+            />
+            <br />
+            <Container className="home-container home-info-container">
+                <Row className="bottom-border">
+                    <Col >
+                        <Link to='/AddHome' className="d-grid gap-2 col-6 mx-auto">
+                            <button type="button" className="btn-lg btn-primary add-home-btn" >
+                               Add New Home
+                            </button>
+                        </Link>
+                    </Col>
+                </Row>
 
-            <div className="container py-5">
-                <div className="row pb-5 mb-4">
+                <Row>
                     <HomeList
                         username={user.username}
                         savedHomes={user.savedHomes}
                     />
-                </div>
-            </div>
+                </Row>
+            </Container>
         </div>
     )
 }

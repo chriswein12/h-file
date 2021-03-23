@@ -113,8 +113,8 @@ function Home() {
             <Container className="home-container home-info-container">
                 <Row className="bottom-border">
                     <Col >
-                        <Link to={`/AddFile/${homeId}`}>
-                            <button type="button btn-lg" className="btn-lg btn-primary add-file-btn" id="addNewFile">
+                        <Link to={`/AddFile/${homeId}`} className="d-grid gap-2 col-6 mx-auto">
+                            <button type="button" className="btn-lg btn-primary add-file-btn" id="addNewFile">
                                 Add New File
                             </button>
                         </Link>

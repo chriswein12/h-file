@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_SERVICE } from '../../utils/mutations';
@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 function AddServices({ homeId }) {
     //set initial form state
-    const [serviceData, setserviceData] = useState({
+    const [serviceData, setServiceData] = useState({
         serviceTitle: '',
         serviceCost: '',
         serviceFrequency: '',
@@ -15,7 +15,7 @@ function AddServices({ homeId }) {
     });
 
     //set for validation
-    const [validated] = useState(false);
+    const [validated, setValidated] = useState(false);
 
     //state for alerts
     const [showAlert, setShowAlert] = useState(false);
@@ -23,21 +23,12 @@ function AddServices({ homeId }) {
     //toggle button/additional info inputs
     const [hidden, setHidden] = useState(false);
 
-    //create const for anticipated mutation (will need to update)
+    //create const for useMutation(ADD_SERVICE)
     const [addNewService, { error }] = useMutation(ADD_SERVICE);
-
-    //set up alert effect
-    useEffect(() => {
-        if (error) {
-            setShowAlert(true);
-        } else {
-            setShowAlert(false);
-        }
-    }, [error]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setserviceData({
+        setServiceData({
             ...serviceData,
             [name]: value
         });
@@ -46,13 +37,14 @@ function AddServices({ homeId }) {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        //react bootstrap validation - 
-        //does it only work on <Form.Control required />?
-        //const form = event.currentTarget;
-        //if (form.checkValidity() === false) {
-        //    event.preventDefault();
-        //    event.stopPropagation();
-        //}
+        //react bootstrap validation
+        const form = event.currentTarget;
+        if (form.checkValidity() === false || Math.sign(serviceData.serviceCost) == -1) {
+            event.preventDefault();
+            event.stopPropagation();
+            return;
+        }
+        setValidated(true);
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -67,20 +59,14 @@ function AddServices({ homeId }) {
             });
             console.log(data);
 
+            //show confirmation message
+            setShowAlert(true);
+
             window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);
-            setShowAlert(true);
         }
-
-        setserviceData({
-            serviceTitle: '',
-            serviceCost: '',
-            serviceFrequency: '',
-            serviceDate: '',
-            serviceDescription: ''
-        });
     }
 
     return (
@@ -101,6 +87,9 @@ function AddServices({ homeId }) {
                                 value={serviceData.serviceTitle}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a service title
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="serviceCost">Service Cost</Form.Label>
@@ -109,8 +98,12 @@ function AddServices({ homeId }) {
                                 name="serviceCost"
                                 onChange={handleInputChange}
                                 value={serviceData.serviceCost}
+                                min="0"
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a valid cost
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="serviceFrequency">Service Frequency</Form.Label>
@@ -121,6 +114,9 @@ function AddServices({ homeId }) {
                                 value={serviceData.serviceFrequency}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter the service frequency
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="serviceDate">Date of Service</Form.Label>
@@ -131,6 +127,9 @@ function AddServices({ homeId }) {
                                 value={serviceData.serviceDate}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter the service date
+                            </Form.Control.Feedback>
                         </Form.Group>
                     </div>
                     <div className="new-service-additional">
@@ -161,13 +160,12 @@ function AddServices({ homeId }) {
                             )
                         }
                         <Alert
-                            dismissible
                             onClose={() => setShowAlert(false)}
                             show={showAlert}
-                            variant='danger'
+                            variant='success'
                         >
-                            Something went wrong!
-                    </Alert>
+                            New service added!
+                        </Alert>
                     </div>
                     <Button
                         id="new-service-submit-btn"

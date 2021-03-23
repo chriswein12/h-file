@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_REMODEL } from '../../utils/mutations';
@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 function AddRemodels({ homeId }) {
     //set initial form state
-    const [remodelData, setremodelData] = useState({
+    const [remodelData, setRemodelData] = useState({
         remodelTitle: '',
         remodelRoom: '',
         remodelStartDate: '',
@@ -16,7 +16,7 @@ function AddRemodels({ homeId }) {
     });
 
     //set for validation
-    const [validated] = useState(false);
+    const [validated, setValidated] = useState(false);
 
     //state for alerts
     const [showAlert, setShowAlert] = useState(false);
@@ -27,18 +27,9 @@ function AddRemodels({ homeId }) {
     //create const for useMutation(ADD_REMODEL)
     const [addNewRemodel, { error }] = useMutation(ADD_REMODEL);
 
-    //set up alert effect
-    useEffect(() => {
-        if (error) {
-            setShowAlert(true);
-        } else {
-            setShowAlert(false);
-        }
-    }, [error]);
-
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setremodelData({
+        setRemodelData({
             ...remodelData,
             [name]: value
         });
@@ -48,12 +39,13 @@ function AddRemodels({ homeId }) {
         event.preventDefault();
 
         //react bootstrap validation - 
-        //does it only work on <Form.Control required />?
-        //const form = event.currentTarget;
-        //if (form.checkValidity() === false) {
-        //    event.preventDefault();
-        //    event.stopPropagation();
-        //}
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            return;
+        }
+        setValidated(true);
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -68,21 +60,14 @@ function AddRemodels({ homeId }) {
             });
             console.log(data);
 
+            //show confirmation message
+            setShowAlert(true);
+
             window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);
-            setShowAlert(true);
         }
-
-        setremodelData({
-            remodelTitle: '',
-            remodelRoom: '',
-            remodelStartDate: '',
-            remodelEndDate: '',
-            remodelCost: '',
-            remodelDetails: ''
-        });
     }
 
     return (
@@ -103,6 +88,9 @@ function AddRemodels({ homeId }) {
                                 value={remodelData.remodelTitle}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a remodel title
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelRoom">Remodel Room</Form.Label>
@@ -113,6 +101,9 @@ function AddRemodels({ homeId }) {
                                 value={remodelData.remodelRoom}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a remodel room
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelStartDate">Remodel Start Date</Form.Label>
@@ -123,6 +114,9 @@ function AddRemodels({ homeId }) {
                                 value={remodelData.remodelStartDate}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a start date
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="remodelEndDate">Remodel End Date</Form.Label>
@@ -133,6 +127,9 @@ function AddRemodels({ homeId }) {
                                 value={remodelData.remodelEndDate}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter an end date
+                            </Form.Control.Feedback>
                         </Form.Group>
                     </div>
                     <div className="new-remodel-additional">
@@ -171,12 +168,11 @@ function AddRemodels({ homeId }) {
                             )
                         }
                         <Alert
-                            dismissible
                             onClose={() => setShowAlert(false)}
                             show={showAlert}
-                            variant='danger'
+                            variant='success'
                         >
-                            Something went wrong!
+                            New remodel added!
                     </Alert>
                     </div>
                     <Button

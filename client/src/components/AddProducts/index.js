@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_PRODUCT } from '../../utils/mutations';
@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 function AddProducts({ homeId }) {
     //set initial form state
-    const [productData, setproductData] = useState({
+    const [productData, setProductData] = useState({
         productName: '',
         productPrice: '',
         datePurchased: '',
@@ -19,7 +19,7 @@ function AddProducts({ homeId }) {
     });
 
     //set for validation
-    const [validated] = useState(false);
+    const [validated, setValidated] = useState(false);
 
     //state for alerts
     const [showAlert, setShowAlert] = useState(false);
@@ -27,21 +27,12 @@ function AddProducts({ homeId }) {
     //toggle button/additional info inputs
     const [hidden, setHidden] = useState(false);
 
-    //create const for anticipated mutation (will need to update)
+    //create const for useMutation(ADD_PRODUCT)
     const [addNewProduct, { error }] = useMutation(ADD_PRODUCT);
-
-    //set up alert effect
-    useEffect(() => {
-        if (error) {
-            setShowAlert(true);
-        } else {
-            setShowAlert(false);
-        }
-    }, [error]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setproductData({
+        setProductData({
             ...productData,
             [name]: value
         });
@@ -50,13 +41,14 @@ function AddProducts({ homeId }) {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        //react bootstrap validation - 
-        //does it only work on <Form.Control required />?
-        //const form = event.currentTarget;
-        //if (form.checkValidity() === false) {
-        //    event.preventDefault();
-        //    event.stopPropagation();
-        //}
+        //react bootstrap validation
+        const form = event.currentTarget;
+        if (form.checkValidity() === false || Math.sign(productData.productPrice) == -1) {
+            event.preventDefault();
+            event.stopPropagation();
+            return;
+        }
+        setValidated(true);
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -66,29 +58,19 @@ function AddProducts({ homeId }) {
         }
 
         try {
-            const {data} = await addNewProduct({
+            const { data } = await addNewProduct({
                 variables: { productData, homeId }
             });
             console.log(data);
+
+            //show confirmation message
+            setShowAlert(true);
 
             window.location.assign(`/profile/${homeId}`);
         }
         catch (err) {
             console.error(err);
-            setShowAlert(true);
         }
-
-        setproductData({
-            productName: '',
-            productPrice: '',
-            datePurchased: '',
-            productRoom: '',
-            serialNumber: '',
-            modelNumber: '',
-            warrantyLength: '',
-            productLink: '',
-            productDetails: ''
-        });
     }
 
     return (
@@ -109,6 +91,9 @@ function AddProducts({ homeId }) {
                                 value={productData.productName}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a product name
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="productPrice">Product Price</Form.Label>
@@ -117,8 +102,12 @@ function AddProducts({ homeId }) {
                                 name="productPrice"
                                 onChange={handleInputChange}
                                 value={productData.productPrice}
+                                min="0"
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a valid price
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="datePurchased">Date Purchased</Form.Label>
@@ -129,6 +118,9 @@ function AddProducts({ homeId }) {
                                 value={productData.datePurchased}
                                 required
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter the purchase date
+                            </Form.Control.Feedback>
                         </Form.Group>
                     </div>
                     <div className="new-product-additional">
@@ -206,13 +198,12 @@ function AddProducts({ homeId }) {
                             )
                         }
                         <Alert
-                            dismissible
                             onClose={() => setShowAlert(false)}
                             show={showAlert}
-                            variant='danger'
+                            variant='success'
                         >
-                            Something went wrong!
-                    </Alert>
+                            New product added!
+                        </Alert>
                     </div>
                     <Button
                         id="new-product-submit-btn"

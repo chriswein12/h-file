@@ -24,15 +24,21 @@ const Profile = () => {
 
     return (
         <div>
-            <HeaderLI />
+            <HeaderLI 
+             username={user.username}
+             />
+             <div className="container py-5">
             <div className="row">
-                <div className='col-4'>
+                <div className='col-2'></div>
+                <div className='col-8'>
                     <Link to='/AddHome'>
-                        <button type="button" className="btn btn-primary add-home-btn" id="addNew">
-                            Add New Home
+                        <button type="button" className="btn btn-primary add-home-btn ml-0" id="addNew">
+                            <p className='add-home-text'>Add New Home</p>
                         </button>
                     </Link>
+                    <div className='col-2'></div>
                 </div>
+            </div>
             </div>
 
             <div className="container py-5">
